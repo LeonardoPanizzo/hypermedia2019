@@ -3,11 +3,11 @@ body {
   height: 100%;
   font-size: 100%;
   min-height: 100%;
-  background-image: url("../img/homepage/background.jpg");
+  background-image: url("../img/background/background.jpg");
 }
 
 #style{
-  background-image: url("../img/homepage/white.jpg");
+  background-image: url("../img/background/white.jpg");
   width: 80%;
   margin-top: 20px;
   margin-bottom: 20px;
