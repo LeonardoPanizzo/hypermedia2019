@@ -1,7 +1,9 @@
 $(document).ready(function(){
+  /*DEPRECATED
   var logged=document.getElementById("logged");
   var notlog=document.getElementById("notlog");
-  if(/*TODO: if logged in*/){ /* LOGGED IN */
+  */
+  if(document.cookie){ /* LOGGED IN */
     $('.logged').show();
   }else{ /* NOT LOGGED */
       $('.notlog').show();
@@ -33,6 +35,11 @@ window.addEventListener("resize", function() {
 });
 
 $(".logout_button").click(function(){
+  $.ajax({
+    //logout request
+    url : DOMAIN_ADDRESS + '/querylogin/TODO', //TODO
+    type: 'POST',
+  })
   alert('Logged out');
   window.location.replace(DOMAIN_ADDRESS);
 
