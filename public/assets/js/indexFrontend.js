@@ -5,7 +5,7 @@ $(function(){
     $("#toolbar_html").load("../pages/toolbar.html");
 });*/
 
-// TODO: uncomment this part when it is on the server
+// DEPRECATED (it has been put in shared.js, but still to test)
 //this part should be commented while using the site on localhost
 /*
 $(document).ready(function(){

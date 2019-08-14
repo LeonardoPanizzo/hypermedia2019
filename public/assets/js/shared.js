@@ -5,6 +5,32 @@ const DOMAIN_ADDRESS = 'http://localhost:3000';
 $(function(){
     $("#toolbar_html").load("../pages/toolbar.html");
 });
+/*
+$(function(){
+  const HTTPS = "https";
+  let address=window.location.href;
+  if(address.substring(0,5) != HTTPS){
+    let safeAddress = HTTPS + address.substring(4);
+    window.location.replace(safeAddress);
+  }
+});*/
+/*if the above doesn't work:
+$(document).ready(function(){
+  const HTTPS = "https";
+  let address=window.location.href;
+  if(address.substring(0,5) != HTTPS){
+    let safeAddress = HTTPS + address.substring(4);
+    window.location.replace(safeAddress);
+  }
+});*/
+/* if the above does not work:
+$(document).ready(function(){
+  let ad=window.location.href;
+  ad=ad.substring(4,5);
+  if(ad!='s'){
+    window.location.replace("https" + address.substring(4));
+  }
+})*/
 
 /*TODO!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 I should put this ONLY in the pages when it is needed!!!!!
