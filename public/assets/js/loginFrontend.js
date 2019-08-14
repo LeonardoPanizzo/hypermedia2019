@@ -42,14 +42,6 @@ $("#button").click(function(){
         'pass':pass
       },
       dataType: 'json',
-      success:(data)=>{
-        if(data.length===1){
-          alert('logged in');
-          window.location.replace(DOMAIN_ADDRESS);
-        }else{
-          alert('mail or password incorrect');
-        }
-      },
     });
   }
 });
