@@ -7,7 +7,9 @@ var userRoot= require('./other/js/connection/rootUser.js')
 
 var app = express();
 app.use(cookieParser());
-
+app.use(bodyParser.urlencoded({
+    extended: false
+}))
 app.use(express.static(__dirname+"/public"));
 
 app.use('/user', userRoot);

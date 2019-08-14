@@ -12,6 +12,19 @@ $(document).ready(function(){
   }
 })
 
+$("#out").click(function(){
+    $.ajax({
+      url:'http://localhost:3000/user/print',
+      type:'POST',
+      data:{
+      },
+      dataType:'json',
+      success:(data)=>{
+        console.log(data);
+      },
+    })
+});
+
 $("#button").click(function(){
   let email=$("#email").val();
   email=email.toLowerCase();
@@ -19,8 +32,10 @@ $("#button").click(function(){
   if(email.length===0 || pass.length===0){
     alert('Insert all the required data');
   }else{
+    console.log(email);
+    console.log(pass);
     $.ajax({
-      url: DOMAIN_ADDRESS + '/user/login',
+      url: 'http://localhost:3000/user/login',
       type: 'POST',
       data:{
         'name':email,
@@ -37,4 +52,4 @@ $("#button").click(function(){
       },
     });
   }
-    });
+});
