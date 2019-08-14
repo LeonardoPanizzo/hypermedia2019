@@ -36,9 +36,11 @@ window.addEventListener("resize", function() {
 
 $(".logout_button").click(function(){
   $.ajax({
-    //logout request
-    url : DOMAIN_ADDRESS + '/querylogin/TODO', //TODO
-    type: 'POST',
+    url:DOMAIN_ADDRESS+'/user/logout',
+    type:'POST',
+    data:{
+    },
+    dataType:'json',
   })
   alert('Logged out');
   window.location.replace(DOMAIN_ADDRESS);
