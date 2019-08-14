@@ -20,11 +20,11 @@ $("#button").click(function(){
     alert('Insert all the required data');
   }else{
     $.ajax({
-      url: DOMAIN_ADDRESS + '/querylogin',
+      url: DOMAIN_ADDRESS + '/user/login',
       type: 'POST',
       data:{
         'name':email,
-        'pwd':pass
+        'pass':pass
       },
       dataType: 'json',
       success:(data)=>{
