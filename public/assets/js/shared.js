@@ -1,5 +1,5 @@
-//const DOMAIN_ADDRESS = 'http://localhost:3000';
-const DOMAIN_ADDRESS = 'https://hypermdia-magatti-panizzo.herokuapp.com';
+const DOMAIN_ADDRESS = 'http://localhost:3000';
+//const DOMAIN_ADDRESS = 'https://hypermdia-magatti-panizzo.herokuapp.com';
 
 //load the toolbar
 $(function(){
