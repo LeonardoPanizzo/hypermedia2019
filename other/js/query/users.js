@@ -6,7 +6,7 @@ var app = express();
 app.use(cookieParser());*/
 
 module.exports={
-  getID:function(name,pass){
+  logIn:function(name,pass){
     return db.select('id').from('utente').where('name',name).andWhere('password',pass).first();
   },
 }
