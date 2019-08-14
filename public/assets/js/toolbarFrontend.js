@@ -26,7 +26,7 @@ function menuForMobileOnClick() {
 /*make the menu for mobile disappear when the user whidens the screen enough
   to go to the normal view with colored buttons etc */
 window.addEventListener("resize", function() {
-    if (window.matchMedia("(min-width: 73em)").matches) {
+    if (window.matchMedia("(min-width: 74em)").matches) {
         var menuToHide = document.getElementById("menu_mobile");
         var checkBox = document.getElementById("toggle");
         menuToHide.style.display = "none";

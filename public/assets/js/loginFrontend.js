@@ -42,6 +42,37 @@ $("#button").click(function(){
         'pass':pass
       },
       dataType: 'json',
+    }).then(
+      function(){
+        if(document.cookie){
+          alert('Logged in');
+          window.location.replace(DOMAIN_ADDRESS);
+        }
+        else{
+          alert('Wrong email or password!');
+      }
     });
+    //TODO: test if it works properly!!!
+    /*
+    if(document.cookie){
+      alert('Logged in');
+      window.location.replace(DOMAIN_ADDRESS);
+    }
+    else{
+      alert('Wrong email or password!');
+    }*/
+    //window.location.replace(window.location.href);
+    //window.location.replace(DOMAIN_ADDRESS);
   }
-});
+  //TODO: test if it works properly!!!
+  //it works only at the second attempt to connect!! Why?
+  /*
+  if(document.cookie){
+    alert('Logged in');
+    window.location.replace(DOMAIN_ADDRESS);
+  }
+  else{
+    alert('Wrong email or password!');
+  }*/
+  //window.location.replace(window.location.href);
+})
