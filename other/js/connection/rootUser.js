@@ -11,8 +11,8 @@ router.post('/caa', (req,res)=>{
     message: "Logged out!"
   });
 })
-router.post('/coo', (req,res)=>{
-  Loginquery.getID(req.body.name, req.body.pass).then(id=>{
+router.post('/login', (req,res)=>{
+  Loginquery.logIn(req.body.name, req.body.pass).then(id=>{
     res.cookie('iduser',id);
     console.log(id);
     res.json({message:"logged in!"});
