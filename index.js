@@ -10,7 +10,7 @@ app.use(cookieParser());
 
 app.use(express.static(__dirname+"/public"));
 
-app.use('/querybook', bookrouter);
+app.use('/user', userRoot);
 
 var PORT=process.env.PORT || 3000;
 app.listen(PORT, function () {
