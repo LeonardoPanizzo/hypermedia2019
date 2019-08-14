@@ -1,5 +1,5 @@
-//const DOMAIN_ADDRESS = 'http://localhost:3000';
-const DOMAIN_ADDRESS = 'https://hypermedia-magatti-panizzo.herokuapp.com';
+const DOMAIN_ADDRESS = 'http://localhost:3000';
+//const DOMAIN_ADDRESS = 'https://hypermdia-magatti-panizzo.herokuapp.com';
 
 //load the toolbar
 $(function(){
@@ -7,12 +7,11 @@ $(function(){
 });
 
 /*TODO!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-I should put this ONLY in the pages when it is wanted!!!!! (maybe in a specific js file? or with a script?)
-*/
+I should put this ONLY in the pages when it is needed!!!!!
 //for CAROUSEL: to avoid auto-sliding after click when its unwanted
 $('.noAutoSliding').carousel({
   interval: false
-});
+});*/
 
 //works properly with both timestamp and date
 function getDate(timestamp){
