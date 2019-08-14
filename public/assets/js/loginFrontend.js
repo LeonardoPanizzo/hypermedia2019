@@ -14,7 +14,7 @@ $(document).ready(function(){
 
 $("#out").click(function(){
     $.ajax({
-      url:'http://localhost:3000/user/print',
+      url:DOMAIN_ADDRESS+'/user/print',
       type:'POST',
       data:{
       },
@@ -35,7 +35,7 @@ $("#button").click(function(){
     console.log(email);
     console.log(pass);
     $.ajax({
-      url: 'http://localhost:3000/user/login',
+      url: DOMAIN_ADDRESS+'/user/login',
       type: 'POST',
       data:{
         'name':email,
