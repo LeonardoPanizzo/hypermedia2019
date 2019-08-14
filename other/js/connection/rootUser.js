@@ -2,8 +2,7 @@
 var express = require('express');
 var router = express.Router();
 const Loginquery=require('../query/users.js');
-//router.post('/coo', loginquery.getcookie);
-//router.post('/cii', Loginquery.print)
+
 router.post('/caa', (req,res)=>{
   console.log(req.cookies.iduser);
   res.cookie("iduser", "", { expires: new Date(0)});
