@@ -5,25 +5,13 @@ $(function(){
     $("#toolbar_html").load("../pages/toolbar.html");
 });*/
 
-$(document).ready(function(){
+/*$(document).ready(function(){
   if(document.cookie){
     alert('you are already logged in');
     window.location.replace(DOMAIN_ADDRESS);
   }
-})
+})*/
 
-$("#out").click(function(){
-    $.ajax({
-      url:DOMAIN_ADDRESS+'/user/print',
-      type:'POST',
-      data:{
-      },
-      dataType:'json',
-      success:(data)=>{
-        console.log(data);
-      },
-    })
-});
 
 $("#button").click(function(){
   let email=$("#email").val();
@@ -38,11 +26,22 @@ $("#button").click(function(){
       url: DOMAIN_ADDRESS+'/user/login',
       type: 'POST',
       data:{
-        'name':email,
+        'mail':email,
         'pass':pass
       },
       dataType: 'json',
-    }).then(
+      /*success:(data)=>{
+        if(document.cookie){
+          console.log('here2');
+          alert('logged in');
+          window.location.replace(DOMAIN_ADDRESS);
+        }else{
+          console.log('here3');
+          alert('mail or password incorrects');
+          window.location.replace(DOMAIN_ADDRESS+'/pages/login.html');
+        }
+      }*/
+    })/*.then(
       function(){
         if(document.cookie){
           alert('Logged in');
@@ -51,7 +50,7 @@ $("#button").click(function(){
         else{
           alert('Wrong email or password!');
       }
-    });
+    });*/
     //TODO: test if it works properly!!!
     /*
     if(document.cookie){
