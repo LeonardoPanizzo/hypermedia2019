@@ -20,10 +20,10 @@ $("#button").click(function(){
   if(email.length===0 || pass.length===0 || name.length===0){
     alert('Insert all the required data');
   }else{$.ajax({
-    url: DOMAIN_ADDRESS + '/querysignup/check',
+    url: DOMAIN_ADDRESS + '/user/check',
     type: 'POST',
     data:{
-      'email':email,
+      'mail':email,
     },
     dataType: 'json',
     success:(data)=>{
@@ -31,7 +31,7 @@ $("#button").click(function(){
         alert(email+' is already registered!');
     }else if(data.length===0){
       $.ajax({
-        url:DOMAIN_ADDRESS + '/querysignup/register',
+        url:DOMAIN_ADDRESS + '/user/signup',
         type: 'POST',
         data:{
           'mail':email,
@@ -41,11 +41,11 @@ $("#button").click(function(){
         dataType:'json',
         success:(data)=>{
           $.ajax({
-            url:DOMAIN_ADDRESS + '/querylogin',
+            url:DOMAIN_ADDRESS + '/user/login',
             type: 'POST',
             data:{
-              'name':email,
-              'pwd':pass
+              'mail':email,
+              'pass':pass
             },
             dataType: 'json',
             success:(data)=>{
