@@ -1,7 +1,7 @@
 var db = require('../connection/connectionDB');
 
 const getall=(req,res)=>{
-  db.select('title','description','place','time','type').from('artisticEvent').orderBy('time').then(function(data){
+  db.select('title','description','place','dateAndTime','type').from('artisticEvent').orderBy('dateAndTime').then(function(data){
     res.json(data);
   })
 }

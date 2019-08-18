@@ -66,3 +66,12 @@ function getTime(timestamp){
 
   return time;
 }
+
+
+function getUrlArtisticEvent(id){
+  return DOMAIN_ADDRESS + "/pages/artisticEvent.html?" + id;
+}
+
+function getUrlSeminar(id){
+  return DOMAIN_ADDRESS + "/pages/seminar.html?" + id;
+}
