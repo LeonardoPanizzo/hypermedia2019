@@ -12,7 +12,7 @@ $(document).ready(function(){
   }
 })
 
-$("#button").click(function(){
+$("#buttonSignUp").click(function(){
   let email=$("#email").val();
   email=email.toLowerCase();
   let pass=$("#pass").val();

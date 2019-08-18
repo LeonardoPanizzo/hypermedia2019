@@ -28,5 +28,8 @@ $(document).ready(function(){
       })
   })
 
+})
 
+$("#buttonEventsToday").click(function(){
+  window.location.replace(DOMAIN_ADDRESS + "/pages/eventsToday.html");
 })
