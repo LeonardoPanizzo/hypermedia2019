@@ -19,11 +19,11 @@ $(document).ready(function(){
         },
       }).then(
         function(){
+
           $('#eventsCalendar').append(
-            "<p><b>prova artisticEvents dall'esterno:</b> " + artisticEvents[0].description + "</p>"
-          );
-          $('#eventsCalendar').append(
-            "<p><b>prova seminar dall'esterno:</b> " + seminars[0].description + "</p>"
+            //TODO remove this after testing and put the correct function
+            //artisticEventsAndSeminarsSeparatly(artisticEvents, seminars, true)
+            //listMixedEvents(artisticEvents, seminars)
           );
       })
   })

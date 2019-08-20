@@ -61,6 +61,9 @@ function getTime(timestamp){
 
   var hour = dateAndTime.getHours();
   var minutes = dateAndTime.getMinutes();
+  //make two digits for minutes in case it is only one
+  if(minutes < 10)
+    minutes = "0" + minutes;
 
   var time = hour + ":" + minutes;
 
@@ -75,3 +78,17 @@ function getUrlArtisticEvent(id){
 function getUrlSeminar(id){
   return DOMAIN_ADDRESS + "/pages/seminar.html?" + id;
 }
+/*//it does not work and we still don't know why
+function queryC(type, pathQueryAfterDomain){
+  var result;
+  $.ajax({
+    url : DOMAIN_ADDRESS + "/" + pathQueryAfterDomain,
+    type : type,
+    success:(data)=>{
+      result = data;
+      //return data;
+    },
+  }).then(function(){
+    return result;
+  });
+}*/
