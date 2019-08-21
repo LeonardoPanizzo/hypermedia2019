@@ -145,8 +145,7 @@ p{
   width: auto;
 }
 
-/*for author in the list of authors*/
-.names_list_authors{
+.names_list_type_event{
     font-size: 4em;
     font-style: italic;
 }

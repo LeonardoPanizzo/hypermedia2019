@@ -2,7 +2,7 @@ $(document).ready(function(){
   var artisticEvent;
   var seminars;
   $.ajax({//store the artistic events in the variable artisticEvents
-    url : DOMAIN_ADDRESS + "/TODO QUERY ARTISTIC EVENTS TODAY",
+    url : DOMAIN_ADDRESS + "/artisticEvent/today",
     type : 'GET',
     success:(data)=>{
       artisticEvents = data;
@@ -10,7 +10,7 @@ $(document).ready(function(){
   }).then(//store the semiars in the variable semiars
     function(){
       $.ajax({
-        url : DOMAIN_ADDRESS + "/TODO QUERY SEMINARS TODAY",
+        url : DOMAIN_ADDRESS + "/seminar/today",
         type : 'GET',
         success:(data)=>{
           seminars = data;
@@ -24,11 +24,12 @@ $(document).ready(function(){
           else {//if there are no events today
             stringToAppend =
               "<h2>There are no events planned for today.</h2><br>"+
-                "<h4 class='click_here_what_happens_today'><a href='calendar.html'>Click here</a> to find something interesting!</h4>";
+                "<h4 class='click_here_what_happens_today'>" +
+                "<a href='calendar.html'>Click here</a>" +
+                " to find something interesting!</h4>";
           }
-          $('#eventsToday').append(
-            stringToAppend
-          );
+
+          $('#eventsToday').append(stringToAppend);
       })
   })
 })

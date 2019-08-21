@@ -4,7 +4,7 @@ $(document).ready(function(){
   var seminars;
 
   $.ajax({//store the artistic events in the variable artisticEvents
-    url : DOMAIN_ADDRESS + "/event/all",
+    url : DOMAIN_ADDRESS + "/artisticEvent/all",
     type : 'GET',
     success:(data)=>{
       artisticEvents = data;
