@@ -1,10 +1,16 @@
 # hypermedia2019
+query fatte:
+per gli eventi artistici
+  tutti gli eventi    /event/all
+  tutti i tipi        /event/type
+  quelli di oggi      /event/today
 
-la lista dei comandi, in ordine, per l'installazione dei package necessari sono
-npm install -g nodemon
-npm install cookie-parser
-npm install express-session
-npm install knex --save
-npm install pg
+per i seminari
+  tutti               /seminar/all
+  oggi                /seminar/today
 
-PS. nodemon non è necessario per utilizzare il sito ma rende più comodo l'utilizzo perchè non serve lanciare node index.js ogni volta, nodemon basta lanciarlo la prima volta (nodemon index.js) e ogni volta che un file viene cambiato nodemon lancia di nuovo il file in localhost
+per gli utenti
+  login               /user/login
+  logout              /user/logout
+  controllo email     /user/check
+  signup              /user/signup
