@@ -4,5 +4,6 @@ var seminarQuery=require('../query/seminar.js')
 
 router.get('/all',seminarQuery.getall);
 router.get('/today',seminarQuery.getToday);
+router.get('/:id',seminarQuery.getbyID);
 
 module.exports=router;

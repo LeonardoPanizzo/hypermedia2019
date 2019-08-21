@@ -2,13 +2,18 @@
 query fatte:
 per gli eventi artistici
   tutti gli eventi    /artisticEvent/all
-  tutti i tipi        /artisticEvent/type
-      nel body viene inserito il tipo che sarà chiamato "type"
+  tutti i tipi        /artisticEvent/types
   quelli di oggi      /artisticEvent/today
+  per id              /artisticEvent/:id
+      esempio   /artisticEvent/7
+  per tipo            /artisticEvent/type/:type
+      esempio   /artisticEvent/type/opera
 
 per i seminari
   tutti               /seminar/all
   oggi                /seminar/today
+  per id              /seminar/:id
+      esempio   /seminar/10
 
 per gli utenti
   login               /user/login

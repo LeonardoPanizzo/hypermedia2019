@@ -20,11 +20,15 @@ const getToday=(req,res)=>{
 
 const getbytype=(req,res)=>{
   db.select('idevent','title','description','place','dateAndTime','type').from('artisticEvent')
-  .where({
-    type:req.body.type
-  }).then(function(data){
+  .where('type',req.params.type).then(function(data){
     res.json(data);
   })
 }
 
-module.exports={getall,getToday,getType,getbytype}
+const getbyID=(req,res)=>{
+  db.select('idevent','title','description','place','dateAndTime','type').from('artisticEvent').where('idevent',req.params.id).then(function(data){
+    res.send(data)
+  })
+}
+
+module.exports={getall,getToday,getType,getbytype,getbyID}
