@@ -7,8 +7,10 @@ const getall=(req,res)=>{
 }
 
 const getToday=(req,res)=>{
+  var d= new Date();
+  var da=d.getYear()+'-'+d.getMonth()+'-'+d.getDay();
   db.select('idseminar','place','title','description','dateAndTime')
-  .from('seminar').where("").orderBy('dateAndTime').then(function(data){
+  .from('seminar').where('dateAndTime','<', da).orderBy('dateAndTime').then(function(data){
     res.json(data);
   })
 }
