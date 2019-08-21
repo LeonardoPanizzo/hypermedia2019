@@ -28,3 +28,4 @@ per gli artisti
   tutti               /performer/all
   per id              /performer/:id
       esempio   /performer/5
+  per evento          /performer/artisticEvent/:id
