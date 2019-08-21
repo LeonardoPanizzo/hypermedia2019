@@ -23,3 +23,8 @@ per gli utenti
       nel body viene inserito la mail, chiamata "mail"
   signup              /user/signup
         nel body viene inserito mail, password e nome chiamati "mail" "password" "name"
+
+per gli artisti
+  tutti               /performer/all
+  per id              /performer/:id
+      esempio   /performer/5
