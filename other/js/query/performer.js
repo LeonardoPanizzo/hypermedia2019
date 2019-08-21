@@ -12,4 +12,4 @@ const getbyID=(req,res)=>{
   })
 }
 
-module.exports={getall}
+module.exports={getall,getbyID}
