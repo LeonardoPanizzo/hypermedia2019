@@ -74,7 +74,7 @@ function listEvents(events, areArtisticEvents, showType){
 }
 
 
-function listEventsDivByDay(artisticEvents, seminars, showType, areArtAndSeminSeparate){
+function listEventsDivByDay(artisticEvents, seminars, showType, showArtAndSeminSeparate){
   var stringToReturn = "";
   var day;
   var artEventsInDay;
@@ -88,7 +88,7 @@ function listEventsDivByDay(artisticEvents, seminars, showType, areArtAndSeminSe
     seminars = seminars.slice(seminarsInDay.length, seminars.length);
     //what to display
     stringToReturn += titleDay(day);
-    if(areArtAndSeminSeparate){
+    if(showArtAndSeminSeparate){
       stringToReturn += artisticEventsAndSeminarsSeparately(artEventsInDay, seminarsInDay, true);
     }
     else{
