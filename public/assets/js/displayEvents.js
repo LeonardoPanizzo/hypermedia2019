@@ -75,25 +75,24 @@ function listEvents(events, areArtisticEvents, showType){
 
 
 function listEventsDivByDay(artisticEvents, seminars, showType, areArtAndSeminSeparate){
-  var stringToReturn;
+  var stringToReturn = "";
   var day;
   var artEventsInDay;
   var seminarsInDay;
-  while(artisticEvents.length != 0 || seminars.lenght != 0){
-
-    day = firstDayInLists(artistEvents, semiars);
+  while(artisticEvents.length != 0 || seminars.length != 0){
+    day = firstDayInLists(artisticEvents, seminars);
     artEventsInDay = eventsInSpecifiedDay(artisticEvents, day);
     seminarsInDay = eventsInSpecifiedDay(seminars, day);
     //cut the extracted days from 'artisticEvents' and 'seminars'
-    artisticEvents.slice(artEventsInDay.length, artistEvents.length);
-    seminars.slice(seminarsInDay.lenght, seminars.length);
+    artisticEvents = artisticEvents.slice(artEventsInDay.length, artisticEvents.length);
+    seminars = seminars.slice(seminarsInDay.length, seminars.length);
     //what to display
     stringToReturn += titleDay(day);
     if(areArtAndSeminSeparate){
-      stringToReturn += artisticEventsAndSeminarsSeparatly(artEventsInDay, seminarsInDay, true);
+      stringToReturn += artisticEventsAndSeminarsSeparately(artEventsInDay, seminarsInDay, true);
     }
     else{
-      stringToReturn += listMixedEvents(artisticEvents, seminars);
+      stringToReturn += listMixedEvents(artEventsInDay, seminarsInDay);
     }
   }
 
@@ -107,7 +106,7 @@ function firstDayInLists(artisticEvents, seminars){
     if(seminars.length === 0){
       return null;
     }
-    else{//artistEvents empty, seminars not empty
+    else{//artisticEvents empty, seminars not empty
       return getDate(seminars[0].dateAndTime);
     }
   }
@@ -133,7 +132,7 @@ It can return empty array.
 */
 function eventsInSpecifiedDay(events, day){
   var i;
-  for(i=0; getDate(events[i].dateAndTime) === day; i++);
+  for(i=0; i < events.length && getDate(events[i].dateAndTime) === day; i++);
 
   return events.slice(0,i);
 }
@@ -142,7 +141,7 @@ function eventsInSpecifiedDay(events, day){
 function titleDay(day){
   stringToReturn =
     "<div class='medium_header'>" +
-      date +
+      day +
     "</div>";
 
   return stringToReturn;
@@ -157,7 +156,7 @@ function sameTypeListEventsDivByDay(events, areArtisticEvents){
 /*
   Artistic events and seminars will be displayed separate.
 */
-function artisticEventsAndSeminarsSeparatly(artisticEvents, seminars, showType) {
+function artisticEventsAndSeminarsSeparately(artisticEvents, seminars, showType) {
   //first: list of artistic events
   //the header:
   var stringToReturn =

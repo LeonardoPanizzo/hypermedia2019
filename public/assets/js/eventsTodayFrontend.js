@@ -18,7 +18,7 @@ $(document).ready(function(){
       }).then(
         function(){
           $('#eventsToday').append(
-            artisticEventsAndSeminarsSeparatly(artisticEvents, seminars, true)
+            artisticEventsAndSeminarsSeparately(artisticEvents, seminars, true)
           );
       })
   })

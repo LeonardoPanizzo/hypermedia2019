@@ -21,11 +21,7 @@ $(document).ready(function(){
         function(){
 
           $('#eventsCalendar').append(
-            //TODO remove this after testing and put the correct function
-            //artisticEventsAndSeminarsSeparatly(artisticEvents, seminars, true)
-            //listMixedEvents(artisticEvents, seminars)
             listEventsDivByDay(artisticEvents, seminars, true, true)
-            //listEventsDivByDay(artisticEvents, seminars, true, false)
           );
       })
   })
