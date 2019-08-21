@@ -14,7 +14,7 @@ function eventInList(event, isArtisticEvent, showType){
   var stringToReturn =
     "<p><a href='" + urlEvent + "'>" + event.title +
     "</a></p>" +
-    "<p>( ";
+    "<p>(";
   if(showType){ //write type if requested
     if(isArtisticEvent){
       stringToReturn += event.type;
@@ -25,7 +25,7 @@ function eventInList(event, isArtisticEvent, showType){
     stringToReturn += " - ";
   }
   stringToReturn +=
-    getTime(event.dateAndTime) + " )" +
+    getTime(event.dateAndTime) + ")" +
     "</p>";
 
   return stringToReturn;
@@ -141,7 +141,7 @@ function eventsInSpecifiedDay(events, day){
 function titleDay(day){
   stringToReturn =
     "<div class='medium_header'>" +
-      day +
+      "Day: " + day +
     "</div>";
 
   return stringToReturn;
@@ -167,24 +167,32 @@ function sameTypeListEventsDivByDay(events, areArtisticEvents){
 /*
   Artistic events and seminars will be displayed separate.
 */
-function artisticEventsAndSeminarsSeparately(artisticEvents, seminars, showType) {
+function artisticEventsAndSeminarsSeparately(artisticEvents, seminars, showTypeArtEv) {
+  const COLUMN = "<div class='col-sm-6'>";
   //first: list of artistic events
   //the header:
   var stringToReturn =
-    "<div class='medium_header'>Artistic Events" +
-    "</div>";
-  //the actual list:
-  stringToReturn += listEventsOrEmptySign(artisticEvents, true, showType);
+    "<div class='container row'>" +
+      COLUMN +
+        "<div class='small_header'>Artistic Events" +
+        "</div>";
+  //then the actual list:
+  stringToReturn +=
+        listEventsOrEmptySign(artisticEvents, true, showTypeArtEv) +
+      "</div>"; //to close COLUMN
   //then: list of seminars
   //the header:
   stringToReturn +=
-  "<div class='medium_header'>Seminars" +
-  "</div>";
+      COLUMN +
+        "<div class='small_header'>Seminars" +
+        "</div>";
   //then the actual list:
-  stringToReturn += listEventsOrEmptySign(seminars, false, showType);
-
+  stringToReturn += listEventsOrEmptySign(seminars, false, false) +
+      "</div>" + //to close COLUMN
+    "</div>"; //to close container row
   return stringToReturn;
 }
+
 
 function listMixedEvents(artisticEvents, seminars){
   var stringToReturn = "";
