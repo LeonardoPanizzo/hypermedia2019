@@ -1,9 +1,9 @@
 # hypermedia2019
 query fatte:
 per gli eventi artistici
-  tutti gli eventi    /event/all
-  tutti i tipi        /event/type
-  quelli di oggi      /event/today
+  tutti gli eventi    /artisticEvent/all
+  tutti i tipi        /artisticEvent/type
+  quelli di oggi      /artisticEvent/today
 
 per i seminari
   tutti               /seminar/all
