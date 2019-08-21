@@ -13,7 +13,11 @@ const getbyID=(req,res)=>{
 }
 
 const getbyEvent=(req,res)=>{
-
+  db.select('performer.idperformer','name','members','isgroup','affiliation','details','achievements','shortdescription')
+  .from('performer').join('performs',{'performer.idperformer':'performs.idperformer'})
+  .where('performs.idevent',req.params.id).then(function(data){
+    res.json(data);
+  })
 }
 
-module.exports={getall,getbyID}
+module.exports={getall,getbyID,getbyEvent}
