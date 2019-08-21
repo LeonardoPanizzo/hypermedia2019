@@ -13,7 +13,9 @@ const getType=(req,res)=>{
 }
 
 const getToday=(req,res)=>{
-  db.select('idevent','title','description','place','dateAndTime','type').from('artisticEvent').where("").orderBy('dateAndTime').then(function(data){
+  db.select('idevent','title','description','place','dateAndTime','type').from('artisticEvent').where({
+    ""
+  }).orderBy('dateAndTime').then(function(data){
     res.json(data);
   })
 }
