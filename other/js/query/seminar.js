@@ -6,6 +6,13 @@ const getall=(req,res)=>{
   })
 }
 
+const getToday=(req,res)=>{
+  db.select('idseminar','place','title','description','dateAndTime')
+  .from('seminar').where("").orderBy('dateAndTime').then(function(data){
+    res.json(data);
+  })
+}
+
 /*const geteventID=(req,res)=>{
   db.select('book.idbook','title','book.idauthor','event.presentation','data','time','name','place').
   from('book').join('author',{'book.idauthor':'author.idauthor'}).join('event',{'event.idbook':'book.idbook'})
@@ -38,4 +45,4 @@ const getbyidbook=(req,res)=>{
   })
 }*/
 
-module.exports={getall}
+module.exports={getall,getToday}
