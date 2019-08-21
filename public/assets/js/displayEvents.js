@@ -73,11 +73,79 @@ function listEvents(events, areArtisticEvents, showType){
   return stringToReturn;
 }
 
-/*
-  "areArtAndSeminSeparate" is a boolean.
-*/
-function listEventsDivByDay(artisticEvents, seminars, areArtAndSeminSeparate, showType){
 
+function listEventsDivByDay(artisticEvents, seminars, showType, areArtAndSeminSeparate){
+  var stringToReturn;
+  var day;
+  var artEventsInDay;
+  var seminarsInDay;
+  while(artisticEvents.length != 0 || seminars.lenght != 0){
+
+    day = firstDayInLists(artistEvents, semiars);
+    artEventsInDay = eventsInSpecifiedDay(artisticEvents, day);
+    seminarsInDay = eventsInSpecifiedDay(seminars, day);
+    //cut the extracted days from 'artisticEvents' and 'seminars'
+    artisticEvents.slice(artEventsInDay.length, artistEvents.length);
+    seminars.slice(seminarsInDay.lenght, seminars.length);
+    //what to display
+    stringToReturn += titleDay(day);
+    if(areArtAndSeminSeparate){
+      stringToReturn += artisticEventsAndSeminarsSeparatly(artEventsInDay, seminarsInDay, true);
+    }
+    else{
+      stringToReturn += listMixedEvents(artisticEvents, seminars);
+    }
+  }
+
+  return stringToReturn;
+}
+
+//Require both arrays ordered by date.
+//Return null if both arrays are empty.
+function firstDayInLists(artisticEvents, seminars){
+  if(artisticEvents.length === 0){
+    if(seminars.length === 0){
+      return null;
+    }
+    else{//artistEvents empty, seminars not empty
+      return getDate(seminars[0].dateAndTime);
+    }
+  }
+  else{//artistic events not empty
+    if(seminars.length === 0){//artistic events only not empty
+      return getDate(artisticEvents[0].dateAndTime);
+    }
+    else{//both arrays not empty
+      if(artisticEvents[0].dateAndTime < seminars[0].dateAndTime){
+        return getDate(artisticEvents[0].dateAndTime);
+      }
+      else{
+        return getDate(seminars[0].dateAndTime);
+      }
+    }
+  }
+}
+
+/*
+Require events to be ordered by date with
+first day not previous to the parameter 'day'.
+It can return empty array.
+*/
+function eventsInSpecifiedDay(events, day){
+  var i;
+  for(i=0; getDate(events[i].dateAndTime) === day; i++);
+
+  return events.slice(0,i);
+}
+
+//day is not a timestamp but is a getDate(timestamp)
+function titleDay(day){
+  stringToReturn =
+    "<div class='medium_header'>" +
+      date +
+    "</div>";
+
+  return stringToReturn;
 }
 
 
@@ -112,18 +180,14 @@ function listMixedEvents(artisticEvents, seminars){
   var stringToReturn = "";
   var indexArt = 0;
   var indexSem = 0;
-  //console.log("artisticEvents.length = " + artisticEvents.length);
-  //console.log("seminars.length = " + seminars.length);
   while(indexArt < artisticEvents.length && indexSem < seminars.length){
     if(artisticEvents[indexArt].dateAndTime <= seminars[indexSem].dateAndTime){
       stringToReturn += artisticEventInList(artisticEvents[indexArt], true);
       indexArt++;
-      //console.log("ART: indexArt = " + indexArt + ", indexSem = " + indexSem);
     }
     else{
       stringToReturn += seminarInList(seminars[indexSem], true);
       indexSem++;
-      //console.log("SEM: indexArt = " + indexArt + ", indexSem = " + indexSem);
     }
   }
   /*
@@ -140,6 +204,8 @@ function listMixedEvents(artisticEvents, seminars){
   }
   return stringToReturn;
 }
+
+
 function myReservations(/*TODO*/){
 /*TODO: for myReservations (so showType = true).
         It is VERY DIFFERENT from the others because

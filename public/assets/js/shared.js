@@ -47,9 +47,10 @@ function getDate(timestamp){
   var day = dateAndTime.getDate();
   //+1 because it would start from 0 otherwise (jenaury 0, february 1, ...)
   var month = dateAndTime.getMonth() + 1;
-  var year = dateAndTime.getFullYear();
+  //var year = dateAndTime.getFullYear();
 
-  var date = day + "/" + month + "/" + year;
+  //var date = day + "/" + month + "/" + year;
+  var date = day + "/" + month;
 
   return date;
 }
