@@ -2,7 +2,8 @@ var express = require('express');
 var router = express.Router();
 var performerQuery=require('../query/performer.js')
 
-router.get('/all',seminarQuery.getall);
-router.get('/:id',seminarQuery.getbyID);
+router.get('/all',performerQuery.getall);
+router.get('/:id',performerQuery.getbyID);
+router.get('/artisticEvent/:id',performerQuery.getbyEvent);
 
 module.exports=router;
