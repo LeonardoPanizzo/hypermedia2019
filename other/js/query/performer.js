@@ -12,4 +12,8 @@ const getbyID=(req,res)=>{
   })
 }
 
+const getbyEvent=(req,res)=>{
+
+}
+
 module.exports={getall,getbyID}
