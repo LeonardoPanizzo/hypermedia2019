@@ -149,8 +149,19 @@ function titleDay(day){
 
 
 function sameTypeListEventsDivByDay(events, areArtisticEvents){
-  //TODO: (showType = false)
-
+  var stringToReturn = "";
+  var day;
+  var eventsInDay;
+  while(events.length > 0){
+    day = getDate(events[0].dateAndTime); //first day in list
+    eventsInDay = eventsInSpecifiedDay(events, day);
+    //remove extracted events from 'events'
+    events = events.slice(eventsInDay.length, events.length);
+    //what to display
+    stringToReturn += titleDay(day);
+    stringToReturn += listEvents(eventsInDay, areArtisticEvents, false);
+  }
+  return stringToReturn;
 }
 
 /*

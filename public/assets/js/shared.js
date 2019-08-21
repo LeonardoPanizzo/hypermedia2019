@@ -38,6 +38,10 @@ I should put this ONLY in the pages when it is needed!!!!!
 $('.noAutoSliding').carousel({
   interval: false
 });*/
+//Return string with capitalized first letters
+function capitalizeFirstLetter(string) {
+    return string.charAt(0).toUpperCase() + string.slice(1);
+}
 
 //works properly with both timestamp and date
 function getDate(timestamp){
