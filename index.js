@@ -16,7 +16,7 @@ app.use(express.static(__dirname+"/public"));
 
 app.use('/user', userR);
 app.use('/seminar', seminarR);
-app.use('/event',eventR)
+app.use('/artisticEvent',eventR)
 
 var PORT=process.env.PORT || 3000;
 app.listen(PORT, function () {
