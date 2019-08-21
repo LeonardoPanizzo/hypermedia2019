@@ -29,3 +29,4 @@ per gli artisti
   per id              /performer/:id
       esempio   /performer/5
   per evento          /performer/artisticEvent/:id
+      l'id passato nell'url è l'id dellevento di cui si vogliono sapere gli artisti
