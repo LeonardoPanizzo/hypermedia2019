@@ -1,8 +1,7 @@
 var db = require('../connection/connectionDB');
 
 const getall=(req,res)=>{
-  db.select('idevent','title','description','place','dateAndTime','type')
-  .from('artisticEvent').orderBy('dateAndTime').then(function(data){
+  db.select('idevent','title','description','place','dateAndTime','type').from('artisticEvent').orderBy('dateAndTime').then(function(data){
     res.json(data);
   })
 }
@@ -14,10 +13,18 @@ const getType=(req,res)=>{
 }
 
 const getToday=(req,res)=>{
-  db.select('idevent','title','description','place','dateAndTime','type')
-  .from('artisticEvent').where("").orderBy('dateAndTime').then(function(data){
+  db.select('idevent','title','description','place','dateAndTime','type').from('artisticEvent').where("").orderBy('dateAndTime').then(function(data){
     res.json(data);
   })
 }
 
-module.exports={getall,getToday,getType}
+const getbytype=(req,res)=>{
+  db.select('idevent','title','description','place','dateAndTime','type').from('artisticEvent')
+  .where({
+    type:req.body.type
+  }).then(function(data){
+    res.json(data);
+  })
+}
+
+module.exports={getall,getToday,getType,getbytype}
