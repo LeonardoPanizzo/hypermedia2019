@@ -30,7 +30,7 @@ $("#buttonLogin").click(function(){
         'pass':pass
       },
       dataType: 'json',
-      /*success:(data)=>{
+      success:(data)=>{
         if(document.cookie){
           console.log('here2');
           alert('logged in');
@@ -40,7 +40,7 @@ $("#buttonLogin").click(function(){
           alert('mail or password incorrects');
           window.location.replace(DOMAIN_ADDRESS+'/pages/login.html');
         }
-      }*/
+      }
     })/*.then(
       function(){
         if(document.cookie){

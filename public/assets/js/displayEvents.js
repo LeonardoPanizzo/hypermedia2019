@@ -14,7 +14,7 @@ function eventInList(event, isArtisticEvent, showType){
   var stringToReturn =
     "<p><a href='" + urlEvent + "'>" + event.title +
     "</a></p>" +
-    "<p>(";
+    "<p class='simpler_p'>(";
   if(showType){ //write type if requested
     if(isArtisticEvent){
       stringToReturn += event.type;
@@ -61,7 +61,7 @@ function listEventsOrEmptySign(events, areArtisticEvents, showType){
 
 //Require events.length != 0
 function listEvents(events, areArtisticEvents, showType){
-  var stringToReturn = "";
+  var stringToReturn = "<div class=marg_top_M>";
   for(var i in events){
     if(areArtisticEvents){
       stringToReturn += artisticEventInList(events[i], showType);
@@ -70,6 +70,7 @@ function listEvents(events, areArtisticEvents, showType){
       stringToReturn += seminarInList(events[i], showType);
     }
   }
+  stringToReturn += "</div>"
   return stringToReturn;
 }
 

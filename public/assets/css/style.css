@@ -60,7 +60,11 @@ nav button{
   font-style: italic;
   font-size: 1.6em;
   margin-top: 0.8em;
-  margin-bottom: 0.7em;
+  /*margin-bottom: 0.7em;*/
+}
+
+#buttonDeleteAllReservations{
+  margin-top: 1em;
 }
 /*
 .hArtEvInList{
@@ -78,6 +82,10 @@ p{
 
 .contain_simpler_p p{
   padding-top: 0;
+}
+
+.simpler_p{
+  padding-top: 0em;
 }
 
 .checkbox_title{
