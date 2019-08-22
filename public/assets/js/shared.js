@@ -83,6 +83,10 @@ function getUrlArtisticEvent(id){
 function getUrlSeminar(id){
   return DOMAIN_ADDRESS + "/pages/seminar.html?" + id;
 }
+
+function getUrlPerformer(id){
+  return DOMAIN_ADDRESS + "/pages/performer.html?" + id;
+}
 /*//it does not work and we still don't know why
 function queryC(type, pathQueryAfterDomain){
   var result;

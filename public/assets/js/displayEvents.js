@@ -52,7 +52,7 @@ function seminarInList(event, showType){
 */
 function listEventsOrEmptySign(events, areArtisticEvents, showType){
   if(events.length === 0){
-    return "<p>-</p>"; //empty list sign
+    return "<br><p>-</p>"; //empty list sign
   }
   else{
     return listEvents(events, areArtisticEvents, showType);

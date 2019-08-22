@@ -10,14 +10,14 @@ $(document).ready(function(){
       for(obj of types){
         var type = obj.type;
         stringToAppend +=
-          "<p><a href='" + PREFIX_PATH + "?" + type + "'>" + capitalizeFirstLetter(type) + "</a></p>";
+          "<div><a href='" + PREFIX_PATH + "?" + type + "'>" + capitalizeFirstLetter(type) + "</a></div>";
       }
     },
   }).then(function(){
     //add the type 'seminar'
     const SEMINAR = "seminar";
     stringToAppend +=
-      "<p><a href='" + PREFIX_PATH + "?" + SEMINAR + "'>" + capitalizeFirstLetter(SEMINAR) + "</a></p>";
+      "<div><a href='" + PREFIX_PATH + "?" + SEMINAR + "'>" + capitalizeFirstLetter(SEMINAR) + "</a></div>";
 
     $('#allEventsType').append(stringToAppend);
   });
