@@ -1,9 +1,9 @@
 var db = require('../connection/connectionDB');
 
-const bb=(req,res)=>{
-  db.select('idseminar','place','title','description','dateAndTime').from('seminar').where('idseminar',req.params.id).then(function(data){
+const all=(req,res)=>{
+  db.select('seminar.idseminar','place','title','description','dateAndTime').from('cartSeminar').join('seminar',{'seminar.idseminar':'cartSeminar.idseminar'}).where('iduser',req.cookies.iduser).then(function(data){
     res.send(data)
   })
 }
 
-module.exports={bb}
+module.exports={all}

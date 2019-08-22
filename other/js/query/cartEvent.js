@@ -1,9 +1,9 @@
 var db = require('../connection/connectionDB');
 
-const aa=(req,res)=>{
-  db.select('idseminar','place','title','description','dateAndTime').from('seminar').where('idseminar',req.params.id).then(function(data){
+const all=(req,res)=>{
+  db.select('artisticEvent.idevent','title','description','place','dateAndTime','type').from('artisticEvent').join('cartArtisticEvent',{'artisticEvent.idevent','cartArtisticEvent.idevent'}).where('iduser',req.cookies.iduser).then(function(data){
     res.send(data)
   })
 }
 
-module.exports={aa}
+module.exports={all}

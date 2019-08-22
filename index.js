@@ -7,6 +7,8 @@ var userR= require('./other/js/connection/rootUser.js');
 var seminarR=require('./other/js/connection/rootSeminar.js');
 var eventR=require('./other/js/connection/rootEvent.js');
 var performerR=require('./other/js/connection/rootPerformer.js');
+var cartSeminarR=require('./other/js/connection/rootCartSeminar.js');
+var cartEventR=require('./other/js/connection/rootCartEvent.js');
 
 var app = express();
 app.use(cookieParser());
@@ -19,6 +21,8 @@ app.use('/user', userR);
 app.use('/seminar', seminarR);
 app.use('/artisticEvent',eventR)
 app.use('/performer',performerR);
+app.use('/cartSeminar',cartSeminarR);
+app.use('/cartArtisticEvent',cartEventR);
 
 var PORT=process.env.PORT || 3000;
 app.listen(PORT, function () {
