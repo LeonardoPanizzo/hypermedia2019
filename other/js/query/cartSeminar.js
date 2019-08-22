@@ -6,4 +6,10 @@ const all=(req,res)=>{
   })
 }
 
-module.exports={all}
+const clean=(req,res)=>{
+  db('cartSeminar').where('iduser',req.cookies.iduser).del().then(function(data){
+    res.json({message:"done"})
+  });
+}
+
+module.exports={all,clean}
