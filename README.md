@@ -29,7 +29,7 @@ per gli artisti
   per id              /performer/:id
       esempio   /performer/5
   per evento          /performer/artisticEvent/:id
-      l'id passato nell'url è l'id dellevento di cui si vogliono sapere gli artisti
+      l'id passato nell'url è l'id dell'evento di cui si vogliono sapere gli artisti
 
 NB. per i metodo qui sotto il server prende l'iduser dal cookie che viene passato automaticamente ad ogni query
 per il carrello eventi artistici
