@@ -8,9 +8,11 @@ const getall=(req,res)=>{
 
 const getToday=(req,res)=>{
   var d= new Date();
-  var da=d.getYear()+'-'+d.getMonth()+'-'+d.getDay();
+  var m=d.getMonth()+1;
+  var da=d.getFullYear()+'-'+m+'-'+d.getDate()+' 00:00:00';
+  var dd=d.getFullYear()+'-'+m+'-'+d.getDate()+' 23:59:59';
   db.select('idseminar','place','title','description','dateAndTime')
-  .from('seminar').where('dateAndTime','<', da).orderBy('dateAndTime').then(function(data){
+  .from('seminar').where('dateAndTime','>=', da).andWhere('dateAndTime','<=',dd).orderBy('dateAndTime').then(function(data){
     res.json(data);
   })
 }
