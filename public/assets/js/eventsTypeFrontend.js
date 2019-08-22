@@ -1,6 +1,6 @@
 $(document).ready(function(){
 
-  const PREFIX_PATH = DOMAIN_ADDRESS + "/pages/eventsOfSpeicifiedType.html";
+  const PREFIX_PATH = DOMAIN_ADDRESS + "/pages/eventsOfSpecifiedType.html";
   var stringToAppend = "";
 
   $.ajax({//all types of artistic events
@@ -10,7 +10,6 @@ $(document).ready(function(){
       for(obj of types){
         var type = obj.type;
         stringToAppend +=
-          //"<a href='" + PREFIX_PATH + "?" + type + "'>" + capitalizeFirstLetter(String(type)) + "</a>";
           "<p><a href='" + PREFIX_PATH + "?" + type + "'>" + capitalizeFirstLetter(type) + "</a></p>";
       }
     },
