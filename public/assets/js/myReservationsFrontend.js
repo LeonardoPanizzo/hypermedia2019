@@ -68,7 +68,17 @@ function cartResults(artisticEvents, seminars){
       indexSem++;
     }
   }
-    return stringToReturn;
+  //when one of the two arrays has been iterated, finish iterating the remaining one
+  while(indexArt < artisticEvents.length){
+    stringToReturn += artisticEventInReservations(artisticEvents[indexArt], true);
+    indexArt++;
+  }
+  while(indexSem < seminars.length){
+    stringToReturn += seminarInReservations(seminars[indexSem], true);
+    indexSem++;
+  }
+  
+  return stringToReturn;
 }
 
 function artisticEventInReservations(artisticEvent){
@@ -108,10 +118,9 @@ function eventInReservations(event, isArtisticEvent){
           getDate(event.dateAndTime) + "  " + getTime(event.dateAndTime) +
           "</p>" +
         "</div>" +
-        //TODO adatta al nuovo progetto!
         "<div class='col-sm-6 center-block add_remove_btn_reserv'>"+
           //TODO!!!!!!!!!!!!: can I do the same with class instead of id for remove"+data[i].idbook?
-          "<button id='remove"+ id +"' class='big_enough_square_std_btn'><i class='material-icons'>remove_shopping_cart</i></button>"+
+          "<button id='remove'"+ id +"' class='big_enough_square_std_btn'><i class='material-icons'>remove_shopping_cart</i></button>"+
         "</div>"
     "</div>";
 

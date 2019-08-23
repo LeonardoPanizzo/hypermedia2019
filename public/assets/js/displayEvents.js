@@ -84,8 +84,8 @@ function listEventsDivByDay(artisticEvents, seminars, showType, showArtAndSeminS
     artEventsInDay = eventsInSpecifiedDay(artisticEvents, day);
     seminarsInDay = eventsInSpecifiedDay(seminars, day);
     //cut the extracted days from 'artisticEvents' and 'seminars'
-    artisticEvents = artisticEvents.slice(artEventsInDay.length, artisticEvents.length);
-    seminars = seminars.slice(seminarsInDay.length, seminars.length);
+    artisticEvents = artisticEvents.slice(artEventsInDay.length);
+    seminars = seminars.slice(seminarsInDay.length);
     //what to display
     stringToReturn += titleDay(day);
     if(showArtAndSeminSeparate){
@@ -125,6 +125,16 @@ function firstDayInLists(artisticEvents, seminars){
   }
 }
 
+//returns null if the array is empty
+function getFirstElem(array){
+  if(array.length > 0){
+    return array[0];
+  }
+  else{
+    return null;
+  }
+}
+
 /*
 Require events to be ordered by date with
 first day not previous to the parameter 'day'.
@@ -156,7 +166,7 @@ function sameTypeListEventsDivByDay(events, areArtisticEvents){
     day = getDate(events[0].dateAndTime); //first day in list
     eventsInDay = eventsInSpecifiedDay(events, day);
     //remove extracted events from 'events'
-    events = events.slice(eventsInDay.length, events.length);
+    events = events.slice(eventsInDay.length);
     //what to display
     stringToReturn += titleDay(day);
     stringToReturn += listEvents(eventsInDay, areArtisticEvents, false);
