@@ -185,11 +185,18 @@ p{
 }
 
 .add_remove_btn_reserv button{
-  margin: 1em;
+  /*margin: 1em;*/
+  margin-top: 3em;
+}
+
+#reservationList{
+  margin-top: 2em;
 }
 
 .big_enough_square_std_btn{
   padding: 0.7em;
+  width: 3.5em;
+  height: 3.5em;
 }
 
 .rectangular_std_btn{

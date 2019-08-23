@@ -77,7 +77,7 @@ function cartResults(artisticEvents, seminars){
     stringToReturn += seminarInReservations(seminars[indexSem], true);
     indexSem++;
   }
-  
+
   return stringToReturn;
 }
 
@@ -102,10 +102,10 @@ function eventInReservations(event, isArtisticEvent){
   }
   var stringToReturn =
     "<div class='row border_elem_in_list'>" +
-        "<div class='col-sm-6'>" +
+        "<div class='col-sm-5'>" +
           "<p><a href='" + urlEvent + "'>" + event.title +
           "</a></p>" +
-          "<p class='simpler_p'>(";
+          "<p class='simpler_p'>";
           if(isArtisticEvent){
             stringToReturn += event.type;
           }
@@ -113,14 +113,15 @@ function eventInReservations(event, isArtisticEvent){
             stringToReturn += "seminar";
           }
           stringToReturn +=
-          ")</p>" +
-          "<p>"
-          getDate(event.dateAndTime) + "  " + getTime(event.dateAndTime) +
+          "</p>" +
+          "<p class='simpler_p'>" +
+          getDate(event.dateAndTime) + " at " +
+          getTime(event.dateAndTime) +
           "</p>" +
         "</div>" +
-        "<div class='col-sm-6 center-block add_remove_btn_reserv'>"+
+        "<div class='col-sm-1 add_remove_btn_reserv'>"+
           //TODO!!!!!!!!!!!!: can I do the same with class instead of id for remove"+data[i].idbook?
-          "<button id='remove'"+ id +"' class='big_enough_square_std_btn'><i class='material-icons'>remove_shopping_cart</i></button>"+
+          "<button id='remove'"+ id +"' class='big_enough_square_std_btn align-middle'><i class='material-icons'>remove_shopping_cart</i></button>"+
         "</div>"
     "</div>";
 
