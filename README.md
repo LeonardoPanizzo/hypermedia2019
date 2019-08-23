@@ -8,6 +8,8 @@ per gli eventi artistici
       esempio   /artisticEvent/7
   per tipo            /artisticEvent/type/:type
       esempio   /artisticEvent/type/opera
+  per performer       artisticEvent/performer/:id
+      si passa l'id del performer e si ricevono gli eventi artistici in cui si è esibito
 
 per i seminari
   tutti               /seminar/all
