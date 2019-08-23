@@ -1,20 +1,19 @@
 $(document).ready(function(){
-  /*
-  per tipo  /artisticEvent/type/:type
-  esempio   /artisticEvent/type/opera
-  */
   var areArtisticEvents;
   var query;
   let indexStartId = (DOMAIN_ADDRESS + "/pages/eventsOfSpecifiedType.html?").length;
   var type = (window.location.href).substring(indexStartId);
+  var appendToTitle;
   //set the boolean 'areArtisticEvents'
   if(type === "seminar") {
     areArtisticEvents = false;
+    appendToTitle = "Seminars";
   }
   else{
     areArtisticEvents = true;
+    appendToTitle = capitalizeFirstLetter(type) + " Events";
   }
-
+  $('#titleEventsOfTypeX').append(" " + appendToTitle);
   if(areArtisticEvents){
     query = DOMAIN_ADDRESS + "/artisticEvent/type/" + type;
   }

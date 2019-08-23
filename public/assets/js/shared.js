@@ -4,7 +4,7 @@ const DOMAIN_ADDRESS = 'http://localhost:3000';
 //load the toolbar
 $(function(){
     $("#toolbar_html").load("../pages/toolbar.html");
-    console.log(document.referrer);
+    //console.log(document.referrer);
 });
 /*
 $(function(){
