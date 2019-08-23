@@ -41,4 +41,17 @@ const getByPerformer=(req,res)=>{
   })
 }
 
-module.exports={getall,getToday,getType,getbytype,getbyID,getByPerformer}
+const sameDay=(req,res)=>{
+  var t;
+  db.select('dateAndTime').from('artisticEvent').where('idevent',req.params.id).then(function(data){
+    t=data[0].dateAndTime;
+  }).then(function(){
+    var da=t.getFullYear()+'-'+t.getMonth()+'-'+t.getDate()+' 00:00:00';
+    var dd=t.getFullYear()+'-'+t.getMonth()+'-'+t.getDate()+' 23:59:59';
+    db.select('idevent','title','description','place','dateAndTime','type').from('artisticEvent').where('dateAndTime','>=', da).andWhere('dateAndTime','<=',dd).whereNot('idevent',req.params.id).then(function(data){
+      res.json(data);
+    })
+  })
+}
+
+module.exports={getall,getToday,getType,getbytype,getbyID,getByPerformer,sameDay}

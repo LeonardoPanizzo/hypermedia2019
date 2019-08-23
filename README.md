@@ -10,6 +10,8 @@ per gli eventi artistici
       esempio   /artisticEvent/type/opera
   per performer       /artisticEvent/performer/:id
       si passa l'id del performer e si ricevono gli eventi artistici in cui si è esibito
+  stesso giorno       /artisticEvent/sameDay/:id
+      si passa l'id di un evento restituisce gli eventi che ci sono lo stesso giorno tranne quello che ha l'id uguale a quello passato
 
 per i seminari
   tutti               /seminar/all
