@@ -1,20 +1,35 @@
 $(document).ready(function(){
 
-  var artisticEvents;
-  var seminars;
+  if(!document.cookie){
+    alert('you are not logged in!');
+    window.location.replace(DOMAIN_ADDRESS);
+  }
+  else{
 
-  $.get( DOMAIN_ADDRESS + "/cartArtisticEvent/", function(results, status){
-    artisticEvents = results;
-  }).then(function(){
-    $.get( DOMAIN_ADDRESS + "/cartSeminar/", function(results, status){
-      seminars = results;
+    var artisticEvents;
+    var seminars;
+    var stringResults;
+
+    $.get( DOMAIN_ADDRESS + "/cartArtisticEvent/", function(results){
+      artisticEvents = results;
     }).then(function(){
-      $('#reservationList').append(
-        //"<p>prova1</p>"
-        cartResults(artisticEvents, seminars)
-      );
+      $.get( DOMAIN_ADDRESS + "/cartSeminar/", function(results){
+        seminars = results;
+      }).then(function(){
+        if(artisticEvents.length === 0 && seminars.length === 0){
+          stringResults =
+          "<h2>You don't have reserations for any event.</h2><br>"+
+            "<h4>" +
+            "<a href='calendar.html'>Click here</a>" +
+            " to find something interesting!</h4>";
+        }
+        else{
+          stringResults = cartResults(artisticEvents, seminars);
+        }
+        $('#reservationList').append(stringResults);
+    });
   });
-});
+}
 /*
 $.ajax({//store the artistic events in the variable artisticEvents
   url : DOMAIN_ADDRESS + "/cartArtisticEvent/",
@@ -36,7 +51,7 @@ $.ajax({//store the artistic events in the variable artisticEvents
         $('#eventsToday').append("<p>prova</p>");
     })
 })*/
-});
+})
 
 
 function cartResults(artisticEvents, seminars){
@@ -52,42 +67,77 @@ function cartResults(artisticEvents, seminars){
       stringToReturn += seminarInReservations(seminars[indexSem]);
       indexSem++;
     }
+  }
     return stringToReturn;
 }
 
 function artisticEventInReservations(artisticEvent){
-
+  return eventInReservations(artisticEvent, true);
 }
 
 function seminarInReservations(seminar){
-
+  return eventInReservations(seminar, false);
 }
 
 function eventInReservations(event, isArtisticEvent){
+  var id;
   var urlEvent;
   if(isArtisticEvent){
-    urlEvent = getUrlArtisticEvent(event.idevent);
+    id = event.idevent;
+    urlEvent = getUrlArtisticEvent(id);
   }
   else{//seminar
-    urlEvent = getUrlSeminar(event.idseminar);
+    id = event.idseminar;
+    urlEvent = getUrlSeminar(id);
   }
   var stringToReturn =
-    "<p><a href='" + urlEvent + "'>" + event.title +
-    "</a></p>" +
-    "<p class='simpler_p'>(";
-    if(isArtisticEvent){
-      stringToReturn += event.type;
-    }
-    else{//seminar
-      stringToReturn += "seminar";
-    }
-    stringToReturn += " - ";
-  stringToReturn +=
-    getTime(event.dateAndTime) + ")" +
-    "</p>";
+    "<div class='row border_elem_in_list'>" +
+        "<div class='col-sm-6'>" +
+          "<p><a href='" + urlEvent + "'>" + event.title +
+          "</a></p>" +
+          "<p class='simpler_p'>(";
+          if(isArtisticEvent){
+            stringToReturn += event.type;
+          }
+          else{//seminar
+            stringToReturn += "seminar";
+          }
+          stringToReturn +=
+          ")</p>" +
+          "<p>"
+          getDate(event.dateAndTime) + "  " + getTime(event.dateAndTime) +
+          "</p>" +
+        "</div>" +
+        //TODO adatta al nuovo progetto!
+        "<div class='col-sm-6 center-block add_remove_btn_reserv'>"+
+          //TODO!!!!!!!!!!!!: can I do the same with class instead of id for remove"+data[i].idbook?
+          "<button id='remove"+ id +"' class='big_enough_square_std_btn'><i class='material-icons'>remove_shopping_cart</i></button>"+
+        "</div>"
+    "</div>";
 
   return stringToReturn;
 }
+
+//TODO: adatta a questo nuovo progetto!!!!
+//try to do "[id^=remove]" with class instead of id
+$(document).on('click', "[id^=remove]", function(){
+  var idObj = this.id.substring("remove".length);
+  if(isArtisticEvent){
+    //ajax for removing an artistic event
+  }
+  else{
+    //ajax for removing a seminar
+  }
+  $.ajax({
+    url:'https://hypermedia123456.herokuapp.com/queryuser/deletebook',
+    type:'POST',
+    data:{
+      'idbook':idObj,
+    },
+    dataType:'json',
+  })
+  window.location.replace(window.location.href);
+})
 
 /*
 ESEMPIO: VECCHIO CARELLO DEL BOOKSTORE

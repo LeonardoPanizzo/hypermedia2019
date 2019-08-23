@@ -1,10 +1,3 @@
-//DEPRECATED
-/*
-//load the toolbar
-$(function(){
-    $("#toolbar_html").load("../pages/toolbar.html");
-});*/
-
 $(document).ready(function(){
   if(document.cookie){
     alert('you are already logged in');

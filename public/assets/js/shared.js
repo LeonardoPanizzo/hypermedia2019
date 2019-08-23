@@ -88,6 +88,12 @@ function getUrlSeminar(id){
 function getUrlPerformer(id){
   return DOMAIN_ADDRESS + "/pages/performer.html?" + id;
 }
+
+function getIdFromUrlBeforeQuestionMark(urlBeforeQuestionMark){
+  let indexStartId = (urlBeforeQuestionMark + "?").length;
+  return (window.location.href).substring(indexStartId);
+}
+
 /*//it does not work and we still don't know why
 function queryC(type, pathQueryAfterDomain){
   var result;
