@@ -7,6 +7,8 @@ const getall=(req,res)=>{
 }
 
 const getToday=(req,res)=>{
+  console.log(req.cookies);
+  console.log(req.cookies.iduser);
   var d= new Date();
   var m=d.getMonth()+1;
   var da=d.getFullYear()+'-'+m+'-'+d.getDate()+' 00:00:00';
