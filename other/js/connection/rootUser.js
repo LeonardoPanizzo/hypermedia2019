@@ -3,9 +3,9 @@ var router = express.Router();
 const Loginquery=require('../query/users.js');
 
 router.post('/login', (req,res)=>{
-  Loginquery.logIn(req.body.mail, req.body.pass).then(iduser=>{
-    if(iduser.length>0){
-      res.cookie('iduser',iduser);
+  Loginquery.logIn(req.body.mail, req.body.pass).then(data=>{
+    if(data.length>0){
+      res.cookie('iduser',data[0].iduser);
       res.json({message:"logged in!"});
     }
   })
