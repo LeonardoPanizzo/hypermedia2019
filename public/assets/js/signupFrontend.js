@@ -38,28 +38,27 @@ $("#buttonSignUp").click(function(){
           'password':pass,
           'name':name,
         },
-        dataType:'json',
+        dataType:'json'
+    }).then(function(){
+      $.ajax({
+        url:DOMAIN_ADDRESS + '/user/login',
+        type: 'POST',
+        data:{
+          'mail':email,
+          'pass':pass
+        },
+        dataType: 'json',
         success:(data)=>{
-          $.ajax({
-            url:DOMAIN_ADDRESS + '/user/login',
-            type: 'POST',
-            data:{
-              'mail':email,
-              'pass':pass
-            },
-            dataType: 'json',
-            success:(data)=>{
-              if(data.length!=0){
-                alert('registered');
-                window.location.replace(DOMAIN_ADDRESS);
-              }else{
-                alert('Something went wrong');
-                window.location.replace(DOMAIN_ADDRESS);
-              }
-            },
-          });
-        }
-})
+          if(data.loggedin == "true"){
+            alert('registered');
+            window.location.replace(DOMAIN_ADDRESS);
+          }else{
+            alert('Something went wrong');
+            window.location.replace(window.location.href);
+          }
+        },
+      });
+    });
 
 }}})}
 
