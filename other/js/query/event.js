@@ -17,7 +17,6 @@ const getToday=(req,res)=>{
   var m=d.getMonth()+1;
   var da=d.getFullYear()+'-'+m+'-'+d.getDate()+' 00:00:00';
   var dd=d.getFullYear()+'-'+m+'-'+d.getDate()+' 23:59:59';
-  console.log(req.cookies.iduser);
   db.select('idevent','title','description','place','dateAndTime','type').where('dateAndTime','>=', da).andWhere('dateAndTime','<=',dd).from('artisticEvent').orderBy('dateAndTime').then(function(data){
     res.json(data);
   })
