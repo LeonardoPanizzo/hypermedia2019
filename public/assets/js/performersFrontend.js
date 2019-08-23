@@ -1,5 +1,5 @@
 $(document).ready(function(){
-  $.get( DOMAIN_ADDRESS + "/performer/all" , function(allPerformers, status){
+  $.get( DOMAIN_ADDRESS + "/performer/all" , function(allPerformers){
     for(performer of allPerformers){
       $('#allPerformers').append(
         "<div class='medium_header'>"+

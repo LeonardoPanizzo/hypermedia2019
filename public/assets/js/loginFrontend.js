@@ -36,10 +36,12 @@ $("#buttonLogin").click(function(){
           alert('logged in');
           window.location.replace(DOMAIN_ADDRESS);
         }else{
+          //NOTE: the code NEVER gets here!!!
           console.log('here3');
-          alert('mail or password incorrects');
-          window.location.replace(DOMAIN_ADDRESS+'/pages/login.html');
         }
+        //NOTE: in case of wrong credentials, it does NOT get here!
+        console.log('here4');
+        //window.location.replace(DOMAIN_ADDRESS);
       }
     })/*.then(
       function(){

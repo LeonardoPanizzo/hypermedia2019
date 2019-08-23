@@ -49,11 +49,12 @@ $("#buttonSignUp").click(function(){
             },
             dataType: 'json',
             success:(data)=>{
-              if(data.length===1){
+              if(data.length!=0){
                 alert('registered');
                 window.location.replace(DOMAIN_ADDRESS);
               }else{
-                alert('mail or password incorrect');
+                alert('Something went wrong');
+                window.location.replace(DOMAIN_ADDRESS);
               }
             },
           });

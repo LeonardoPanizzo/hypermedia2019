@@ -6,7 +6,6 @@ function eventInList(event, isArtisticEvent, showType){
   var urlEvent;
   if(isArtisticEvent){
     urlEvent = getUrlArtisticEvent(event.idevent);
-    //urlEvent = DOMAIN_ADDRESS + "/pages/artisticEvent.html?" + event.idevent;
   }
   else{//seminar
     urlEvent = getUrlSeminar(event.idseminar);
@@ -222,12 +221,4 @@ function listMixedEvents(artisticEvents, seminars){
     indexSem++;
   }
   return stringToReturn;
-}
-
-
-function myReservations(/*TODO*/){
-/*TODO: for myReservations (so showType = true).
-        It is VERY DIFFERENT from the others because
-        it also displays the date (not only time)
-*/
 }
