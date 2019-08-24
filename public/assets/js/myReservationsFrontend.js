@@ -1,3 +1,7 @@
+const BUTTON_REMOVE_EVENT_PREFIX = "buttonRemove";
+const PREFIX_ID_REMOVE_ART_EV = BUTTON_REMOVE_EVENT_PREFIX + "ArtEv";
+const PREFIX_ID_REMOVE_SEM = BUTTON_REMOVE_EVENT_PREFIX + "Sem";
+
 $(document).ready(function(){
 
   if(!document.cookie){
@@ -27,30 +31,9 @@ $(document).ready(function(){
           stringResults = cartResults(artisticEvents, seminars);
         }
         $('#reservationList').append(stringResults);
+      });
     });
-  });
-}
-/*
-$.ajax({//store the artistic events in the variable artisticEvents
-  url : DOMAIN_ADDRESS + "/cartArtisticEvent/",
-  type : 'GET',
-  success:(data)=>{
-    artisticEvents = data;
-  },
-}).then(//store the semiars in the variable semiars
-  function(){
-    $.ajax({
-      url : DOMAIN_ADDRESS + "/cartSeminar/",
-      type : 'GET',
-      success:(data)=>{
-        seminars = data;
-      },
-    }).then(
-      function(){
-        var stringToAppend;
-        $('#eventsToday').append("<p>prova</p>");
-    })
-})*/
+  }
 })
 
 
@@ -90,18 +73,22 @@ function seminarInReservations(seminar){
 }
 
 function eventInReservations(event, isArtisticEvent){
+  var classRemoveEvent;
   var id;
   var urlEvent;
   if(isArtisticEvent){
     id = event.idevent;
     urlEvent = getUrlArtisticEvent(id);
+    classRemoveEvent = PREFIX_ID_REMOVE_ART_EV;
   }
   else{//seminar
     id = event.idseminar;
     urlEvent = getUrlSeminar(id);
+    classRemoveEvent = PREFIX_ID_REMOVE_SEM;
   }
   var stringToReturn =
-    "<div class='row border_elem_in_list'>" +
+    //"<div class='row border_elem_in_list'>" +
+    "<div class='row border_elem_in_list justify-content-center'>" +
         "<div class='col-sm-5'>" +
           "<p><a href='" + urlEvent + "'>" + event.title +
           "</a></p>" +
@@ -119,34 +106,28 @@ function eventInReservations(event, isArtisticEvent){
           getTime(event.dateAndTime) +
           "</p>" +
         "</div>" +
-        "<div class='col-sm-1 add_remove_btn_reserv'>"+
-          //TODO!!!!!!!!!!!!: can I do the same with class instead of id for remove"+data[i].idbook?
-          "<button id='remove'"+ id +"' class='big_enough_square_std_btn align-middle'><i class='material-icons'>remove_shopping_cart</i></button>"+
+        "<div class='col-sm-2 add_remove_btn_reserv'>"+
+          "<button id='" + classRemoveEvent + id +"' class='big_enough_square_std_btn align-middle'><i class='material-icons'>remove_shopping_cart</i></button>"+
         "</div>"
     "</div>";
 
   return stringToReturn;
 }
+/*TODO: quando funziona così, allora prova a farlo con
+        un'unica funzione ajax con
+        PREFIX_ID_REMOVE_ART_EV o PREFIX_ID_REMOVE_SEM come
+        parametro
+*/
 
-//TODO: adatta a questo nuovo progetto!!!!
-//try to do "[id^=remove]" with class instead of id
-$(document).on('click', "[id^=remove]", function(){
-  var idObj = this.id.substring("remove".length);
-  if(isArtisticEvent){
-    //ajax for removing an artistic event
-  }
-  else{
-    //ajax for removing a seminar
-  }
-  $.ajax({
-    url:'https://hypermedia123456.herokuapp.com/queryuser/deletebook',
-    type:'POST',
-    data:{
-      'idbook':idObj,
-    },
-    dataType:'json',
-  })
-  window.location.replace(window.location.href);
+//TODO: try to do "[id^=remove]" with class instead of id
+$(document).on('click', "[id^=" + PREFIX_ID_REMOVE_ART_EV + "]", function(){
+  var idObj = this.id.substring(PREFIX_ID_REMOVE_ART_EV.length);
+  //TODO
+})
+
+$(document).on('click', "[id^=" + PREFIX_ID_REMOVE_SEM + "]", function(){
+  var idObj = this.id.substring(PREFIX_ID_REMOVE_SEM.length);
+  //TODO
 })
 
 /*

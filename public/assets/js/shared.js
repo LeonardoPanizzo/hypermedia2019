@@ -94,6 +94,77 @@ function getIdFromUrlBeforeQuestionMark(urlBeforeQuestionMark){
   return (window.location.href).substring(indexStartId);
 }
 
+//for multiple topics
+function orientationInfoAndTitle(multipleTopic, nameOfSpecificTopic){
+  var stringToReturn =
+    "<h2 class='big_large_header marg_top_S'>" + multipleTopic + " :" +
+    "</h2>" +
+    "<h1 class='big_large_header'>" + nameOfSpecificTopic +
+    "</h1>";
+  return stringToReturn;
+}
+
+function carouselForMTopics(srcImages, infoForBlindPeople){
+
+  //for first picture to be shown
+  const DIV_ACTIVE = "<div class='carousel-item active'>";
+  //for all the others
+  const DIV_NON_ACTIVE = "<div class='carousel-item'>";
+  var stringToReturn =
+    "<div id='carouselMTopic' class='container col-sm-9 marg_top_M carousel slide' data-ride='carousel'>" +
+       "<div class='carousel-inner imgCarouselMTopic'>";
+  for(var i = 1; i <= 3; i++){
+    console.log("i = " + i);
+    if(i > 1){
+      stringToReturn += DIV_NON_ACTIVE;
+    }
+    else{
+      stringToReturn += DIV_ACTIVE;
+    }
+    stringToReturn +=
+          "<img class='d-block w-100' src='" + srcImages + "/" + i + ".jpg' " +
+            "alt='Slide number " + i + " representing the " + infoForBlindPeople + "'>" +
+        "</div>";
+  }
+  stringToReturn +=
+      "</div>" +
+       "<a class='carousel-control-prev' href='#carouselMTopic' role='button' data-slide='prev'>" +
+         "<span class='carousel-control-prev-icon' aria-hidden='true'></span>" +
+         "<span class='sr-only'>Previous</span>" +
+       "</a>" +
+       "<a class='carousel-control-next' href='#carouselMTopic' role='button' data-slide='next'>" +
+         "<span class='carousel-control-next-icon' aria-hidden='true'></span>" +
+         "<span class='sr-only'>Next</span>" +
+       "</a>" +
+     "</div>";
+     /*
+     var stringToReturn =
+       "<div id='carouselMTopic' class='container col-sm-7 marg_top_M carousel slide' data-ride='carousel'>" +
+          "<div class='carousel-inner imgCarouselMTopic'>" +
+            "<div class='carousel-item active'>" +
+              "<img class='d-block w-100' src='" + srcImages + "/1.jpg' alt='Slide number 1'>" +
+            "</div>" +
+            "<div class='carousel-item'>" +
+              "<img class='d-block w-100' src='" + srcImages + "/2.jpg' alt='Slide number 2'>" +
+            "</div>" +
+            "<div class='carousel-item'>" +
+              "<img class='d-block w-100' src='" + srcImages + "/3.jpg' alt='Slide number 3'>" +
+            "</div>" +
+          "</div>" +
+          "<a class='carousel-control-prev' href='#carouselMTopic' role='button' data-slide='prev'>" +
+            "<span class='carousel-control-prev-icon' aria-hidden='true'></span>" +
+            "<span class='sr-only'>Previous</span>" +
+          "</a>" +
+          "<a class='carousel-control-next' href='#carouselMTopic' role='button' data-slide='next'>" +
+            "<span class='carousel-control-next-icon' aria-hidden='true'></span>" +
+            "<span class='sr-only'>Next</span>" +
+          "</a>"+
+        "</div>";*/
+   return stringToReturn;
+}
+
+
+
 /*//it does not work and we still don't know why
 function queryC(type, pathQueryAfterDomain){
   var result;
