@@ -74,6 +74,60 @@ paths:
             type: "array"
             items:
               $ref: "#/definitions/artisticEvent"
+  /artisticEvent/{id}:
+    get:
+      tags:
+        - "artisticEvent"
+      summary: "get the artistic event with the passed id"
+      description: ""
+      operationId: "getArtisticEventByID"
+      produces:
+      - "application/json"
+      parameters:
+        - name: "id"
+          in: "path"
+          description: "ID to filter by"
+          required: true
+          type: "integer"
+      responses:
+        200:
+          description: "successful operation"
+          schema:
+            type: "array"
+            format: "object"
+            items:
+              $ref: "#/definitions/artisticEvent"
+        400:
+          description: "Invalide tag value"
+        405:
+          description: "Invalid input"
+  /artisticEvent/type/{type}:
+    get:
+      tags:
+        - "artisticEvent"
+      summary: "get the artistic events by type"
+      description: ""
+      operationId: "getArtisticEventByType"
+      produces:
+      - "application/json"
+      parameters:
+        - name: "type"
+          in: "path"
+          description: "Type to filter by"
+          required: true
+          type: "string"
+      responses:
+        200:
+          description: "successful operation"
+          schema:
+            type: "array"
+            format: "object"
+            items:
+              $ref: "#/definitions/artisticEvent"
+        400:
+          description: "Invalide tag value"
+        405:
+          description: "Invalid input"
 ________________________________________________________________________________
   /queryauthor/author/{id}:
     get:
