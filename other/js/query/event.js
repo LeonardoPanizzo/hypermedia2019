@@ -24,7 +24,7 @@ const getToday=(req,res)=>{
 
 const getbytype=(req,res)=>{
   db.select('idevent','title','description','place','dateAndTime','type').from('artisticEvent')
-  .where('type',req.params.type).then(function(data){
+  .where('type',req.params.type).orderBy('dateAndTime').then(function(data){
     res.json(data);
   })
 }
@@ -36,7 +36,7 @@ const getbyID=(req,res)=>{
 }
 
 const getByPerformer=(req,res)=>{
-  db.select('artisticEvent.idevent','title','description','place','dateAndTime','type').from('artisticEvent').join('performs',{'performs.idevent':'artisticEvent.idevent'}).where('performs.idperformer',req.params.id).then(function(data){
+  db.select('artisticEvent.idevent','title','description','place','dateAndTime','type').from('artisticEvent').join('performs',{'performs.idevent':'artisticEvent.idevent'}).where('performs.idperformer',req.params.id).orderBy('dateAndTime').then(function(data){
     res.json(data);
   })
 }
@@ -49,10 +49,16 @@ const sameDay=(req,res)=>{
     var m = t.getMonth() + 1;
     var da=t.getFullYear()+'-'+m+'-'+t.getDate()+' 00:00:00';
     var dd=t.getFullYear()+'-'+m+'-'+t.getDate()+' 23:59:59';
-    db.select('idevent','title','description','place','dateAndTime','type').from('artisticEvent').where('dateAndTime','>=', da).andWhere('dateAndTime','<=',dd).whereNot('idevent',req.params.id).then(function(data){
+    db.select('idevent','title','description','place','dateAndTime','type').from('artisticEvent').where('dateAndTime','>=', da).andWhere('dateAndTime','<=',dd).whereNot('idevent',req.params.id).orderBy('dateAndTime').then(function(data){
       res.json(data);
     })
   })
 }
 
-module.exports={getall,getToday,getType,getbytype,getbyID,getByPerformer,sameDay}
+const getBySeminar=(req,res)=>{
+  db.select('artisticEvent.idevent','title','description','place','dateAndTime','type').from('seminar').join('artisticEvent',{'artisticEvent.idseminar','seminar.idseminar'}).orderBy('dateAndTime').then(function(data){
+    res.json(data)
+  })
+}
+
+module.exports={getall,getToday,getType,getbytype,getbyID,getByPerformer,sameDay,getBySeminar}

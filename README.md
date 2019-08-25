@@ -12,6 +12,9 @@ per gli eventi artistici
       si passa l'id del performer e si ricevono gli eventi artistici in cui si è esibito
   stesso giorno       /artisticEvent/sameDay/:id    (get)
       si passa l'id di un evento restituisce gli eventi che ci sono lo stesso giorno tranne quello che ha l'id uguale a quello passato
+  per seminario       /artisticEvent/seminar/:id  (get)
+      esempio     /artisticEvent/seminar/5
+      restituisce gli eventi artistici relativi al seminario con idseminar=5
 
 per i seminari
   tutti               /seminar/all      (get)
@@ -20,7 +23,7 @@ per i seminari
       esempio   /seminar/10
   per evento artistico  /seminar/artisticEvent/:id  (get)
       esempio   /seminar/artisticEvent/3
-      restituisce i seminari che riguardano l'evento artisco con id=3
+      restituisce i seminari che riguardano l'evento artisco con idevent=3
 
 per gli utenti
   login               /user/login        (post)
