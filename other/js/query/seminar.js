@@ -24,7 +24,7 @@ const getbyID=(req,res)=>{
 }
 
 const getByEvent=(req,res)=>{
-  db.select('idseminar','place','title','description','dateAndTime').from('seminar').join('artisticEvent',{'artisticEvent.idseminar':'seminar.idseminar'}).orderBy('dateAndTime').then(function(data){
+  db.select('seminar.idseminar','seminar.place','seminar.title','seminar.description','seminar.dateAndTime').from('seminar').join('artisticEvent',{'artisticEvent.idseminar':'seminar.idseminar'}).orderBy('dateAndTime').then(function(data){
     res.json(data);
   })
 }

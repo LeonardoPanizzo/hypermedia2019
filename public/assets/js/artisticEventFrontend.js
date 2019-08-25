@@ -18,22 +18,29 @@ $(document).ready(function(){
       "<p>Type: " + artisticEvent.type.toUpperCase() + "</p>"
     );
     $.get(DOMAIN_ADDRESS + "/artisticEvent/sameDay/" + id, function(eventsSameDay){
+
         //TODO
-        $('#otherEventsSameDay').append(/*TODO*/);
-      }
+        //$('#otherEventsSameDay').append(/*TODO*/);
     });
     $.get(DOMAIN_ADDRESS + "/performer/artisticEvent/" + id, function(performers){
       //TODO
-      $('#artistsInThisEvent').append(/*TODO*/);
+      //$('#artistsInThisEvent').append(/*TODO*/);
     });
-
-    $.get(DOMAIN_ADDRESS + "/seminar/artisticEvent/" + id, function(results){
-        if(results.length > 0){ //can be only one
-          //TODO
-          $('#seminarLinkedToThisEvent').append(/*TODO*/);
+    $.get(DOMAIN_ADDRESS + "/seminar/artisticEvent/" + id, function(seminars){
+        if(seminars.length > 0){
+          /*
+          It can be only zero or one, but to make it scalable, we will
+          use a method that can display a list of seminars
+          */
+          $('#seminarLinkedToThisEvent').append(
+            "<div class='small_header'>" +
+            "Seminar about this event" +
+            "</div>" +
+            listEvents(seminars, false, true)
+          );
       }
     });
-ì
+
 
 
   });
