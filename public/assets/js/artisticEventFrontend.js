@@ -18,13 +18,20 @@ $(document).ready(function(){
       "<p>Type: " + artisticEvent.type.toUpperCase() + "</p>"
     );
     $.get(DOMAIN_ADDRESS + "/artisticEvent/sameDay/" + id, function(eventsSameDay){
-
-        //TODO
-        //$('#otherEventsSameDay').append(/*TODO*/);
+        $('#otherEventsSameDay').append(
+          "<div class='small_header'>" +
+          "Artistic Events in the Same Day:" +
+          "</div>" +
+          listEvents(eventsSameDay, true, true)
+        );
     });
     $.get(DOMAIN_ADDRESS + "/performer/artisticEvent/" + id, function(performers){
-      //TODO
-      //$('#artistsInThisEvent').append(/*TODO*/);
+      $('#artistsInThisEvent').append(
+        "<div class='small_header'>" +
+        "Performers at the event:" +
+        "</div>" +
+        listOfPerformers(performers)
+      );
     });
     $.get(DOMAIN_ADDRESS + "/seminar/artisticEvent/" + id, function(seminars){
         if(seminars.length > 0){
@@ -34,7 +41,7 @@ $(document).ready(function(){
           */
           $('#seminarLinkedToThisEvent').append(
             "<div class='small_header'>" +
-            "Seminar about this event" +
+            "Seminar about this event:" +
             "</div>" +
             listEvents(seminars, false, true)
           );
@@ -45,3 +52,14 @@ $(document).ready(function(){
 
   });
 })
+
+function listOfPerformers(performers){
+  var stringToReturn = "";
+  for(performer of performers){
+    stringToReturn +=
+      "<p><a href='" + getUrlPerformer(performer.idperformer) + "'>" +
+       performer.name +
+       "</a></p>";
+  }
+  return stringToReturn;
+}
