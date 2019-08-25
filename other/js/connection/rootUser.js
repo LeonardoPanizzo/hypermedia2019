@@ -23,13 +23,13 @@ router.delete('/logout', (req,res)=>{
 
 router.post('/check', (req,res)=>{
   Loginquery.check(req.body.mail).then(mail=>{
-    res.send(mail);
+    res.json(mail);
   })
 })
 
 router.post('/signup',(req,res)=>{
   Loginquery.register(req.body);
-  res.send(req.body);
+  res.json(req.body);
 })
 
 module.exports=router;
