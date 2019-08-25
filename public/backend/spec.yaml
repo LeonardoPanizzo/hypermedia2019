@@ -41,15 +41,14 @@ paths:
           schema:
             type: "array"
             items:
-              $ref: "#definitions/artisticEvent"
-________________________________________________________________________________
-  /queryauthor/getall:
+              $ref: "#/definitions/artisticEvent"
+  /artisticEvent/types:
     get:
       tags:
-      - "author"
-      summary: "Get all the authors in the database"
-      description: "No value in needed in this query"
-      operationId: "getAllAuthors"
+        - "artisticEvent"
+      summary: "get all the types of event"
+      description: ""
+      operationId: "getAllTypesOfArtisticEvent"
       produces:
       - "application/json"
       responses:
@@ -58,7 +57,24 @@ ________________________________________________________________________________
           schema:
             type: "array"
             items:
-              $ref: "#/definitions/author"
+              $ref: "#/definitions/artisticEvent"
+  /artisticEvent/today:
+    get:
+      tags:
+        - "artisticEvent"
+      summary: "get the artistic events programmed for today"
+      description: ""
+      operationId: "getTodayArtisticEvent"
+      produces:
+      - "application/json"
+      responses:
+        200:
+          description: "successful operation"
+          schema:
+            type: "array"
+            items:
+              $ref: "#/definitions/artisticEvent"
+________________________________________________________________________________
   /queryauthor/author/{id}:
     get:
       tags:
