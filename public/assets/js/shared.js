@@ -111,10 +111,10 @@ function carouselForMTopics(srcImages, infoForBlindPeople){
   //for all the others
   const DIV_NON_ACTIVE = "<div class='carousel-item'>";
   var stringToReturn =
-    "<div id='carouselMTopic' class='container col-sm-9 marg_top_M carousel slide' data-ride='carousel'>" +
+    "<div id='carouselMTopic' class='container col-sm-8 marg_top_M carousel slide' data-ride='carousel'>" +
        "<div class='carousel-inner imgCarouselMTopic'>";
   for(var i = 1; i <= 3; i++){
-    console.log("i = " + i);
+    //console.log("i = " + i);
     if(i > 1){
       stringToReturn += DIV_NON_ACTIVE;
     }
