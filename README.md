@@ -39,7 +39,11 @@ NB. per i metodo qui sotto il server prende l'iduser dal cookie che viene passat
 per il carrello eventi artistici
     gli eventi di un utente   /cartArtisticEvent/     (get)
     per svuotare il carrello  /cartArtisticEvent/     (delete)
+    per cancellare un specifico seminario   /cartArtisticEvent/artisticEvent (delete)
+        nel body bisogna inserire l'id dell'evento e va chiamato "id"
 
 per il carrello seminari
     i seminari di un utente   /cartSeminar/           (get)
     per svuotare il carrello  /cartSeminar/           (delete)
+    per cancellare un specifico seminario   /cartArtisticEvent/seminar (delete)
+        nel body bisogna inserire l'id del seminario e va chiamato "id"

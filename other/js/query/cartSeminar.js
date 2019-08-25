@@ -12,4 +12,10 @@ const clean=(req,res)=>{
   });
 }
 
-module.exports={all,clean}
+const clearElement=(req,res)=>{
+  db('cartSeminar').where('iduser',req.cookies.iduser).andWhere('idseminar',req.params.id).del().then(function(data){
+    res.json({message:"done"})
+  })
+}
+
+module.exports={all,clean,clearElement}

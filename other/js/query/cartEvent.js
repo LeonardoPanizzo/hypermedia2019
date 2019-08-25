@@ -13,4 +13,11 @@ const clean=(req,res)=>{
   });
 }
 
-module.exports={all,clean}
+const clearElement=(req,res)=>{
+  db('cartArtisticEvent').where('iduser',req.cookies.iduser).andWhere('idevent',req.params.id).del().then(function(data){
+    res.json({message:"done"})
+  })
+}
+}
+
+module.exports={all,clean,clearElement}
