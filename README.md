@@ -18,6 +18,9 @@ per i seminari
   oggi                /seminar/today    (get)
   per id              /seminar/:id      (get)
       esempio   /seminar/10
+  per evento artistico  /seminar/artisticEvent/:id  (get)
+      esempio   /seminar/artisticEvent/3
+      restituisce i seminari che riguardano l'evento artisco con id=3
 
 per gli utenti
   login               /user/login        (post)

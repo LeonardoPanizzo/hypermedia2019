@@ -19,8 +19,14 @@ const getToday=(req,res)=>{
 
 const getbyID=(req,res)=>{
   db.select('idseminar','place','title','description','dateAndTime').from('seminar').where('idseminar',req.params.id).then(function(data){
-    res.send(data)
+    res.json(data)
   })
 }
 
-module.exports={getall,getToday,getbyID}
+const getByEvent=(req,res)=>{
+  db.select('idseminar','place','title','description','dateAndTime').from('seminar').join('artisticEvent',{'artisticEvent.idseminar':'seminar.idseminar'}).then(function(data){
+    res.json(data);
+  })
+}
+
+module.exports={getall,getToday,getbyID,getByEvent}

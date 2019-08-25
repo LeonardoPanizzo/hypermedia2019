@@ -13,7 +13,7 @@ const clean=(req,res)=>{
 }
 
 const clearElement=(req,res)=>{
-  db('cartSeminar').where('iduser',req.cookies.iduser).andWhere('idseminar',req.params.id).del().then(function(data){
+  db('cartSeminar').where('iduser',req.cookies.iduser).andWhere('idseminar',req.body.id).del().then(function(data){
     res.json({message:"done"})
   })
 }

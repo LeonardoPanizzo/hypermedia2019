@@ -14,7 +14,7 @@ const clean=(req,res)=>{
 }
 
 const clearElement=(req,res)=>{
-  db('cartArtisticEvent').where('iduser',req.cookies.iduser).andWhere('idevent',req.params.id).del().then(function(data){
+  db('cartArtisticEvent').where('iduser',req.cookies.iduser).andWhere('idevent',req.body.id).del().then(function(data){
     res.json({message:"done"})
   })
 }
