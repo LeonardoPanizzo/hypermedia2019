@@ -13,7 +13,7 @@ tags:
 - name: "cartArtisticEvent"
   description: "Information about the artistic event that an user booked: iduser(external reference to the user), idevent(external reference to the artistic event)"
 - name: "cartSeminar"
-  description: "Information about the seminar that an user booked: iduser(external reference to the user), idsemianr(external referenceto the seminar)"
+  description: "Information about the seminar that an user booked: iduser(external reference to the user), idseminar(external referenceto the seminar)"
 - name: "performer"
   description: "information about a performer: idperformer, name, members, isgroup, affiliation, details, achievements, shortdescription"
 - name: "performs"
@@ -628,97 +628,104 @@ ________________________________________________________________________________
           description: "successfull operation"
         405:
           description: "invalid input"
+________________________________________________________________________________
 definitions:
-  author:
-    type: "object"
-    properties:
-      idauthor:
-        type: "integer"
-        format: "integer"
-      biography:
-        type: "string"
-        format: "character varying"
-      name:
-        type: "string"
-        format: "character varying"
-  book:
-    type: "object"
-    properties:
-      idbook:
-        type: "integer"
-        format: "integer"
-      title:
-        type: "string"
-        format: "character varying"
-      idauthor:
-        type: "integer"
-        format: "integer"
-      presentation:
-        type: "string"
-        format: "character varying"
-      theme:
-        type: "string"
-        format: "character varying"
-      genre:
-        type: "string"
-        format: "character varying"
-      favorite:
-        type: "boolean"
-        format: "boolean"
-      bestseller:
-        type: "boolean"
-        format: "boolean"
-      alike:
-        type: "integer"
-        format: "integer"
-      prize:
-        type: "number"
-        format: "double precision"
-  cart:
-    type: "object"
-    properties:
-      iduser:
-        type: "integer"
-        format: "integer"
-      idbook:
-        type: "integer"
-        format: "integer"
-      quantity:
-        type: "integer"
-        format: "integer"
-  event:
+  artisticEvent:
     type: "object"
     properties:
       idevent:
         type: "integer"
         format: "integer"
-      idbook:
+      title:
+        type: "string"
+        format: "character varying"
+      description:
+        type: "string"
+        format: "character varying"
+      idseminar:
         type: "integer"
         format: "integer"
-      presentation:
-        type: "string"
-        format: "character varying"
-      data:
-        type: "string"
-        format: "character varying"
-      time:
-        type: "string"
-        format: "character varying"
       place:
         type: "string"
         format: "character varying"
-  review:
+      dateAndTime:
+        type: "string"
+        format: "timestamp without time zone"
+      type:
+        type: "string"
+        format: "character varying"
+  cartArtisticEvent:
     type: "object"
     properties:
       iduser:
         type: "integer"
         format: "integer"
-      idbook:
+      idevent:
         type: "integer"
         format: "integer"
-      review:
+  cartSeminar:
+    type: "object"
+    properties:
+      iduser:
+        type: "integer"
+        format: "integer"
+      idseminar:
+        type: "integer"
+        format: "integer"
+  performer:
+    type: "object"
+    properties:
+      idperformer:
+        type: "integer"
+        format: "integer"
+      name:
         type: "string"
         format: "character varying"
+      members:
+        type: "string"
+        format: "character varying"
+      isgroup:
+        type: "boolean"
+        format: "boolean"
+      affiliation:
+        type: "string"
+        format: "character varying"
+      details:
+        type: "string"
+        format: "character varying"
+      achievements:
+        type: "string"
+        format: "character varying"
+      shortdescription:
+        type: "string"
+        format: "character varying"
+  performs:
+    type: "object"
+    properties:
+      idperformer:
+        type: "integer"
+        format: "integer"
+      idevent:
+        type: "integer"
+        format: "integer"
+  seminar:
+    type: "object"
+    properties:
+      idseminar:
+        type: "integer"
+        format: "integer"
+      place:
+        type: "string"
+        format: "character varying"
+      title:
+        type: "string"
+        format: "character varying"
+      description:
+        type: "string"
+        format: "character varying"
+      dateAndTime:
+        type: "string"
+        format: "timestamp without time zone"
   users:
     type: "object"
     properties:
@@ -732,9 +739,6 @@ definitions:
         type: "string"
         format: "character varying"
       name:
-        type: "string"
-        format: "character varying"
-      address:
         type: "string"
         format: "character varying"
 externalDocs:
