@@ -18,6 +18,5 @@ const clearElement=(req,res)=>{
     res.json({message:"done"})
   })
 }
-}
 
 module.exports={all,clean,clearElement}
