@@ -26,6 +26,23 @@ schemes:
 - "https"
 - "http"
 paths:
+  /artisticEvent/all:
+    get:
+      tags:
+        - "artisticEvent"
+      summary: "get all the artistic event"
+      description: ""
+      operationId: "getAllArtisticEvent"
+      produces:
+      - "application/json"
+      responses:
+        200:
+          description: "successful operation"
+          schema:
+            type: "array"
+            items:
+              $ref: "#definitions/artisticEvent"
+________________________________________________________________________________
   /queryauthor/getall:
     get:
       tags:
