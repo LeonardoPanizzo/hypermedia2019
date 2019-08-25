@@ -56,7 +56,7 @@ const sameDay=(req,res)=>{
 }
 
 const getBySeminar=(req,res)=>{
-  db.select('artisticEvent.idevent','title','description','place','dateAndTime','type').from('seminar').join('artisticEvent',{'artisticEvent.idseminar','seminar.idseminar'}).orderBy('dateAndTime').then(function(data){
+  db.select('artisticEvent.idevent','title','description','place','dateAndTime','type').from('seminar').join('artisticEvent',{'artisticEvent.idseminar':'seminar.idseminar'}).orderBy('dateAndTime').then(function(data){
     res.json(data)
   })
 }
