@@ -7,7 +7,7 @@ const getall=(req,res)=>{
 }
 
 const getType=(req,res)=>{
-  db.select('type').from('artisticEvent').orderBy('type').then(function(data){
+  db.select('type').distinct().from('artisticEvent').orderBy('type').then(function(data){
     res.json(data);
   })
 }

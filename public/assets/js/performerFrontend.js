@@ -40,15 +40,13 @@ $(document).ready(function(){
     $('#detailsPerformer').append(
       "<div class='small_header'>Details</div>" +
       "<p>" + performer.details + "</p>"
-    );//                    /artisticEvent/performer/:id
+    );//                   
     $.get(DOMAIN_ADDRESS + "/artisticEvent/performer/" + id, function(eventsInWhichPerforms){
-      console.log("AAAAAAAAA");
-      console.log(eventsInWhichPerforms[0].title);
       $('#performsIn').append(
         "<div class='small_header'>" +
-        thisGroupOrArtist + " performs in:" +
-        "</div>" //+
-        //listEvents(eventsInWhichPerforms, true, true)
+        thisGroupOrArtist + " performs at the following events:" +
+        "</div>" +
+        listEvents(eventsInWhichPerforms, true, true)
       );
     });
 
