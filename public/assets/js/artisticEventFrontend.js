@@ -14,6 +14,9 @@ $(document).ready(function(){
     $('#descriptionEvent').append(
       descriptionForEvent(artisticEvent.description)
     );
+    $('#lbType').append(
+      "<p>Type: " + artisticEvent.type.toUpperCase() + "</p>"
+    );
     //test getting artistic events in the same day /artisticEvent/sameDay/:id
     $.get(DOMAIN_ADDRESS + "/artisticEvent/sameDay/" + id, function(eventsSameDay){
       console.log(eventsSameDay.length);

@@ -14,12 +14,11 @@ $(document).ready(function(){
     $('#descriptionEvent').append(
       descriptionForEvent(seminar.description)
     );
-      //TODO adatta a seminari
+
     $.get(DOMAIN_ADDRESS + "/artisticEvent/seminar/" + id, function(eventsDiscussed){
-      //console.log(eventsDiscussed[0].title);
-      $('#duscussesEvents').append(
+      $('#discussesEvents').append(
         "<div class='small_header'>" +
-        "Events discussed:" +
+        "Artistic events discussed:" +
         "</div>" +
         listEvents(eventsDiscussed, true, true)
       );

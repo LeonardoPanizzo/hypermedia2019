@@ -162,7 +162,6 @@ function dateTimePlaceInfo(event){
 }
 
 function descriptionForEvent(description){
-  console.log("description inside function: " + description);
   var stringToReturn =
     "<div class='small_header'>Description</div>" +
     "<p>" + description + "</p>";
