@@ -17,12 +17,24 @@ $(document).ready(function(){
     $('#lbType').append(
       "<p>Type: " + artisticEvent.type.toUpperCase() + "</p>"
     );
-    //test getting artistic events in the same day /artisticEvent/sameDay/:id
     $.get(DOMAIN_ADDRESS + "/artisticEvent/sameDay/" + id, function(eventsSameDay){
-      console.log(eventsSameDay.length);
-      for(eventSD of eventsSameDay){
-        console.log(eventSD.title);
+        //TODO
+        $('#otherEventsSameDay').append(/*TODO*/);
       }
     });
+    $.get(DOMAIN_ADDRESS + "/performer/artisticEvent/" + id, function(performers){
+      //TODO
+      $('#artistsInThisEvent').append(/*TODO*/);
+    });
+
+    $.get(DOMAIN_ADDRESS + "/seminar/artisticEvent/" + id, function(results){
+        if(results.length > 0){ //can be only one
+          //TODO
+          $('#seminarLinkedToThisEvent').append(/*TODO*/);
+      }
+    });
+ì
+
+
   });
 })

@@ -18,21 +18,30 @@
 
         <div id="orientationInfoAndTitle">
         </div>
+        <div class="row justify-content-end marg_top_M">
+          <div class="col-sm-4">
+            <button class="btn btn-success btn-lg" role="button">Reserve ticket!</button>
+          </div>
+        </div>
         <div id="placeDateTime">
         </div>
         <div id="lbType">
         </div>
+
         <div id="spaceForCarousel">
         </div>
-
-        <!--TODO: BUTTON TO GET RESERVATION!!!! -->
-
         <div id="descriptionEvent">
         </div>
-        <!--   Artistic Event => Performer [1-N] N>=1   -->
-        <!--   Artistic Event =>  Seminar [1-0/1]       -->
-        <!--   Artistic Event => Artistic Event [N-N]   -->
 
+        <div id="artistsInThisEvent">
+          <!--   Performed-by    :  Artistic Event => Performer [1-N] N>=1   -->
+        </div>
+        <div id="seminarLinkedToThisEvent">
+          <!--   Discussed in    :  Artistic Event =>  Seminar [1-0/1]       -->
+        </div>
+        <div id="otherEventsSameDay">
+        <!--   In the same day :  Artistic Event => Artistic Event [N-N]   -->
+        </div>
       </div>
 
      </body>
