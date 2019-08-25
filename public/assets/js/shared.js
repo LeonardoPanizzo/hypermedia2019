@@ -44,18 +44,29 @@ function capitalizeFirstLetter(string) {
     return string.charAt(0).toUpperCase() + string.slice(1);
 }
 
+function getShortDate(timestamp){
+  return getDate(timestamp, false);
+}
+
+function getFullDate(timestamp){
+  return getDate(timestamp, true);
+}
+
 //works properly with both timestamp and date
-function getDate(timestamp){
+//show year is a boolean
+function getDate(timestamp, showYear){
 
   var dateAndTime = new Date(timestamp);
 
   var day = dateAndTime.getDate();
   //+1 because it would start from 0 otherwise (jenaury 0, february 1, ...)
   var month = dateAndTime.getMonth() + 1;
-  //var year = dateAndTime.getFullYear();
-
-  //var date = day + "/" + month + "/" + year;
+  //short date (without year)
   var date = day + "/" + month;
+
+  if(showYear){
+    date += "/" + dateAndTime.getFullYear();
+  }
 
   return date;
 }
@@ -137,33 +148,26 @@ function carouselForMTopics(srcImages, infoForBlindPeople){
          "<span class='sr-only'>Next</span>" +
        "</a>" +
      "</div>";
-     /*
-     var stringToReturn =
-       "<div id='carouselMTopic' class='container col-sm-7 marg_top_M carousel slide' data-ride='carousel'>" +
-          "<div class='carousel-inner imgCarouselMTopic'>" +
-            "<div class='carousel-item active'>" +
-              "<img class='d-block w-100' src='" + srcImages + "/1.jpg' alt='Slide number 1'>" +
-            "</div>" +
-            "<div class='carousel-item'>" +
-              "<img class='d-block w-100' src='" + srcImages + "/2.jpg' alt='Slide number 2'>" +
-            "</div>" +
-            "<div class='carousel-item'>" +
-              "<img class='d-block w-100' src='" + srcImages + "/3.jpg' alt='Slide number 3'>" +
-            "</div>" +
-          "</div>" +
-          "<a class='carousel-control-prev' href='#carouselMTopic' role='button' data-slide='prev'>" +
-            "<span class='carousel-control-prev-icon' aria-hidden='true'></span>" +
-            "<span class='sr-only'>Previous</span>" +
-          "</a>" +
-          "<a class='carousel-control-next' href='#carouselMTopic' role='button' data-slide='next'>" +
-            "<span class='carousel-control-next-icon' aria-hidden='true'></span>" +
-            "<span class='sr-only'>Next</span>" +
-          "</a>"+
-        "</div>";*/
+
    return stringToReturn;
 }
 
+function dateTimePlaceInfo(event){
+  var dateAndTime = event.dateAndTime;
+  var stringToReturn =
+    "<p>" + getFullDate(dateAndTime) + " at " + getTime(dateAndTime) +
+    "</p>" +
+    "<p>" + event.place + "</p>";
+  return stringToReturn;
+}
 
+function descriptionForEvent(description){
+  console.log("description inside function: " + description);
+  var stringToReturn =
+    "<div class='small_header'>Description</div>" +
+    "<p>" + description + "</p>";
+  return stringToReturn;
+}
 
 /*//it does not work and we still don't know why
 function queryC(type, pathQueryAfterDomain){

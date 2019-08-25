@@ -107,19 +107,19 @@ function firstDayInLists(artisticEvents, seminars){
       return null;
     }
     else{//artisticEvents empty, seminars not empty
-      return getDate(seminars[0].dateAndTime);
+      return getShortDate(seminars[0].dateAndTime);
     }
   }
   else{//artistic events not empty
     if(seminars.length === 0){//artistic events only not empty
-      return getDate(artisticEvents[0].dateAndTime);
+      return getShortDate(artisticEvents[0].dateAndTime);
     }
     else{//both arrays not empty
       if(artisticEvents[0].dateAndTime < seminars[0].dateAndTime){
-        return getDate(artisticEvents[0].dateAndTime);
+        return getShortDate(artisticEvents[0].dateAndTime);
       }
       else{
-        return getDate(seminars[0].dateAndTime);
+        return getShortDate(seminars[0].dateAndTime);
       }
     }
   }
@@ -133,12 +133,12 @@ It can return empty array.
 */
 function eventsInSpecifiedDay(events, day){
   var i;
-  for(i=0; i < events.length && getDate(events[i].dateAndTime) === day; i++);
+  for(i=0; i < events.length && getShortDate(events[i].dateAndTime) === day; i++);
 
   return events.slice(0,i);
 }
 
-//day is not a timestamp but is a getDate(timestamp)
+//day is not a timestamp but is a getShortDate(timestamp)
 function titleDay(day){
   stringToReturn =
     "<div class='medium_header'>" +
@@ -154,7 +154,7 @@ function sameTypeListEventsDivByDay(events, areArtisticEvents){
   var day;
   var eventsInDay;
   while(events.length > 0){
-    day = getDate(events[0].dateAndTime); //first day in list
+    day = getShortDate(events[0].dateAndTime); //first day in list
     eventsInDay = eventsInSpecifiedDay(events, day);
     //remove extracted events from 'events'
     events = events.slice(eventsInDay.length);

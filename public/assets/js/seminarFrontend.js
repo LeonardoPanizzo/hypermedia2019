@@ -6,5 +6,24 @@ $(document).ready(function(){
     $('#orientationInfoAndTitle').append(
       orientationInfoAndTitle("Seminar", seminar.title)
     );
+
+    $('#placeDateTime').append(
+      dateTimePlaceInfo(seminar)
+    );
+
+    $('#descriptionEvent').append(
+      descriptionForEvent(seminar.description)
+    );
+      //TODO adatta a seminari
+    $.get(DOMAIN_ADDRESS + "/artisticEvent/seminar/" + id, function(eventsDiscussed){
+      //console.log(eventsDiscussed[0].title);
+      $('#duscussesEvents').append(
+        "<div class='small_header'>" +
+        "Events discussed:" +
+        "</div>" +
+        listEvents(eventsDiscussed, true, true)
+      );
+    });
+
   })
 })

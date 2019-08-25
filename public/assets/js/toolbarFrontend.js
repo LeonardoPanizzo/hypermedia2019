@@ -37,7 +37,7 @@ window.addEventListener("resize", function() {
 $(".logout_button").click(function(){
   $.ajax({
     url:DOMAIN_ADDRESS+'/user/logout',
-    type:'POST',
+    type:'DELETE',
     data:{
     },
     dataType:'json',

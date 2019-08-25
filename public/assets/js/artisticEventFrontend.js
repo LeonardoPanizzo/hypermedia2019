@@ -5,6 +5,15 @@ $(document).ready(function(){
     $('#orientationInfoAndTitle').append(
       orientationInfoAndTitle("Artistic Event", artisticEvent.title)
     );
+    $('#placeDateTime').append(
+      dateTimePlaceInfo(artisticEvent)
+    );
+    $('#spaceForCarousel').append(
+      carouselForMTopics("../assets/img/artistic_event/" + id, "artistic event")
+    );
+    $('#descriptionEvent').append(
+      descriptionForEvent(artisticEvent.description)
+    );
     //test getting artistic events in the same day /artisticEvent/sameDay/:id
     $.get(DOMAIN_ADDRESS + "/artisticEvent/sameDay/" + id, function(eventsSameDay){
       console.log(eventsSameDay.length);
