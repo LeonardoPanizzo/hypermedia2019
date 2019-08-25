@@ -1,0 +1,725 @@
+swagger: "2.0"
+info:
+  description: "This is a sample server for the hypermedia project of september 2019"
+  version: "1.0.0"
+  title: "Swagger Event Store"
+  license:
+    name: "Apache 2.0"
+    url: "http://www.apache.org/licenses/LICENSE-2.0.html"
+host: "hypermedia123456.herokuapp.com"
+tags:
+- name: "artisticEvent"
+  description: "Information about an artistic event: idevent, title, description, place, dateAndTime, type, idseminar(external reference to a seminar)"
+- name: "cartArtisticEvent"
+  description: "Information about the artistic event that an user booked: iduser(external reference to the user), idevent(external reference to the artistic event)"
+- name: "cartSeminar"
+  description: "Information about the seminar that an user booked: iduser(external reference to the user), idsemianr(external referenceto the seminar)"
+- name: "performer"
+  description: "information about a performer: idperformer, name, members, isgroup, affiliation, details, achievements, shortdescription"
+- name: "performs"
+  description: "information about where a performer make an exibition: idperformer(external reference to the performer), idevent(external reference to the artistic event)"
+- name: "seminar"
+  description: "information about the seminar: idseminar, place, title, description, dateAndTime"
+- name: "users"
+  description: "information about the user: iduser, mail, password, name"
+schemes:
+- "https"
+- "http"
+paths:
+  /queryauthor/getall:
+    get:
+      tags:
+      - "author"
+      summary: "Get all the authors in the database"
+      description: "No value in needed in this query"
+      operationId: "getAllAuthors"
+      produces:
+      - "application/json"
+      responses:
+        200:
+          description: "successful operation"
+          schema:
+            type: "array"
+            items:
+              $ref: "#/definitions/author"
+  /queryauthor/author/{id}:
+    get:
+      tags:
+      - "author"
+      summary: "Get an author by his ID"
+      description: ""
+      operationId: "findAuthorById"
+      produces:
+      - "application/json"
+      parameters:
+        - name: "id"
+          in: "path"
+          description: "ID to filter by"
+          required: true
+          type: "integer"
+      responses:
+        200:
+          description: "successful operation"
+          schema:
+            type: "array"
+            format: "object"
+            items:
+              $ref: "#/definitions/author"
+        400:
+          description: "Invalid tag value"
+  /querybook/add:
+    post:
+      tags:
+      - "cart"
+      summary: "Add a book in the cart or increment the quantity of 1 if the book is already in the cart of the user that called the function"
+      description: ""
+      operationId: "updateCartWithIDbookAndIDuser"
+      produces:
+      - "application/json"
+      parameters:
+        - in: "body"
+          name: "idbook-iduser"
+          description: "the primary key of the cart"
+          schema:
+            type: "object"
+            required:
+              - "idbook"
+              - "iduser"
+            properties:
+              idbook:
+                type: "integer"
+              iduser:
+                type: "integer"
+      responses:
+        201:
+          description: "successful operation"
+        405:
+          description: "Invalid input"
+  /querybook/all:
+    get:
+      tags:
+      - "book"
+      summary: "Get all the books in the database"
+      description: "No value in needed in this query"
+      operationId: "getAllBooks"
+      produces:
+      - "application/json"
+      responses:
+        200:
+          description: "successful operation"
+          schema:
+            type: "array"
+            items:
+              $ref: "#/definitions/book"
+  /querybook/book/{id}:
+    get:
+      tags:
+      - "book"
+      summary: "Get a book by its ID"
+      description: ""
+      operationId: "findBookById"
+      produces:
+      - "application/json"
+      parameters:
+        - name: "id"
+          in: "path"
+          description: "ID to filter by"
+          required: true
+          type: "integer"
+      responses:
+        200:
+          description: "successful operation"
+          schema:
+            type: "array"
+            format: "object"
+            items:
+              $ref: "#/definitions/book"
+        400:
+          description: "Invalid tag value"
+  /querybook/getsimilarbook/{id}:
+    get:
+      tags:
+      - "book"
+      summary: "Get all the similar book to the one passed by its ID"
+      description: ""
+      operationId: "findSimilarBooksById"
+      produces:
+      - "application/json"
+      parameters:
+        - name: "id"
+          in: "path"
+          description: "ID to filter by"
+          required: true
+          type: "integer"
+      responses:
+        200:
+          description: "successful operation"
+          schema:
+            type: "array"
+            format: "object"
+            items:
+              $ref: "#/definitions/book"
+        400:
+          description: "Invalid tag value"
+  /querybook/getReview/{id}:
+    get:
+      tags:
+      - "review"
+      summary: "Get all the reviews of the book passed by its ID"
+      description: ""
+      operationId: "findAllReviewsBooksById"
+      produces:
+      - "application/json"
+      parameters:
+        - name: "id"
+          in: "path"
+          description: "ID to filter by"
+          required: true
+          type: "integer"
+      responses:
+        200:
+          description: "successful operation"
+          schema:
+            type: "array"
+            format: "object"
+            items:
+              $ref: "#/definitions/review"
+        400:
+          description: "Invalid tag value"
+  /querybook/getEvents/{id}:
+    get:
+      tags:
+      - "event"
+      summary: "Get all the events of the book passed by its ID"
+      description: ""
+      operationId: "findAllEventsBooksById"
+      produces:
+      - "application/json"
+      parameters:
+        - name: "id"
+          in: "path"
+          description: "ID to filter by"
+          required: true
+          type: "integer"
+      responses:
+        200:
+          description: "successful operation"
+          schema:
+            type: "array"
+            format: "object"
+            items:
+              $ref: "#/definitions/event"
+        400:
+          description: "Invalid tag value"
+  /queryevent/all:
+    get:
+      tags:
+      - "event"
+      summary: "Get all the events in the database"
+      description: "No value in needed in this query"
+      operationId: "getAllEvents"
+      produces:
+      - "application/json"
+      responses:
+        200:
+          description: "successful operation"
+          schema:
+            type: "array"
+            items:
+              $ref: "#/definitions/event"
+  /queryevent/otherevents/{id}:
+    get:
+      tags:
+      - "event"
+      summary: "Get all the events similar (about the same book) of the event passed by its ID"
+      description: ""
+      operationId: "findAllSimilarEventsBooksById"
+      produces:
+      - "application/json"
+      parameters:
+        - name: "id"
+          in: "path"
+          description: "ID to filter by"
+          required: true
+          type: "integer"
+      responses:
+        200:
+          description: "successful operation"
+          schema:
+            type: "array"
+            format: "object"
+            items:
+              $ref: "#/definitions/book"
+        400:
+          description: "Invalid tag value"
+  /queryevent/event/{id}:
+    get:
+      tags:
+      - "event"
+      summary: "Get an event by its ID"
+      description: ""
+      operationId: "findEventById"
+      produces:
+      - "application/json"
+      parameters:
+        - name: "id"
+          in: "path"
+          description: "ID to filter by"
+          required: true
+          type: "integer"
+      responses:
+        200:
+          description: "successful operation"
+          schema:
+            type: "array"
+            format: "object"
+            items:
+              $ref: "#/definitions/book"
+        400:
+          description: "Invalid tag value"
+  /queryevent/getbyidbook:
+    get:
+      tags:
+      - "event"
+      summary: "get all the events of a specific book"
+      description: ""
+      operationId: "getEventsOfASpecificBook"
+      produces:
+      - "applications/json"
+      parameters:
+        - in: "body"
+          name: "idbook"
+          description: "the id of the book"
+          schema:
+            type: "integer"
+            required:
+              - "idbook"
+            properties:
+              idbook:
+                type: "integer"
+      responses:
+        200:
+          description: "successful operation"
+          schema:
+            type: "array"
+            format: "object"
+            items:
+              $ref: "#/definitions/event"
+        405:
+          description: "invalid input"
+
+  /querybook/:
+    get:
+      tags:
+      - "book"
+      summary: "used to research a book "
+      description: "used to research a book using title, author, genre, theme, best seller, our favorite"
+      operationId: "researchABookWithFilters"
+      produces:
+      - "application/json"
+      parameters:
+        - in: "body"
+          name: "filters"
+          description: "filters used in the research"
+          schema:
+            type: "object"
+            required:
+              - "type"
+              - "name"
+              - "best"
+              - "fav"
+            properties:
+              type:
+                type: "string"
+              name:
+                type: "string"
+              best:
+                type: "boolean"
+              fav:
+                type: "boolean"
+      responses:
+        200:
+          description: "successfull operation"
+          schema:
+            type: "array"
+            format: "object"
+            items:
+              $ref: "#/definitions/book"
+        405:
+          description: "invalid input"
+
+  /queryuser/user/{id}:
+    get:
+      tags:
+      - "users"
+      summary: "Get an user by its ID"
+      description: ""
+      operationId: "findUserById"
+      produces:
+      - "application/json"
+      parameters:
+        - name: "id"
+          in: "path"
+          description: "ID to filter by"
+          required: true
+          type: "integer"
+      responses:
+        200:
+          description: "successful operation"
+          schema:
+            type: "array"
+            format: "object"
+            items:
+              $ref: "#/definitions/users"
+        400:
+          description: "Invalid tag value"
+  /queryuser/cart/{id}:
+    get:
+      tags:
+      - "users"
+      summary: "Get a cart using the user ID"
+      description: ""
+      operationId: "GetTheCartOfASpecificUser"
+      produces:
+      - "application/json"
+      parameters:
+        - name: "id"
+          in: "path"
+          description: "ID to filter by"
+          required: true
+          type: "integer"
+      responses:
+        200:
+          description: "successful operation"
+          schema:
+            type: "array"
+            format: "object"
+            items:
+              $ref: "#/definitions/cart"
+        400:
+          description: "Invalid tag value"
+  /queryuser/empty:
+    post:
+      tags:
+      - "users"
+      - "cart"
+      summary: "empty an user cart"
+      description: ""
+      operationId: "EmptyAUserCart"
+      produces:
+      - "application/json"
+      parameters:
+      - in: "body"
+        name: "iduser"
+        schema:
+          type: "integer"
+          required:
+            - "iduser"
+          properties:
+            iduser:
+              type: "integer"
+      responses:
+        200:
+          description: "successfull operation"
+          schema:
+            type: "array"
+            format: "object"
+            items:
+              $ref: "#/definitions/cart"
+        405:
+          description: "invalid input"
+  /queryuser/deletebook:
+    post:
+      tags:
+      - "users"
+      - "cart"
+      - "book"
+      summary: "remove a book in the user cart"
+      description: "remove the book whose id is passed in the body in the cart od user whose id is passed in the body"
+      operationId: "DeleteABookInTheCart"
+      produces:
+      - "application/json"
+      parameters:
+      - in: "body"
+        name: "filters"
+        schema:
+          type: "object"
+          required:
+            - "iduser"
+            - "idbook"
+          properties:
+            iduser:
+              type: "integer"
+            idbook:
+              type: "integer"
+      responses:
+        200:
+          description: "successfull operation"
+        405:
+          description: "invalid input"
+  /queryuser/plus:
+    post:
+      tags:
+      - "users"
+      - "cart"
+      - "book"
+      summary: "increment the quantity of the book in a cart"
+      description: "increment the quantity of the book whose id is passed in the body in the cart of the user whose id is passed in the body of quantity passed in the body"
+      operationId: "IncrementABookInTheCart"
+      produces:
+      - "application/json"
+      parameters:
+      - in: "body"
+        name: "filters"
+        schema:
+          type: "object"
+          required:
+            - "iduser"
+            - "idbook"
+          properties:
+            iduser:
+              type: "integer"
+            idbook:
+              type: "integer"
+      responses:
+        200:
+          description: "successfull operation"
+        405:
+          description: "invalid input"
+  /queryuser/minus:
+    post:
+      tags:
+      - "users"
+      - "cart"
+      - "book"
+      summary: "decrement the quantity of the book in a cart"
+      description: "decrement the quantity of the book whose id is passed in the body in the cart of the user whose id is passed in the body of quantity passed in the body"
+      operationId: "DecrementABookInTheCart"
+      produces:
+      - "application/json"
+      parameters:
+      - in: "body"
+        name: "filters"
+        schema:
+          type: "object"
+          required:
+            - "iduser"
+            - "idbook"
+          properties:
+            iduser:
+              type: "integer"
+            idbook:
+              type: "integer"
+      responses:
+        200:
+          description: "successfull operation"
+        405:
+          description: "invalid input"
+  /queryuser/clean:
+    post:
+      tags:
+      - "cart"
+      summary: "clean all the carts"
+      description: "remove from all the carts all the books whose quantity is equal o less than zero"
+      operationId: "CleanTheCarts"
+      produces:
+      - "application/json"
+      responses:
+        200:
+          description: "successfull operation"
+        405:
+          description: "invalid input"
+  /querylogin/:
+    post:
+      tags:
+      - "users"
+      summary: "checks if the credentials are corrects"
+      operationId: "Login"
+      produces:
+      - "application/json"
+      parameters:
+      - in: "body"
+        name: "filters"
+        schema:
+          type: "object"
+          required:
+            - "name"
+            - "pwd"
+          properties:
+            name:
+              type: "string"
+            pwd:
+              type: "string"
+      responses:
+        200:
+          description: "successfull operation"
+        405:
+          description: "invalid input"
+
+  /querysignup/check:
+    post:
+      tags:
+      - "users"
+      summary: "checks if the mail passed already exists"
+      operationId: "CheckMail"
+      produces:
+      - "application/json"
+      parameters:
+      - in: "body"
+        name: "mail"
+        schema:
+          type: "object"
+          required:
+            - "email"
+          properties:
+            email:
+              type: "string"
+      responses:
+        200:
+          description: "successfull operation"
+        405:
+          description: "invalid input"
+  /querysignup/register:
+    post:
+      tags:
+      - "users"
+      summary: "register an user"
+      operationId: "RegisterUser"
+      produces:
+      - "application/json"
+      parameters:
+      - in: "body"
+        name: "info"
+        schema:
+          type: "object"
+          required:
+            - "mail"
+            - "pass"
+            - "name"
+            - "add"
+          properties:
+            mail:
+              type: "string"
+            pass:
+              type: "string"
+            name:
+              type: "string"
+            add:
+              type: "string"
+      responses:
+        200:
+          description: "successfull operation"
+        405:
+          description: "invalid input"
+definitions:
+  author:
+    type: "object"
+    properties:
+      idauthor:
+        type: "integer"
+        format: "integer"
+      biography:
+        type: "string"
+        format: "character varying"
+      name:
+        type: "string"
+        format: "character varying"
+  book:
+    type: "object"
+    properties:
+      idbook:
+        type: "integer"
+        format: "integer"
+      title:
+        type: "string"
+        format: "character varying"
+      idauthor:
+        type: "integer"
+        format: "integer"
+      presentation:
+        type: "string"
+        format: "character varying"
+      theme:
+        type: "string"
+        format: "character varying"
+      genre:
+        type: "string"
+        format: "character varying"
+      favorite:
+        type: "boolean"
+        format: "boolean"
+      bestseller:
+        type: "boolean"
+        format: "boolean"
+      alike:
+        type: "integer"
+        format: "integer"
+      prize:
+        type: "number"
+        format: "double precision"
+  cart:
+    type: "object"
+    properties:
+      iduser:
+        type: "integer"
+        format: "integer"
+      idbook:
+        type: "integer"
+        format: "integer"
+      quantity:
+        type: "integer"
+        format: "integer"
+  event:
+    type: "object"
+    properties:
+      idevent:
+        type: "integer"
+        format: "integer"
+      idbook:
+        type: "integer"
+        format: "integer"
+      presentation:
+        type: "string"
+        format: "character varying"
+      data:
+        type: "string"
+        format: "character varying"
+      time:
+        type: "string"
+        format: "character varying"
+      place:
+        type: "string"
+        format: "character varying"
+  review:
+    type: "object"
+    properties:
+      iduser:
+        type: "integer"
+        format: "integer"
+      idbook:
+        type: "integer"
+        format: "integer"
+      review:
+        type: "string"
+        format: "character varying"
+  users:
+    type: "object"
+    properties:
+      iduser:
+        type: "integer"
+        format: "integer"
+      mail:
+        type: "string"
+        format: "character varying"
+      password:
+        type: "string"
+        format: "character varying"
+      name:
+        type: "string"
+        format: "character varying"
+      address:
+        type: "string"
+        format: "character varying"
+externalDocs:
+  description: "Find out more about Swagger"
+  url: "http://swagger.io"
