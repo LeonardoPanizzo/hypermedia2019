@@ -1,0 +1,482 @@
+swagger: "2.0"
+info:
+  description: "This is a sample server for the hypermedia project of september 2019"
+  version: "1.0.0"
+  title: "Swagger Event Store"
+  license:
+    name: "Apache 2.0"
+    url: "http://www.apache.org/licenses/LICENSE-2.0.html"
+host: "hypermedia123456.herokuapp.com"
+tags:
+- name: "artisticEvent"
+  description: "Information about an artistic event: idevent, title, description, place, dateAndTime, type, idseminar(external reference to a seminar)"
+- name: "cartArtisticEvent"
+  description: "Information about the artistic event that an user booked: iduser(external reference to the user), idevent(external reference to the artistic event)"
+- name: "cartSeminar"
+  description: "Information about the seminar that an user booked: iduser(external reference to the user), idseminar(external referenceto the seminar)"
+- name: "performer"
+  description: "information about a performer: idperformer, name, members, isgroup, affiliation, details, achievements, shortdescription"
+- name: "performs"
+  description: "information about where a performer make an exibition: idperformer(external reference to the performer), idevent(external reference to the artistic event)"
+- name: "seminar"
+  description: "information about the seminar: idseminar, place, title, description, dateAndTime"
+- name: "users"
+  description: "information about the user: iduser, mail, password, name"
+schemes:
+- "https"
+- "http"
+paths:
+  /artisticEvent/all:
+    get:
+      tags:
+        - "artisticEvent"
+      summary: "get all the artistic event"
+      description: ""
+      operationId: "getAllArtisticEvent"
+      produces:
+      - "application/json"
+      responses:
+        200:
+          description: "successful operation"
+          schema:
+            type: "array"
+            items:
+              $ref: "#/definitions/artisticEvent"
+  /artisticEvent/types:
+    get:
+      tags:
+        - "artisticEvent"
+      summary: "get all the types of event"
+      description: ""
+      operationId: "getAllTypesOfArtisticEvent"
+      produces:
+      - "application/json"
+      responses:
+        200:
+          description: "successful operation"
+          schema:
+            type: "array"
+            items:
+              $ref: "#/definitions/artisticEvent"
+  /artisticEvent/today:
+    get:
+      tags:
+        - "artisticEvent"
+      summary: "get the artistic events programmed for today"
+      description: ""
+      operationId: "getTodayArtisticEvent"
+      produces:
+      - "application/json"
+      responses:
+        200:
+          description: "successful operation"
+          schema:
+            type: "array"
+            items:
+              $ref: "#/definitions/artisticEvent"
+  /artisticEvent/{id}:
+    get:
+      tags:
+        - "artisticEvent"
+      summary: "get the artistic event with the passed id"
+      description: ""
+      operationId: "getArtisticEventByID"
+      produces:
+      - "application/json"
+      parameters:
+        - name: "id"
+          in: "path"
+          description: "ID to filter by"
+          required: true
+          type: "integer"
+      responses:
+        200:
+          description: "successful operation"
+          schema:
+            type: "array"
+            format: "object"
+            items:
+              $ref: "#/definitions/artisticEvent"
+        400:
+          description: "Invalide tag value"
+        405:
+          description: "Invalid input"
+  /artisticEvent/type/{type}:
+    get:
+      tags:
+        - "artisticEvent"
+      summary: "get the artistic events by type"
+      description: ""
+      operationId: "getArtisticEventByType"
+      produces:
+      - "application/json"
+      parameters:
+        - name: "type"
+          in: "path"
+          description: "Type to filter by"
+          required: true
+          type: "string"
+      responses:
+        200:
+          description: "successful operation"
+          schema:
+            type: "array"
+            format: "object"
+            items:
+              $ref: "#/definitions/artisticEvent"
+        400:
+          description: "Invalide tag value"
+        405:
+          description: "Invalid input"
+  /artisticEvent/performer/{id}:
+    get:
+      tags:
+        - "artisticEvent"
+      summary: "get the artistic event where a specific performer performs"
+      description: ""
+      operationId: "getArtisticEventByPerformer"
+      produces:
+      - "application/json"
+      parameters:
+        - name: "id"
+          in: "path"
+          description: "idperformer to filter by"
+          required: true
+          type: "integer"
+      responses:
+        200:
+          description: "successful operation"
+          schema:
+            type: "array"
+            format: "object"
+            items:
+              $ref: "#/definitions/artisticEvent"
+        400:
+          description: "Invalide tag value"
+        405:
+          description: "Invalid input"
+  /artisticEvent/sameDay/{id}:
+    get:
+      tags:
+        - "artisticEvent"
+      summary: "get the artistic event organized in the same day as the one with the passed id"
+      description: ""
+      operationId: "getArtisticEventBySameDay"
+      produces:
+      - "application/json"
+      parameters:
+        - name: "id"
+          in: "path"
+          description: "ID to find the date to filter by"
+          required: true
+          type: "integer"
+      responses:
+        200:
+          description: "successful operation"
+          schema:
+            type: "array"
+            format: "object"
+            items:
+              $ref: "#/definitions/artisticEvent"
+        400:
+          description: "Invalide tag value"
+        405:
+          description: "Invalid input"
+  /artisticEvent/seminar/{id}:
+    get:
+      tags:
+        - "artisticEvent"
+      summary: "get the artistic event presented in the seminar with the passed id"
+      description: ""
+      operationId: "getArtisticEventBySeminar"
+      produces:
+      - "application/json"
+      parameters:
+        - name: "id"
+          in: "path"
+          description: "idseminar to filter by"
+          required: true
+          type: "integer"
+      responses:
+        200:
+          description: "successful operation"
+          schema:
+            type: "array"
+            format: "object"
+            items:
+              $ref: "#/definitions/artisticEvent"
+        400:
+          description: "Invalide tag value"
+        405:
+          description: "Invalid input"
+  /seminar/all:
+    get:
+      tags:
+        - "seminar"
+      summary: "get all seminars"
+      description: ""
+      operationId: "getAllSeminar"
+      produces:
+      - "application/json"
+      responses:
+        200:
+          description: "successful operation"
+          schema:
+            type: "array"
+            items:
+              $ref: "#/definitions/seminar"
+  /seminar/today:
+    get:
+      tags:
+        - "seminar"
+      summary: "get the seminars programmed for today"
+      description: ""
+      operationId: "getTodaySeminar"
+      produces:
+      - "application/json"
+      responses:
+        200:
+          description: "successful operation"
+          schema:
+            type: "array"
+            items:
+              $ref: "#/definitions/seminar"
+  /seminar/{id}:
+    get:
+      tags:
+        - "seminar"
+      summary: "get the seminar with the passed id"
+      description: ""
+      operationId: "getSeminarByID"
+      produces:
+      - "application/json"
+      parameters:
+        - name: "id"
+          in: "path"
+          description: "ID to filter by"
+          required: true
+          type: "integer"
+      responses:
+        200:
+          description: "successful operation"
+          schema:
+            type: "array"
+            format: "object"
+            items:
+              $ref: "#/definitions/seminar"
+        400:
+          description: "Invalide tag value"
+        405:
+          description: "Invalid input"
+  /seminar/artisticEvent/{id}:
+    get:
+      tags:
+        - "seminar"
+      summary: "get the seminar that presents the artistic event with the passed id"
+      description: ""
+      operationId: "getSeminarByArtisticEvent"
+      produces:
+      - "application/json"
+      parameters:
+        - name: "id"
+          in: "path"
+          description: "artisticEvent.idevent to filter by"
+          required: true
+          type: "integer"
+      responses:
+        200:
+          description: "successful operation"
+          schema:
+            type: "array"
+            format: "object"
+            items:
+              $ref: "#/definitions/seminar"
+        400:
+          description: "Invalide tag value"
+        405:
+          description: "Invalid input"
+  /performer/all:
+    get:
+      tags:
+        - "performer"
+      summary: "get all performer"
+      description: ""
+      operationId: "getAllPerformer"
+      produces:
+      - "application/json"
+      responses:
+        200:
+          description: "successful operation"
+          schema:
+            type: "array"
+            items:
+              $ref: "#/definitions/performer"
+  /performer/{id}:
+    get:
+      tags:
+        - "performer"
+      summary: "get the performer with the passed id"
+      description: ""
+      operationId: "getPerformerByID"
+      produces:
+      - "application/json"
+      parameters:
+        - name: "id"
+          in: "path"
+          description: "ID to filter by"
+          required: true
+          type: "integer"
+      responses:
+        200:
+          description: "successful operation"
+          schema:
+            type: "array"
+            format: "object"
+            items:
+              $ref: "#/definitions/performer"
+        400:
+          description: "Invalide tag value"
+        405:
+          description: "Invalid input"
+  /performer/artisticEvent/{id}:
+    get:
+      tags:
+        - "performer"
+      summary: "get the performer that performs in the artistic event with the passed id"
+      description: ""
+      operationId: "getPerformerByArtisticEvent"
+      produces:
+      - "application/json"
+      parameters:
+        - name: "id"
+          in: "path"
+          description: "artisticEvent.idevent to filter by"
+          required: true
+          type: "integer"
+      responses:
+        200:
+          description: "successful operation"
+          schema:
+            type: "array"
+            format: "object"
+            items:
+              $ref: "#/definitions/performer"
+        400:
+          description: "Invalide tag value"
+        405:
+          description: "Invalid input"
+definitions:
+  artisticEvent:
+    type: "object"
+    properties:
+      idevent:
+        type: "integer"
+        format: "integer"
+      title:
+        type: "string"
+        format: "character varying"
+      description:
+        type: "string"
+        format: "character varying"
+      idseminar:
+        type: "integer"
+        format: "integer"
+      place:
+        type: "string"
+        format: "character varying"
+      dateAndTime:
+        type: "string"
+        format: "timestamp without time zone"
+      type:
+        type: "string"
+        format: "character varying"
+  cartArtisticEvent:
+    type: "object"
+    properties:
+      iduser:
+        type: "integer"
+        format: "integer"
+      idevent:
+        type: "integer"
+        format: "integer"
+  cartSeminar:
+    type: "object"
+    properties:
+      iduser:
+        type: "integer"
+        format: "integer"
+      idseminar:
+        type: "integer"
+        format: "integer"
+  performer:
+    type: "object"
+    properties:
+      idperformer:
+        type: "integer"
+        format: "integer"
+      name:
+        type: "string"
+        format: "character varying"
+      members:
+        type: "string"
+        format: "character varying"
+      isgroup:
+        type: "boolean"
+        format: "boolean"
+      affiliation:
+        type: "string"
+        format: "character varying"
+      details:
+        type: "string"
+        format: "character varying"
+      achievements:
+        type: "string"
+        format: "character varying"
+      shortdescription:
+        type: "string"
+        format: "character varying"
+  performs:
+    type: "object"
+    properties:
+      idperformer:
+        type: "integer"
+        format: "integer"
+      idevent:
+        type: "integer"
+        format: "integer"
+  seminar:
+    type: "object"
+    properties:
+      idseminar:
+        type: "integer"
+        format: "integer"
+      place:
+        type: "string"
+        format: "character varying"
+      title:
+        type: "string"
+        format: "character varying"
+      description:
+        type: "string"
+        format: "character varying"
+      dateAndTime:
+        type: "string"
+        format: "timestamp without time zone"
+  users:
+    type: "object"
+    properties:
+      iduser:
+        type: "integer"
+        format: "integer"
+      mail:
+        type: "string"
+        format: "character varying"
+      password:
+        type: "string"
+        format: "character varying"
+      name:
+        type: "string"
+        format: "character varying"
+externalDocs:
+  description: "Find out more about Swagger"
+  url: "http://swagger.io"
