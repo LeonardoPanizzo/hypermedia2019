@@ -1,7 +1,7 @@
 var db = require('../connection/connectionDB');
 
 const all=(req,res)=>{
-  db.select('seminar.idseminar','place','title','description','dateAndTime').from('cartSeminar').join('seminar',{'seminar.idseminar':'cartSeminar.idseminar'}).where('iduser',req.cookies.iduser).then(function(data){
+  db.select('seminar.idseminar','place','title','description','dateAndTime').from('cartSeminar').join('seminar',{'seminar.idseminar':'cartSeminar.idseminar'}).where('iduser',req.cookies.iduser).orderBy('dateAndTime').then(function(data){
     res.json(data)
   })
 }
