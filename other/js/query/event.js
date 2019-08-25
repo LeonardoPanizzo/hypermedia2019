@@ -36,7 +36,7 @@ const getbyID=(req,res)=>{
 }
 
 const getByPerformer=(req,res)=>{
-  db.select('idevent','title','description','place','dateAndTime','type').from('artisticEvent').join('performs',{'performs.idevent':'artisticEvent.idevent'}).where('performs.idperformer',req.params.id).then(function(data){
+  db.select('artisticEvent.idevent','title','description','place','dateAndTime','type').from('artisticEvent').join('performs',{'performs.idevent':'artisticEvent.idevent'}).where('performs.idperformer',req.params.id).then(function(data){
     res.json(data);
   })
 }
