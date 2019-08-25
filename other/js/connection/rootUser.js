@@ -14,7 +14,7 @@ router.post('/login', (req,res)=>{
   })
 })
 
-router.post('/logout', (req,res)=>{
+router.delete('/logout', (req,res)=>{
   res.cookie("iduser", "", { expires: new Date(0)});
   res.json({
     message: "Logged out!"
