@@ -17,11 +17,11 @@ $(document).ready(function(){
     $('#lbType').append(
       "<p>Type: " + artisticEvent.type.toUpperCase() + "</p>"
     );
-
+/*
     $('#spaceButtonGetReservation').append(
       buttonGetReservation()
     );
-
+*/
     $.get(DOMAIN_ADDRESS + "/artisticEvent/sameDay/" + id, function(eventsSameDay){
       //if(eventsSameDay.length > 0){
         $('#otherEventsSameDay').append(

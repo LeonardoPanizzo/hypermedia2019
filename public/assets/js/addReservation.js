@@ -1,3 +1,4 @@
+//DEPRECATED
 function buttonGetReservation(){
   var stringToReturn =
   "<button class='btn btn-success btn-lg' role='button' id='buttonGetReservation'>" +
@@ -5,3 +6,13 @@ function buttonGetReservation(){
   "</button>";
   return stringToReturn;
 }
+
+$("#buttonGetReservation").click(function(){
+  if(document.cookie){
+    console.log("TODO!!!!!");
+  }
+  else{
+    alert("You should log in first!");
+    window.location.replace( DOMAIN_ADDRESS + "/pages/login.html");
+  }
+});

@@ -127,6 +127,11 @@ p{
   margin-top: 3em;
 }
 
+#buttonGetReservation{
+  margin-top: 1em;
+  margin-bottom: 1em;
+}
+
 .menu_mobile{
   display: none;
 }
