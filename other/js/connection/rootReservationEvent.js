@@ -1,6 +1,6 @@
 var express = require('express');
 var router = express.Router();
-var cartQuery=require('../query/cartEvent.js')
+var cartQuery=require('../query/reservationEvent.js')
 
 router.get('/', cartQuery.all);
 router.delete('/',cartQuery.clean);
