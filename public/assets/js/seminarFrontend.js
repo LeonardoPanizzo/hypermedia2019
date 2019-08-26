@@ -15,6 +15,10 @@ $(document).ready(function(){
       descriptionForEvent(seminar.description)
     );
 
+    $('#spaceButtonGetReservation').append(
+      buttonGetReservation()
+    );
+
     $.get(DOMAIN_ADDRESS + "/artisticEvent/seminar/" + id, function(eventsDiscussed){
       $('#discussesEvents').append(
         "<div class='small_header'>" +

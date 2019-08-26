@@ -1,7 +1,16 @@
 const BUTTON_REMOVE_EVENT_PREFIX = "buttonRemove";
 const PREFIX_ID_REMOVE_ART_EV = BUTTON_REMOVE_EVENT_PREFIX + "ArtEv";
 const PREFIX_ID_REMOVE_SEM = BUTTON_REMOVE_EVENT_PREFIX + "Sem";
+/*
+gli eventi di un utente   /cartArtisticEvent/     (get)
+per svuotare il carrello  /cartArtisticEvent/     (delete)
+per cancellare un specifico seminario   /cartArtisticEvent/artisticEvent (delete)
+    nel body bisogna inserire l'id dell'evento e va chiamato "id"
 
+per svuotare il carrello  /cartSeminar/           (delete)
+per cancellare un specifico seminario   /cartArtisticEvent/seminar (delete)
+    nel body bisogna inserire l'id del seminario e va chiamato "id"
+*/
 $(document).ready(function(){
 
   if(!document.cookie){
@@ -73,18 +82,18 @@ function seminarInReservations(seminar){
 }
 
 function eventInReservations(event, isArtisticEvent){
-  var classRemoveEvent;
+  var idRemoveEvent;
   var id;
   var urlEvent;
   if(isArtisticEvent){
     id = event.idevent;
     urlEvent = getUrlArtisticEvent(id);
-    classRemoveEvent = PREFIX_ID_REMOVE_ART_EV;
+    idRemoveEvent = PREFIX_ID_REMOVE_ART_EV;
   }
   else{//seminar
     id = event.idseminar;
     urlEvent = getUrlSeminar(id);
-    classRemoveEvent = PREFIX_ID_REMOVE_SEM;
+    idRemoveEvent = PREFIX_ID_REMOVE_SEM;
   }
   var stringToReturn =
     //"<div class='row border_elem_in_list'>" +
@@ -102,12 +111,13 @@ function eventInReservations(event, isArtisticEvent){
           stringToReturn +=
           "</p>" +
           "<p class='simpler_p'>" +
-          getDate(event.dateAndTime) + " at " +
+          getFullDate(event.dateAndTime) + " at " +
           getTime(event.dateAndTime) +
           "</p>" +
         "</div>" +
         "<div class='col-sm-2 add_remove_btn_reserv'>"+
-          "<button id='" + classRemoveEvent + id +"' class='big_enough_square_std_btn align-middle'><i class='material-icons'>remove_shopping_cart</i></button>"+
+          "<button id='" + idRemoveEvent + id +"' class='big_enough_square_std_btn align-middle'>" +
+            "<i class='material-icons'>remove_shopping_cart</i></button>"+
         "</div>"
     "</div>";
 
@@ -118,15 +128,39 @@ function eventInReservations(event, isArtisticEvent){
         PREFIX_ID_REMOVE_ART_EV o PREFIX_ID_REMOVE_SEM come
         parametro
 */
+function deleteReserv(query, idWithPrefix){
+  var idObjToRemove = this.id.substring(idWithPrefix.length);
+  $.ajax({
+    url:DOMAIN_ADDRESS+ query,
+    type:'DELETE',
+    data:{
+      'id': idObjToRemove,
+    },
+    dataType:'json',
+  }).then(function(){
+    window.location.replace(window.location.href);
+  });
+}
 
 //TODO: try to do "[id^=remove]" with class instead of id
 $(document).on('click', "[id^=" + PREFIX_ID_REMOVE_ART_EV + "]", function(){
-  var idObj = this.id.substring(PREFIX_ID_REMOVE_ART_EV.length);
-  //TODO
+  deleteReserv("/cartArtisticEvent/artisticEvent", idWithPrefix)
+  /*
+  var idObjToRemove = this.id.substring(PREFIX_ID_REMOVE_ART_EV.length);
+  $.ajax({
+    url:DOMAIN_ADDRESS+'/cartArtisticEvent/artisticEvent',
+    type:'DELETE',
+    data:{
+      'id': idObjToRemove,
+    },
+    dataType:'json',
+  }).then(function(){
+    window.location.replace(window.location.href);
+  });*/
 })
 
 $(document).on('click', "[id^=" + PREFIX_ID_REMOVE_SEM + "]", function(){
-  var idObj = this.id.substring(PREFIX_ID_REMOVE_SEM.length);
+  var idObjToRemove = this.id.substring(PREFIX_ID_REMOVE_SEM.length);
   //TODO
 })
 
