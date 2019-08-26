@@ -1,10 +1,10 @@
 openapi: "3.0.0"
 info:
   title: eCommerce webSite API
-  description: 'This is a bookstore server with a book inventory, users with a shopping cart, a collection of event where the authors present their books.'
+  description: 'This is a event shop where people can buy ticket for artistic event where performer performs or seminar where artistic events are explanied'
   version: "1.0.0"
   contact:
-    email: "salvatore.bova@mail.polimi.it"
+    email: "leonardo.panizzo@mail.polimi.it"
 servers:
   - description: Url where you can find our website
     url: https://bova-colombo-hyp2019.herokuapp.com/
@@ -982,16 +982,14 @@ ________________________________________________________________________________
         name:
           type: string
           format: character varying
-________________________________________________________________________________
   requestBodies:
-    registrationForm:
-      description: "A JSON object containing user information"
-      required: true
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/User'
-    Login:
+    registrationForm: "A JSON object containing user information"
+    required: true
+    content:
+      application/json:
+        schema:
+          $ref: '#/components/schemas/users'
+    logIn:
       description: "A JSON object containing information to login"
       required: true
       content:
@@ -999,23 +997,9 @@ ________________________________________________________________________________
           schema:
             type: object
             properties:
-              email:
+              mail:
                 type: string
-              password:
+                format: character varying
+              pass:
                 type: string
-    reviewBody:
-      description: "A JSON object containing information to add a reviews"
-      required: true
-      content:
-        application/json:
-          schema:
-            type: object
-            properties:
-              message:
-                type: string
-                format: text
-              rating:
-                type: integer
-                format: int64
-                minimum: 1
-                maximum: 5
+                format: character varying
