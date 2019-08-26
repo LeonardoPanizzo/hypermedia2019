@@ -99,6 +99,8 @@ paths:
               $ref: "#/definitions/artisticEvent"
         400:
           description: "Invalide tag value"
+        404:
+          description: "artistic event not found"
         405:
           description: "Invalid input"
   /artisticEvent/type/{type}:
@@ -126,6 +128,8 @@ paths:
               $ref: "#/definitions/artisticEvent"
         400:
           description: "Invalide tag value"
+        404:
+          description: "artistic event not found"
         405:
           description: "Invalid input"
   /artisticEvent/performer/{id}:
@@ -153,6 +157,8 @@ paths:
               $ref: "#/definitions/artisticEvent"
         400:
           description: "Invalide tag value"
+        404:
+          description: "artistic event not found"
         405:
           description: "Invalid input"
   /artisticEvent/sameDay/{id}:
@@ -180,6 +186,8 @@ paths:
               $ref: "#/definitions/artisticEvent"
         400:
           description: "Invalide tag value"
+        404:
+          description: "artistic event not found"
         405:
           description: "Invalid input"
   /artisticEvent/seminar/{id}:
@@ -207,6 +215,8 @@ paths:
               $ref: "#/definitions/artisticEvent"
         400:
           description: "Invalide tag value"
+        404:
+          description: "artistic event not found"
         405:
           description: "Invalid input"
   /seminar/all:
@@ -266,6 +276,8 @@ paths:
               $ref: "#/definitions/seminar"
         400:
           description: "Invalide tag value"
+        404:
+          description: "seminar not found"
         405:
           description: "Invalid input"
   /seminar/artisticEvent/{id}:
@@ -293,6 +305,8 @@ paths:
               $ref: "#/definitions/seminar"
         400:
           description: "Invalide tag value"
+        404:
+          description: "seminar not found"
         405:
           description: "Invalid input"
   /performer/all:
@@ -336,6 +350,8 @@ paths:
               $ref: "#/definitions/performer"
         400:
           description: "Invalide tag value"
+        404:
+          description: "performer not found"
         405:
           description: "Invalid input"
   /performer/artisticEvent/{id}:
@@ -363,8 +379,37 @@ paths:
               $ref: "#/definitions/performer"
         400:
           description: "Invalide tag value"
+        404:
+          description: "performer not found"
         405:
           description: "Invalid input"
+  /users/login:
+    post:
+      tags:
+        - "users"
+      summary: "login"
+      description: "login with a form"
+      operationId: "logIn"
+      parameters:
+      - in: "body"
+        name: "info"
+        schema:
+          type: "object"
+          required:
+            - "mail"
+            - "pass"
+          properties:
+            mail:
+              type: "string"
+            pass:
+              type: "string"
+      responses:
+        200:
+          description: "successful operation"
+          headers:
+            Set-Cookie:
+              schema:
+                type: "string"
 ________________________________________________________________________________
   /querysignup/register:
     post:
