@@ -7,19 +7,76 @@ info:
     email: "leonardo.panizzo@mail.polimi.it"
 servers:
   - description: Url where you can find our website
+________________________________________________________________________________
     url: https://bova-colombo-hyp2019.herokuapp.com/
+________________________________________________________________________________
 tags:
-  - name: "Book"
-    description: "operation regarding the books"
-  - name: "Cart"
-    description: "operation regarding the cart"
-  - name: "Auth"
-    description: "operations about registration/login/logout"
-  - name: "Event"
-    description: "operation regarding the events"
-  - name: "Author"
-    description: "operation regarding the authors"
+  - name: "artisticEvent"
+    description: "operation regarding the artistic events"
+  - name: "performer"
+    description: "operation regarding the performers"
+  - name: "performs"
+    description: "operation regarding who performs where"
+  - name: "reservationArtisticEvent"
+    description: "operation regarding the artistic events reserved by the users"
+  - name: "reservationSeminar"
+    description: "operation regarding the seminars reserved by the users"
+  - name: "seminar"
+    description: "operation regarding the seminars"
+  - name: "users"
+    description: "operations about signup/login/logout"
 paths:
+  /artisticEvent:
+    get:
+      tags:
+      - artisticEvent
+      summary: "artisticEvent available in the inventory"
+      description: "List of all the artistic events in the inventory"
+      operationId: getArtisticEvent
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/artisticEvent'
+  /artisticEvent/types:
+    get:
+      tags:
+      - artisticEvent
+      summary: "available types of artistic events"
+      description: "List of all the types of artistic event"
+      operationId: getTypes
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: array
+                properties:
+                  type:
+                    type: string
+                    format: character varying
+  /artisticEvent/today:
+    get:
+      tags:
+      - artisticEvent
+      summary: "artistic events programmed for today"
+      description: "list of all artistic events programmed for today"
+      operationId: getArtisticEventToday
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/artisticEvent'
+________________________________________________________________________________
   /book:
     get:
       tags:
@@ -761,85 +818,17 @@ paths:
                     type: string
                 example:
                   message: "This book is not in your cart"
-
-
+________________________________________________________________________________
 components:
   parameters:
     cookie:
-      name: user_id
+      name: iduser
       in: cookie
       description: ""
       schema:
         type: string
-    cartSession:
-      name: connection.sid
-      in: cookie
-      description: ""
-      schema:
-        type: string
-    title:
-      name: title
-      in: query
-      description: "Book's title. The API responds with a list of results that match a searching word."
-      schema:
-        type: string
-    author:
-      name: author
-      in: query
-      description: "Book's author Name. The API responds with a list of results that match a searching word."
-      schema:
-        type: string
-    genre:
-      name: genre
-      in: query
-      description: "Book's genre. The API responds with a list of results that match a searching word."
-      schema:
-        type: string
-    theme:
-      name: theme
-      in: query
-      description: "Book's theme. The API responds with a list of results that match a searching word."
-      schema:
-        type: string
-    bestseller:
-      name: bestseller
-      in: query
-      description: "The API responds with a list of all the bestsellers."
-      schema:
-        type: string
-    favorite:
-      name: favorite
-      in: query
-      description: "The API responds with a list of all the books suggested."
-      schema:
-        type: string
-    eventAuthor:
-      name: eventAuthor
-      in: query
-      description: "Author at the event name. The API responds with a list of results that match a searching word."
-      schema:
-        type: string
-    eventBook:
-      name: eventBookName
-      in: query
-      description: "Presented book's name. The API responds with a list of results that match a searching word."
-      schema:
-        type: string
-    eventDate:
-      name: eventDate
-      in: query
-      description: "Event's date. The API responds with a list of results that match a searching word."
-      schema:
-        type: string
-    eventLocation:
-      name: eventLocation
-      in: query
-      description: "Event's location. The API responds with a list of results that match a searching word."
-      schema:
-        type: string
-________________________________________________________________________________
   schemas:
-    ArtisticEvent:
+    artisticEvent:
       type: object
       properties:
         idevent:
