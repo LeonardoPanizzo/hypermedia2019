@@ -2,13 +2,13 @@ const BUTTON_REMOVE_EVENT_PREFIX = "buttonRemove";
 const PREFIX_ID_REMOVE_ART_EV = BUTTON_REMOVE_EVENT_PREFIX + "ArtEv";
 const PREFIX_ID_REMOVE_SEM = BUTTON_REMOVE_EVENT_PREFIX + "Sem";
 /*
-gli eventi di un utente   /cartArtisticEvent/     (get)
-per svuotare il carrello  /cartArtisticEvent/     (delete)
-per cancellare un specifico seminario   /cartArtisticEvent/artisticEvent (delete)
+gli eventi di un utente   /reservationArtisticEvent/     (get)
+per svuotare il carrello  /reservationArtisticEvent/     (delete)
+per cancellare un specifico seminario   /reservationArtisticEvent/artisticEvent (delete)
     nel body bisogna inserire l'id dell'evento e va chiamato "id"
 
-per svuotare il carrello  /cartSeminar/           (delete)
-per cancellare un specifico seminario   /cartArtisticEvent/seminar (delete)
+per svuotare il carrello  /reservationSeminar/           (delete)
+per cancellare un specifico seminario   /reservationSeminar/seminar (delete)
     nel body bisogna inserire l'id del seminario e va chiamato "id"
 */
 $(document).ready(function(){
@@ -23,10 +23,17 @@ $(document).ready(function(){
     var seminars;
     var stringResults;
 
-    $.get( DOMAIN_ADDRESS + "/cartArtisticEvent/", function(results){
+    $('#confirmationDeleteAll').hide();
+    $('#confirmationDeleteAll').append(
+      "<p class='marg_top_S'>Do you really want to cancel all of your reservations?</p>" +
+      "<button id='yesDeleteAll' class='rectangular_std_btn'>Confirm</button>" +
+      "<button id='noDeleteAll' class='rectangular_std_btn'>Cancel</button>"
+    );
+
+    $.get( DOMAIN_ADDRESS + "/reservationArtisticEvent/", function(results){
       artisticEvents = results;
     }).then(function(){
-      $.get( DOMAIN_ADDRESS + "/cartSeminar/", function(results){
+      $.get( DOMAIN_ADDRESS + "/reservationSeminar/", function(results){
         seminars = results;
       }).then(function(){
         if(artisticEvents.length === 0 && seminars.length === 0){
@@ -37,16 +44,43 @@ $(document).ready(function(){
             " to find something interesting!</h4>";
         }
         else{
-          stringResults = cartResults(artisticEvents, seminars);
+          $('#spaceForButtonDeleteAll').append(
+            "<button class='btn btn-danger btn-lg' id='buttonDeleteAllReservations' role='button'>" +
+              "<i class='material-icons'>delete_forever</i>" +
+              "Delete All" +
+            "</button>"
+          );
+          stringResults = reservationResults(artisticEvents, seminars);
         }
         $('#reservationList').append(stringResults);
+        /*
+        this button (buttonDeleteAllReservations) needs to stay inside
+        (document).ready: otherwise it will not work!!
+        (because it is created inside of this part of code)
+        */
+        $('#buttonDeleteAllReservations').click(function(){
+          $('#confirmationDeleteAll').show();
+        });
       });
+    });
+    /*
+    these buttons (noDeleteAll and yesDeleteAll) need to stay inside
+    (document).ready: otherwise they will not work!!
+    (because they are created inside of this part of code)
+    */
+    $('#noDeleteAll').click(function(){
+        $('#confirmationDeleteAll').hide();
+    });
+
+
+    $('#yesDeleteAll').click(function(){
+      deleteAllReservations();
     });
   }
 })
 
 
-function cartResults(artisticEvents, seminars){
+function reservationResults(artisticEvents, seminars){
   var stringToReturn = "";
   var indexArt = 0;
   var indexSem = 0;
@@ -97,7 +131,7 @@ function eventInReservations(event, isArtisticEvent){
   }
   var stringToReturn =
     //"<div class='row border_elem_in_list'>" +
-    "<div class='row border_elem_in_list justify-content-center'>" +
+    "<div class='container row border_elem_in_list justify-content-center'>" +
         "<div class='col-sm-5'>" +
           "<p><a href='" + urlEvent + "'>" + event.title +
           "</a></p>" +
@@ -116,53 +150,49 @@ function eventInReservations(event, isArtisticEvent){
           "</p>" +
         "</div>" +
         "<div class='col-sm-2 add_remove_btn_reserv'>"+
-          "<button id='" + idRemoveEvent + id +"' class='big_enough_square_std_btn align-middle'>" +
+          "<button id='" + idRemoveEvent + id +"' class='big_enough_square_std_btn'>" +
             "<i class='material-icons'>remove_shopping_cart</i></button>"+
         "</div>"
     "</div>";
 
   return stringToReturn;
 }
-/*TODO: quando funziona così, allora prova a farlo con
-        un'unica funzione ajax con
-        PREFIX_ID_REMOVE_ART_EV o PREFIX_ID_REMOVE_SEM come
-        parametro
-*/
-function deleteReserv(query, idWithPrefix){
-  var idObjToRemove = this.id.substring(idWithPrefix.length);
-  $.ajax({
-    url:DOMAIN_ADDRESS+ query,
-    type:'DELETE',
-    data:{
-      'id': idObjToRemove,
-    },
-    dataType:'json',
-  }).then(function(){
-    window.location.replace(window.location.href);
-  });
-}
 
-//TODO: try to do "[id^=remove]" with class instead of id
 $(document).on('click', "[id^=" + PREFIX_ID_REMOVE_ART_EV + "]", function(){
-  deleteReserv("/cartArtisticEvent/artisticEvent", idWithPrefix)
-  /*
-  var idObjToRemove = this.id.substring(PREFIX_ID_REMOVE_ART_EV.length);
-  $.ajax({
-    url:DOMAIN_ADDRESS+'/cartArtisticEvent/artisticEvent',
-    type:'DELETE',
-    data:{
-      'id': idObjToRemove,
-    },
-    dataType:'json',
-  }).then(function(){
-    window.location.replace(window.location.href);
-  });*/
+  deleteReserv("/reservationArtisticEvent/artisticEvent", this.id.substring(PREFIX_ID_REMOVE_ART_EV.length))
 })
 
 $(document).on('click', "[id^=" + PREFIX_ID_REMOVE_SEM + "]", function(){
   var idObjToRemove = this.id.substring(PREFIX_ID_REMOVE_SEM.length);
-  //TODO
+  deleteReserv("/reservationSeminar/seminar", this.id.substring(PREFIX_ID_REMOVE_SEM.length))
 })
+
+function deleteAllReservations(){
+  $.ajax({
+    url : DOMAIN_ADDRESS + '/reservationArtisticEvent',
+    type : 'DELETE',
+  }).then(function(){
+    $.ajax({
+      url : DOMAIN_ADDRESS + '/reservationSeminar',
+      type : 'DELETE',
+    }).then(function(){
+      window.location.replace(window.location.href);
+    });
+  });
+}
+
+function deleteReserv(query, idObjToRemove){
+  $.ajax({
+    url : DOMAIN_ADDRESS + query,
+    type : 'DELETE',
+    data : {
+      'id': idObjToRemove,
+    },
+    dataType : 'json',
+  }).then(function(){
+    window.location.replace(window.location.href);
+  });
+}
 
 /*
 ESEMPIO: VECCHIO CARELLO DEL BOOKSTORE
