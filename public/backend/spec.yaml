@@ -931,6 +931,57 @@ ________________________________________________________________________________
       example:
         iduser: 5
         idevent: 9
+    reservationSeminar:
+      type: object
+      properties:
+        iduser:
+          type: integer
+          format: integer
+        idseminar:
+          type: integer
+          format: integer
+      example:
+        iduser: 5
+        idseminar: 9
+    seminar:
+      type: object
+      properties:
+        idseminar:
+          type: integer
+          format: integer
+        place:
+          type: string
+          format: character varying
+        title:
+          type: string
+          format: character varying
+        description:
+          type: string
+          format: character varying
+        dateAndTime:
+          type: string
+          format: timestamp without time zone
+      example:
+        idseminar: 2
+        place: "Via Vincenzo Monti 13, Milan"
+        title: "The story of Orpheus and Eurydice"
+        description: "What do we actually know about the ancient sotry of Orpheus and Eurydice? This seminar explores its deepest meanings, with a detailed analysis of different versions and what the same story impacted different generations in different historical and geopolitical contests."
+        dateAndTime: "2019-09-05 20:00:00"
+    users:
+      type: object
+      properties:
+        iduser:
+          type: integer
+          format: integer
+        mail:
+          type: string
+          format: character varying
+        password:
+          type: string
+          format: character varying
+        name:
+          type: string
+          format: character varying
 ________________________________________________________________________________
   requestBodies:
     registrationForm:
