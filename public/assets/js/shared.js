@@ -7,10 +7,11 @@ $(function(){
     //console.log(document.referrer);
 });
 
+const HTTPS = "https";
 let ad=window.location.href;
   ad=ad.substring(4,5);
   if(ad!='s'){
-    window.location.replace(DOMAIN_ADDRESS);
+    window.location.replace(HTTPS + window.location.href.substring(HTTPS.length));
   }
 /*
 //if https is not set, set https
