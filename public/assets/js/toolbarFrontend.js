@@ -43,6 +43,6 @@ $(".logout_button").click(function(){
     dataType:'json',
   })
   alert('Logged out');
-  window.location.replace(DOMAIN_ADDRESS);
+  window.location.assign(DOMAIN_ADDRESS);
 
 })

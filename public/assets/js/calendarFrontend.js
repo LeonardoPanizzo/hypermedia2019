@@ -29,5 +29,5 @@ $(document).ready(function(){
 })
 
 $("#buttonEventsToday").click(function(){
-  window.location.replace(DOMAIN_ADDRESS + "/pages/eventsToday.html");
+  window.location.assign(DOMAIN_ADDRESS + "/pages/eventsToday.html");
 })
