@@ -124,7 +124,7 @@ function carouselForMTopics(srcImages, infoForBlindPeople){
   var stringToReturn =
     "<div id='carouselMTopic' class='container col-sm-8 marg_top_M carousel slide' data-ride='carousel'>" +
        "<div class='carousel-inner imgCarouselMTopic'>";
-  for(var i = 1; urlExists(srcImages + "/" + i + ".jpg"); i++){
+  for(var i = 1; i <= 3; i++){
     if(i > 1){
       stringToReturn += DIV_NON_ACTIVE;
     }
@@ -135,24 +135,8 @@ function carouselForMTopics(srcImages, infoForBlindPeople){
           "<img class='d-block w-100' src='" + srcImages + "/" + i + ".jpg' " +
             "alt='Slide number " + i + " representing the " + infoForBlindPeople + "'>" +
         "</div>";
-    /*
-    $.ajax({
-      //url: srcImages + '/' + nexti + '.jpg',
-      url : "/assets/img/performer/3" + '/' + nexti + '.jpg',
-      type:'HEAD',
-      error: function()
-      {
-        //file not exists
-        finished = true;
-      },
-      success: function()
-      {
-        //file exists
-      }
-    });*/
-
-
   }
+  
   stringToReturn +=
       "</div>" +
        "<a class='carousel-control-prev' href='#carouselMTopic' role='button' data-slide='prev'>" +
@@ -168,12 +152,13 @@ function carouselForMTopics(srcImages, infoForBlindPeople){
    return stringToReturn;
 }
 
+/*DEPRECATED
 function urlExists(url){
     var http = new XMLHttpRequest();
     http.open('HEAD', url, false);
     http.send();
     return http.status!=404;
-}
+}*/
 
 function dateTimePlaceInfo(event){
   var dateAndTime = event.dateAndTime;
