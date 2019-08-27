@@ -13,6 +13,6 @@ $("#buttonGetReservation").click(function(){
   }
   else{
     alert("You should log in first!");
-    window.location.replace( DOMAIN_ADDRESS + "/pages/login.html");
+    window.location.assign( DOMAIN_ADDRESS + "/pages/login.html");
   }
 });
