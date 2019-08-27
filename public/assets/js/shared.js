@@ -23,15 +23,15 @@ $(document).ready(function(){
     let safeAddress = HTTPS + address.substring(4);
     window.location.replace(safeAddress);
   }
-});*/
-// if the above does not work:
+});*//*
+// if the above does not work: //THIS WORKS!!!
 $(document).ready(function(){
   let address = window.location.href;
   let s = address.substring(4,5);
   if(s!='s'){
     window.location.replace("https" + address.substring(4));
   }
-});
+});*/
 
 /*TODO!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 I should put this ONLY in the pages when it is needed!!!!!
