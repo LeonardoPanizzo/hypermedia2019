@@ -23,7 +23,7 @@ $(document).ready(function(){
           }
           else {//if there are no events today
             stringToAppend =
-              "<h2>There are no events planned for today.</h2><br>"+
+              "<h2 class='marg_top_S'>There are no events planned for today.</h2><br>"+
                 "<h4 class='click_here_what_happens_today'>" +
                 "<a href='calendar.html'>Click here</a>" +
                 " to find something interesting!</h4>";
