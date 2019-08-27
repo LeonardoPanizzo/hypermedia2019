@@ -7,10 +7,16 @@ $(function(){
     //console.log(document.referrer);
 });
 
+let ad=window.location.href;
+  ad=ad.substring(4,5);
+  if(ad!='s'){
+    window.location.replace(DOMAIN_ADDRESS);
+  }
+/*
 //if https is not set, set https
 if (location.protocol != 'https:'){
  location.href = 'https:' + window.location.href.substring(window.location.protocol.length);
-}
+}*/
 
 /* other way to do it (this works)
 $(document).ready(function(){
