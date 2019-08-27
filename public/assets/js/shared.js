@@ -1,5 +1,5 @@
-const DOMAIN_ADDRESS = 'http://localhost:3000';
-//const DOMAIN_ADDRESS = 'https://hypermdia-magatti-panizzo.herokuapp.com';
+//const DOMAIN_ADDRESS = 'http://localhost:3000';
+const DOMAIN_ADDRESS = 'https://hypermdia-magatti-panizzo.herokuapp.com';
 
 //load the toolbar
 $(function(){
@@ -14,8 +14,8 @@ $(function(){
     let safeAddress = HTTPS + address.substring(4);
     window.location.replace(safeAddress);
   }
-});*/
-/*if the above doesn't work:
+});*//*
+//if the above doesn't work:
 $(document).ready(function(){
   const HTTPS = "https";
   let address=window.location.href;
@@ -24,14 +24,14 @@ $(document).ready(function(){
     window.location.replace(safeAddress);
   }
 });*/
-/* if the above does not work:
+// if the above does not work:
 $(document).ready(function(){
-  let ad=window.location.href;
-  ad=ad.substring(4,5);
-  if(ad!='s'){
+  let address = window.location.href;
+  let s = address.substring(4,5);
+  if(s!='s'){
     window.location.replace("https" + address.substring(4));
   }
-})*/
+});
 
 /*TODO!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 I should put this ONLY in the pages when it is needed!!!!!
@@ -136,7 +136,7 @@ function carouselForMTopics(srcImages, infoForBlindPeople){
             "alt='Slide number " + i + " representing the " + infoForBlindPeople + "'>" +
         "</div>";
   }
-  
+
   stringToReturn +=
       "</div>" +
        "<a class='carousel-control-prev' href='#carouselMTopic' role='button' data-slide='prev'>" +
