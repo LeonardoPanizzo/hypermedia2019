@@ -6,16 +6,7 @@ $(function(){
     $("#toolbar_html").load("../pages/toolbar.html");
     //console.log(document.referrer);
 });
-/*
-$(function(){
-  const HTTPS = "https";
-  let address=window.location.href;
-  if(address.substring(0,5) != HTTPS){
-    let safeAddress = HTTPS + address.substring(4);
-    window.location.replace(safeAddress);
-  }
-});*//*
-//if the above doesn't work:
+
 $(document).ready(function(){
   const HTTPS = "https";
   let address=window.location.href;
@@ -23,7 +14,7 @@ $(document).ready(function(){
     let safeAddress = HTTPS + address.substring(4);
     window.location.replace(safeAddress);
   }
-});*//*
+});/*
 // if the above does not work: //THIS WORKS!!!
 $(document).ready(function(){
   let address = window.location.href;
