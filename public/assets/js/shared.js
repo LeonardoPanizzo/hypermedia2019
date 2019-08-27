@@ -15,8 +15,9 @@ let ad=window.location.href;
   }*/
 
 //if https is not set, set https
-if (location.protocol != 'https:'){
- location.href = 'https:' + window.location.href.substring(window.location.protocol.length);
+if(location.protocol != 'https:'){
+  location.href = location.href.replace("http://", "https://");
+  //location.href = 'https:' + window.location.href.substring(window.location.protocol.length);
 }
 
 /* other way to do it (this works)
