@@ -25,7 +25,7 @@ $(document).ready(function(){
 
     $('#confirmationDeleteAll').hide();
     $('#confirmationDeleteAll').append(
-      "<p class='marg_top_S'>Do you really want to cancel all of your reservations?</p>" +
+      "<p class='marg_top_M'>Do you really want to cancel all of your reservations?</p>" +
       "<button id='yesDeleteAll' class='rectangular_std_btn'>Confirm</button>" +
       "<button id='noDeleteAll' class='rectangular_std_btn'>Cancel</button>"
     );
