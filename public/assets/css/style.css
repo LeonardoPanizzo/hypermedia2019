@@ -150,7 +150,7 @@ p{
 }
 
 .imgCarouselHome img {
-  height: 20em;
+  height: 23em;
   /*max-height: 20em;*/
   width: auto;
 }
@@ -230,6 +230,12 @@ p{
 }
 
 @media (max-width: 50em) {
+  .imgCarouselHome img {
+    height: 15em;
+  }
+}
+
+@media (max-width: 30em) {
   .imgCarouselHome img {
     height: 10em;
   }

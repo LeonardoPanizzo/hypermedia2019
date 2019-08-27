@@ -64,7 +64,7 @@ function listOfPerformers(performers){
   var stringToReturn = "";
   for(performer of performers){
     stringToReturn +=
-      "<p><a href='" + getUrlPerformer(performer.idperformer) + "'>" +
+      "<p class='marg_top_M'><a href='" + getUrlPerformer(performer.idperformer) + "'>" +
        performer.name +
        "</a></p>";
   }

@@ -19,7 +19,7 @@ $(document).ready(function(){
     query = DOMAIN_ADDRESS + "/artisticEvent/type/" + type;
   }
   else{
-    query = DOMAIN_ADDRESS + "/seminar/all";
+    query = DOMAIN_ADDRESS + "/seminar";
   }
   $.ajax({
     url : query,
