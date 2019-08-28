@@ -24,4 +24,14 @@ const add=(req,res)=>{
   })
 }
 
-module.exports={all,clean,clearElement,add}
+const check=(req,res)=>{
+  db.select('iduser','idevent').where('iduser',req.cookies.iduser).andWhere('idevent', req.params.id).then(function(data){
+    if(data.length>0){
+      res.json({message:"true"});
+    }else{
+      res.json({message:"false"});
+    }
+  })
+}
+
+module.exports={all,clean,clearElement,add,check}
