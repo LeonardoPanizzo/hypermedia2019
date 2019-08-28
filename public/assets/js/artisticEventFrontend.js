@@ -1,5 +1,32 @@
 $(document).ready(function(){
   var id =  getIdFromUrlBeforeQuestionMark(DOMAIN_ADDRESS + "/pages/artisticEvent.html");
+  $("#buttonGetReservation").click(function(){
+    if(document.cookie){
+      const alreadyGotReservation = false;
+      if(alreadyGotReservation){
+        //you already have a reservation for this event
+        alert("TODO!!");
+      }
+      else{
+        alert("ENTRA NELL'ELSE");
+        $.ajax({
+          url: DOMAIN_ADDRESS + '/reservationArtisticEvent',
+          type: 'POST',
+          data:{
+            'id': id,
+          },
+          dataType: 'json',
+          success:(data)=>{
+
+          }
+        })
+      }
+    }
+    else{
+      alert("You should log in first!");
+      window.location.assign( DOMAIN_ADDRESS + "/pages/login.html");
+    }
+  });
   $.get(DOMAIN_ADDRESS + "/artisticEvent/" + id, function(result){
     var artisticEvent = result[0];
     $('#orientationInfoAndTitle').append(
@@ -59,33 +86,6 @@ $(document).ready(function(){
 
   });
 
-  $("#buttonGetReservation").click(function(){
-    if(document.cookie){
-      const alreadyGotReservation = false;
-      if(alreadyGotReservation){
-        //you already have a reservation for this event
-        alert("TODO!!");
-      }
-      else{
-        alert("ENTRA NELL'ELSE");
-        $.ajax({
-          url: DOMAIN_ADDRESS + '/reservationArtisticEvent',
-          type: 'POST',
-          data:{
-            'id': id,
-          },
-          dataType: 'json',
-          success:(data)=>{
-
-          }
-        })
-      }
-    }
-    else{
-      alert("You should log in first!");
-      window.location.assign( DOMAIN_ADDRESS + "/pages/login.html");
-    }
-  });
 })
 
 
