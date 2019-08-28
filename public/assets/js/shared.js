@@ -1,5 +1,5 @@
-//const DOMAIN_ADDRESS = 'http://localhost:3000';
-const DOMAIN_ADDRESS = 'https://hypermdia-magatti-panizzo.herokuapp.com';
+const DOMAIN_ADDRESS = 'http://localhost:3000';
+//const DOMAIN_ADDRESS = 'https://hypermdia-magatti-panizzo.herokuapp.com';
 
 //load the toolbar
 $(function(){
@@ -13,13 +13,13 @@ let ad=window.location.href;
   if(ad!='s'){
     window.location.replace(HTTPS + window.location.href.substring(HTTPS.length));
   }*/
-
+/*
 //if https is not set, set https
 if(location.protocol != 'https:'){
   window.location.replace(window.location.href.replace("http://", "https://"));
   //location.href = location.href.replace("http://", "https://");
   //location.href = 'https:' + window.location.href.substring(window.location.protocol.length);
-}
+}*/
 
 /* other way to do it (this works)
 $(document).ready(function(){
