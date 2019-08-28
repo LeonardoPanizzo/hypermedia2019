@@ -30,10 +30,10 @@ paths:
       - artisticEvent
       summary: "artisticEvent available in the inventory"
       description: "List of all the artistic events in the inventory"
-      operationId: getArtisticEvent
+      operationId: "getArtisticEvent"
       responses:
         '200':
-          description: Successful response
+          description: "Successful response"
           content:
             application/json:
               schema:
@@ -46,10 +46,10 @@ paths:
       - artisticEvent
       summary: "available types of artistic events"
       description: "List of all the types of artistic event"
-      operationId: getTypes
+      operationId: "getTypes"
       responses:
         '200':
-          description: Successful response
+          description: "Successful response"
           content:
             application/json:
               schema:
@@ -64,10 +64,10 @@ paths:
       - artisticEvent
       summary: "artistic events programmed for today"
       description: "list of all artistic events programmed for today"
-      operationId: getArtisticEventToday
+      operationId: "getArtisticEventToday"
       responses:
         '200':
-          description: Successful response
+          description: "Successful response"
           content:
             application/json:
               schema:
@@ -80,11 +80,187 @@ paths:
       - artisticEvent
       summary: "get artistic event by ID"
       description: "return the information of a specific artistic event through his ID"
-      operationId: getArtisticEventByID
+      operationId: "getArtisticEventByID"
       parameters:
       - name: "id"
         in: "path"
-        description: "the artistic event's id that needs to be fetched"
+        description: "the artistic event's id of the artistic event that needs to be fetched"
+        required: true
+        schema:
+          type: integer
+          format: integer
+      responses:
+        '200':
+          description: "successful operation"
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/artisticEvent'
+        '404':
+          description: "invalid input"
+  /artisticEvent/type/{type}:
+    get:
+      tags:
+      - artisticEvent
+      summary: "get artistic events by type"
+      description: "return the information about artistic events of a specific type"
+      operationId: "getArtisticEventByType"
+      parameters:
+      - name: "type"
+        in: "path"
+        description: "the type used to filter the artistic events"
+        required: true
+        schema:
+          type: string
+          format: character varying
+      responses:
+        '200':
+          description: "successful operation"
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/artisticEvent'
+        '404':
+          description: "invalid input"
+  /artisticEvent/performer/{id}:
+    get:
+      tags:
+      - artisticEvent
+      summary: "get artistic with a specific performer"
+      description: "return the information of a specific artistic where the performer with a specific ID performs"
+      operationId: "getArtisticEventByPerformer"
+      parameters:
+      - name: "id"
+        in: "path"
+        description: "the performer ID"
+        required: true
+        schema:
+          type: integer
+          format: integer
+      responses:
+        '200':
+          description: "successful operation"
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/artisticEvent'
+        '404':
+          description: "invalid input"
+  /artisticEvent/sameDay/{id}:
+    get:
+      tags:
+      - artisticEvent
+      summary: "get artistic event in the same day"
+      description: "return the information of a specific artistic event that is in the same day as the one with the ID passed in the path"
+      operationId: "getArtisticEventBySameDay"
+      parameters:
+      - name: "id"
+        in: "path"
+        description: "the artistic event's id to find the date of the exibition"
+        required: true
+        schema:
+          type: integer
+          format: integer
+      responses:
+        '200':
+          description: "successful operation"
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/artisticEvent'
+        '404':
+          description: "invalid input"
+  /artisticEvent/seminar/{id}:
+    get:
+      tags:
+      - artisticEvent
+      summary: "get artistic event explaine in the seminar"
+      description: "return the information of a specific artistic event that explained in the seminar with the passed ID"
+      operationId: "getArtisticEventBySeminar"
+      parameters:
+      - name: "id"
+        in: "path"
+        description: "the seminar's ID"
+        required: true
+        schema:
+          type: integer
+          format: integer
+      responses:
+        '200':
+          description: "successful operation"
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/artisticEvent'
+        '404':
+          description: "invalid input"
+  /seminar:
+    get:
+      tags:
+      - seminar
+      summary: "get all the seminars in the inventory"
+      description: "List of all the seminars in the inventory"
+      operationId: "getSeminar"
+      responses:
+        '200':
+          description: "Successful response"
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/seminar'
+  /seminar/today:
+    get:
+      tags:
+      - seminar
+      summary: "seminars programmed for today"
+      description: "list of all the seminars programmed for today"
+      operationId: "getSeminarToday"
+      responses:
+        '200':
+          description: "Successful response"
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/seminar'
+  /seminar/{id}:
+    get:
+      tags:
+      - seminar
+      summary: "get seminar by ID"
+      description: "return the information of a specific seminar through his ID"
+      operationId: "getSeminarByID"
+      parameters:
+      - name: "id"
+        in: "path"
+        description: "the seminar's id of the seminar that needs to be fetched"
+        required: true
+        schema:
+          type: integer
+          format: integer
+      responses:
+        '200':
+          description: "successful operation"
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/artisticEvent'
+        '404':
+          description: "invalid input"
+  /seminar/artisticEvent/{id}:
+    get:
+      tags:
+      - seminar
+      summary: "get the seminar that explain the artistic event with the passed ID"
+      description: "get the information of the seminar that explain the artistic event with the passed ID"
+      operationId: "getSeminarByArtisticEvent"
+      parameters:
+      - name: "id"
+        in: "path"
+        description: "artistic event's id"
         required: true
         schema:
           type: integer
