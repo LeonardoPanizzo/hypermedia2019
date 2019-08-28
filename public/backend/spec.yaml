@@ -7,9 +7,7 @@ info:
     email: "leonardo.panizzo@mail.polimi.it"
 servers:
   - description: Url where you can find our website
-________________________________________________________________________________
-    url: https://bova-colombo-hyp2019.herokuapp.com/
-________________________________________________________________________________
+    url: https://hypermdia-magatti-panizzo.herokuapp.com/
 tags:
   - name: "artisticEvent"
     description: "operation regarding the artistic events"
