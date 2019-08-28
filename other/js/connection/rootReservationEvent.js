@@ -5,5 +5,6 @@ var cartQuery=require('../query/reservationEvent.js')
 router.get('/', cartQuery.all);
 router.delete('/',cartQuery.clean);
 router.delete('/artisticEvent',cartQuery.clearElement);
+router.post('/',cartQuery.add);
 
 module.exports=router;

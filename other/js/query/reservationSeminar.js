@@ -18,4 +18,10 @@ const clearElement=(req,res)=>{
   })
 }
 
-module.exports={all,clean,clearElement}
+const add=(req,res)=>{
+  db('reservationSeminar').insert({iduser: req.cookies.iduser ,idseminar:req.body.id}).then(function(data){
+    res.json({message:"done"})
+  })
+}
+
+module.exports={all,clean,clearElement,add}

@@ -51,5 +51,7 @@ per il carrello eventi artistici
 per il carrello seminari
     i seminari di un utente   /cartSeminar/           (get)
     per svuotare il carrello  /cartSeminar/           (delete)
-    per cancellare un specifico seminario   /cartArtisticEvent/seminar (delete)
+    per cancellare un specifico seminario   /cartSeminar/seminar (delete)
+        nel body bisogna inserire l'id del seminario e va chiamato "id"
+    per inserire un seminario nel carrello  /cartSeminar/   (post)
         nel body bisogna inserire l'id del seminario e va chiamato "id"
