@@ -74,6 +74,30 @@ paths:
                 type: array
                 items:
                   $ref: '#/components/schemas/artisticEvent'
+  /artisticEvent/{id}:
+    get:
+      tags:
+      - artisticEvent
+      summary: "get artistic event by ID"
+      description: "return the information of a specific artistic event through his ID"
+      operationId: getArtisticEventByID
+      parameters:
+      - name: "id"
+        in: "path"
+        description: "the artistic event's id that needs to be fetched"
+        required: true
+        schema:
+          type: integer
+          format: integer
+      responses:
+        '200':
+          description: "successful operation"
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/artisticEvent'
+        '404':
+          description: "invalid input"
 ________________________________________________________________________________
   /book:
     get:
