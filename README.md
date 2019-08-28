@@ -43,15 +43,17 @@ per gli artisti
 
 NB. per i metodo qui sotto il server prende l'iduser dal cookie che viene passato automaticamente ad ogni query
 per il carrello eventi artistici
-    gli eventi di un utente   /cartArtisticEvent/     (get)
-    per svuotare il carrello  /cartArtisticEvent/     (delete)
-    per cancellare un specifico seminario   /cartArtisticEvent/artisticEvent (delete)
+    gli eventi di un utente   /reservationArtisticEvent/     (get)
+    per svuotare il carrello  /reservationArtisticEvent/     (delete)
+    per cancellare un specifico seminario   /reservationArtisticEvent/artisticEvent (delete)
         nel body bisogna inserire l'id dell'evento e va chiamato "id"
+    per inserire un seminario nel carrello  /reservationtArtisticEvent/   (post)
+        nel body bisogna inserire l'id dell'evento artistico e va chiamato "id"
 
 per il carrello seminari
-    i seminari di un utente   /cartSeminar/           (get)
-    per svuotare il carrello  /cartSeminar/           (delete)
-    per cancellare un specifico seminario   /cartSeminar/seminar (delete)
+    i seminari di un utente   /reservationSeminar/           (get)
+    per svuotare il carrello  /reservationSeminar/           (delete)
+    per cancellare un specifico seminario   /reservationSeminar/seminar (delete)
         nel body bisogna inserire l'id del seminario e va chiamato "id"
-    per inserire un seminario nel carrello  /cartSeminar/   (post)
+    per inserire un seminario nel carrello  /reservationtSeminar/   (post)
         nel body bisogna inserire l'id del seminario e va chiamato "id"
