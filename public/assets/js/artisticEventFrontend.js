@@ -13,7 +13,7 @@ $(document).ready(function(){
           url: DOMAIN_ADDRESS + '/reservationArtisticEvent',
           type: 'POST',
           data:{
-            'id': id,
+            'id': id
           },
           dataType: 'json',
           success:(data)=>{
