@@ -24,7 +24,7 @@ per i seminari
   per evento artistico  /seminar/artisticEvent/:id  (get)
       esempio   /seminar/artisticEvent/3
       restituisce i seminari che riguardano l'evento artisco con idevent=3
-
+________________________________________________________________________________
 per gli utenti
   login               /user/login        (post)
       nel body viene inserito mail e password chiamati "mail" "pass"
