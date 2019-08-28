@@ -4,39 +4,13 @@ const DOMAIN_ADDRESS = 'https://hypermdia-magatti-panizzo.herokuapp.com';
 //load the toolbar
 $(function(){
     $("#toolbar_html").load("../pages/toolbar.html");
-    //console.log(document.referrer);
 });
-/*
-const HTTPS = "https";
-let ad=window.location.href;
-  ad=ad.substring(4,5);
-  if(ad!='s'){
-    window.location.replace(HTTPS + window.location.href.substring(HTTPS.length));
-  }*/
-/*
+
 //if https is not set, set https
 if(location.protocol != 'https:'){
   window.location.replace(window.location.href.replace("http://", "https://"));
-  //location.href = location.href.replace("http://", "https://");
-  //location.href = 'https:' + window.location.href.substring(window.location.protocol.length);
-}*/
+}
 
-/* other way to do it (this works)
-$(document).ready(function(){
-  const HTTPS = "https";
-  let address=window.location.href;
-  if(address.substring(0,5) != HTTPS){
-    let safeAddress = HTTPS + address.substring(4);
-    window.location.replace(safeAddress);
-  }
-});*/
-
-/*TODO!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-I should put this ONLY in the pages when it is needed!!!!!
-//for CAROUSEL: to avoid auto-sliding after click when its unwanted
-$('.noAutoSliding').carousel({
-  interval: false
-});*/
 //Return string with capitalized first letters
 function capitalizeFirstLetter(string) {
     return string.charAt(0).toUpperCase() + string.slice(1);
@@ -150,14 +124,6 @@ function carouselForMTopics(srcImages, infoForBlindPeople){
    return stringToReturn;
 }
 
-/*DEPRECATED
-function urlExists(url){
-    var http = new XMLHttpRequest();
-    http.open('HEAD', url, false);
-    http.send();
-    return http.status!=404;
-}*/
-
 function dateTimePlaceInfo(event){
   var dateAndTime = event.dateAndTime;
   var stringToReturn =
@@ -173,18 +139,3 @@ function descriptionForEvent(description){
     "<p>" + description + "</p>";
   return stringToReturn;
 }
-
-/*//it does not work and we still don't know why
-function queryC(type, pathQueryAfterDomain){
-  var result;
-  $.ajax({
-    url : DOMAIN_ADDRESS + "/" + pathQueryAfterDomain,
-    type : type,
-    success:(data)=>{
-      result = data;
-      //return data;
-    },
-  }).then(function(){
-    return result;
-  });
-}*/
