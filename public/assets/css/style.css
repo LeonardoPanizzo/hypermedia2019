@@ -127,6 +127,11 @@ p{
   margin-top: 3em;
 }
 
+.empty-sign-style{
+  font-style: oblique;
+  color: dimgrey;
+}
+
 #buttonGetReservation{
   margin-top: 1em;
   margin-bottom: 1em;

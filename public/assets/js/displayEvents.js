@@ -58,7 +58,7 @@ function listEventsOrEmptySign(events, areArtisticEvents, showType, emptySignIsW
     else{
       emptySign = "-";
     }
-    return "<br><p>" + emptySign + "</p>"; //empty list sign
+    return "<br><p class='empty-sign-style'>" + emptySign + "</p>"; //empty list sign
   }
   else{
     return listEvents(events, areArtisticEvents, showType);
