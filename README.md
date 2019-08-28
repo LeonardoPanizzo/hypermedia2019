@@ -1,7 +1,7 @@
 # hypermedia2019
 query fatte:
 per gli eventi artistici
-  tutti gli eventi    /artisticEvent/all      (get)
+  tutti gli eventi    /artisticEvent/     (get)
   tutti i tipi        /artisticEvent/types    (get)
   quelli di oggi      /artisticEvent/today    (get)
   per id              /artisticEvent/:id      (get)
@@ -17,7 +17,7 @@ per gli eventi artistici
       restituisce gli eventi artistici relativi al seminario con idseminar=5
 
 per i seminari
-  tutti               /seminar/all      (get)
+  tutti               /seminar/     (get)
   oggi                /seminar/today    (get)
   per id              /seminar/:id      (get)
       esempio   /seminar/10
