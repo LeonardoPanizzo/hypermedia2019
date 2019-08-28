@@ -49,9 +49,16 @@ function seminarInList(event, showType){
   otherwise return a string that represents an empty list.
   "areArtisticEvents" is a boolean (if false => list of seminars).
 */
-function listEventsOrEmptySign(events, areArtisticEvents, showType){
+function listEventsOrEmptySign(events, areArtisticEvents, showType, emptySignIsWordNone){
   if(events.length === 0){
-    return "<br><p>-</p>"; //empty list sign
+    var emptySign;
+    if(emptySignIsWordNone){
+      emptySign = "none";
+    }
+    else{
+      emptySign = "-";
+    }
+    return "<br><p>" + emptySign + "</p>"; //empty list sign
   }
   else{
     return listEvents(events, areArtisticEvents, showType);
@@ -179,7 +186,7 @@ function artisticEventsAndSeminarsSeparately(artisticEvents, seminars, showTypeA
         "</div>";
   //then the actual list:
   stringToReturn +=
-        listEventsOrEmptySign(artisticEvents, true, showTypeArtEv) +
+        listEventsOrEmptySign(artisticEvents, true, showTypeArtEv, false) +
       "</div>"; //to close COLUMN
   //then: list of seminars
   //the header:
@@ -188,7 +195,7 @@ function artisticEventsAndSeminarsSeparately(artisticEvents, seminars, showTypeA
         "<div class='small_header'>Seminars" +
         "</div>";
   //then the actual list:
-  stringToReturn += listEventsOrEmptySign(seminars, false, false) +
+  stringToReturn += listEventsOrEmptySign(seminars, false, false, false) +
       "</div>" + //to close COLUMN
     "</div>"; //to close container row
   return stringToReturn;

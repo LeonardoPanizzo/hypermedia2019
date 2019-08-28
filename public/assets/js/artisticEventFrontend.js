@@ -28,7 +28,7 @@ $(document).ready(function(){
           "<div class='small_header'>" +
           "Artistic Events in the Same Day:" +
           "</div>" +
-          listEventsOrEmptySign(eventsSameDay, true, true)
+          listEventsOrEmptySign(eventsSameDay, true, true, true)
         );
       //}
     });
