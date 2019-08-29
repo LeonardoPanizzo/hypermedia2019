@@ -351,6 +351,79 @@ paths:
                   $ref: '#/components/schemas/performer'
         '404':
           description: "invalid input"
+  /user/login:
+    post:
+      tags:
+      - users
+      summary: "login"
+      description: "user login"
+      operationId: "login"
+      requestBody:
+        $ref: '#/components/requestBodies/logIn'
+      responses:
+        '200':
+          description: "successful operation"
+          headers:
+            Set-Cookie:
+              schema:
+                type: string
+                example: iduser=1; Path=/;
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+        '400':
+          description: "password or email incorrect"
+  /user/logout:
+    delete:
+      tags:
+      - users
+      summary: "logout"
+      description: "the user logs out of the session"
+      operationId: "logout"
+      parameters:
+        - $ref: '#/components/parameters/cookie'
+      responses:
+        '200':
+          description: "successful operation"
+          headers:
+            Set-Cookie:
+              schema:
+                type: string
+                example: iduser=1; Path=/;
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                  example:
+                    message: "Logged out"
+  /user/signup:
+    post:
+      tags:
+      - users
+      summary: "signup"
+      description: "register a user in the site"
+      operationId: "signup"
+      requestBody:
+        $ref: '#/components/requestBodies/registrationForm'
+      responses:
+        '201':
+          description: "successful operation"
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: boolean
+        '400':
+          description: "email already in use"
 ________________________________________________________________________________
   /book:
     get:
