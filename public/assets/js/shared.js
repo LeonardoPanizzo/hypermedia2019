@@ -30,14 +30,14 @@ function getDate(timestamp, showYear){
 
   var dateAndTime = new Date(timestamp);
 
-  var day = dateAndTime.getDate();
+  var day = dateAndTime.getUTCDate();
   //+1 because it would start from 0 otherwise (jenaury 0, february 1, ...)
-  var month = dateAndTime.getMonth() + 1;
+  var month = dateAndTime.getUTCMonth() + 1;
   //short date (without year)
   var date = day + "/" + month;
 
   if(showYear){
-    date += "/" + dateAndTime.getFullYear();
+    date += "/" + dateAndTime.getUTCFullYear();
   }
   console.log("timestamp received: " + timestamp);
   console.log("date displayed: " + date);
@@ -55,8 +55,8 @@ function getTime(timestamp){
   //console.log("timestamp.getMonth() + 1: " + timestamp.getMonth() + 1);
   var dateAndTime = new Date(timestamp);
 
-  var hour = dateAndTime.getHours();
-  var minutes = dateAndTime.getMinutes();
+  var hour = dateAndTime.getUTCHours();
+  var minutes = dateAndTime.getUTCMinutes();
   //make two digits for minutes in case it is only one
   if(minutes < 10)
     minutes = "0" + minutes;
