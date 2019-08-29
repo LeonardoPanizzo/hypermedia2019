@@ -137,6 +137,21 @@ p{
   margin-bottom: 1em;
 }
 
+.reserved_event_label{
+  font-weight: bold;
+  font-size: 2em;
+  color: lightgreen;
+  text-shadow:
+     -1px -1px 0 #000,
+      1px -1px 0 #000,
+      -1px 1px 0 #000,
+       1px 1px 0 #000;
+}
+
+.reserved_event_label i{
+  font-size: 1.1em;
+}
+
 .menu_mobile{
   display: none;
 }
