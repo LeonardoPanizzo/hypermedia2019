@@ -28,7 +28,7 @@ router.post('/check', (req,res)=>{
 })
 
 router.post('/signup',(req,res)=>{
-  Loginquery.check(req,body.mail).then(data=>{
+  Loginquery.check(req.body.mail).then(data=>{
     if(data.length>0){
       res.json({message:false})
     }else{
