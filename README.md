@@ -55,7 +55,6 @@ per gli artisti
 
   per evento          /performer/artisticEvent/:id  (get)
       l'id passato nell'url è l'id dell'evento di cui si vogliono sapere gli artisti
-________________________________________________________________________________
 
 NB. per i metodo qui sotto il server prende l'iduser dal cookie che viene passato automaticamente ad ogni query
 
@@ -63,13 +62,14 @@ NB. per i metodo qui sotto il server prende l'iduser dal cookie che viene passat
 per il carrello eventi artistici
     gli eventi di un utente   /reservationArtisticEvent/     (get)
 
+    per inserire un seminario nel carrello  /reservationtArtisticEvent/   (post)
+        nel body bisogna inserire l'id dell'evento artistico e va chiamato "id"
+
+________________________________________________________________________________
     per svuotare il carrello  /reservationArtisticEvent/     (delete)
 
     per cancellare un specifico seminario   /reservationArtisticEvent/artisticEvent (delete)
         nel body bisogna inserire l'id dell'evento e va chiamato "id"
-
-    per inserire un seminario nel carrello  /reservationtArtisticEvent/   (post)
-        nel body bisogna inserire l'id dell'evento artistico e va chiamato "id"
 
     per controllare se è già presente   /reservationArtisticEvent/:id
         dove id è l'id dell'evento artistico
