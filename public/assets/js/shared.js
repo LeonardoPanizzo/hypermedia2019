@@ -46,6 +46,7 @@ function getDate(timestamp, showYear){
 
 function getTime(timestamp){
   console.log("timestamp received: " + timestamp);
+  console.log("timestamp.getHours(): " + timestamp.getHours());
   var dateAndTime = new Date(timestamp);
 
   var hour = dateAndTime.getHours();
