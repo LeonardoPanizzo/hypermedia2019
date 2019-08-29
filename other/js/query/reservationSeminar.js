@@ -19,7 +19,7 @@ const clearElement=(req,res)=>{
 }
 
 const add=(req,res)=>{
-  db('reservationSeminar').insert({iduser: req.cookies.iduser ,idseminar:req.body.id}).then(function(data){
+  db('reservationSeminar').insert({'iduser': req.cookies.iduser ,'idseminar':req.body.id}).then(function(data){
     res.json({message:"done"})
   })
 }
