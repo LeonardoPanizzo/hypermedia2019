@@ -66,15 +66,7 @@ nav button{
 #buttonDeleteAllReservations{
   margin-top: 1em;
 }
-/*
-.hArtEvInList{
-  color: MidnightBlue;
-}
 
-.hSeminInList{
-  color: Teal;
-}
-*/
 p{
   font-size: 1.4em;
   padding-top: 0.4em;
@@ -97,10 +89,6 @@ p{
   border-top: 1px solid dimgray;
   border-bottom: 1px solid dimgray;
   background-color: silver;
-}
-
-.info_book_block{
-  min-width: 12em;
 }
 
 .click_here_what_happens_today{
@@ -171,27 +159,11 @@ p{
 
 .imgCarouselHome img {
   height: 23em;
-  /*max-height: 20em;*/
   width: auto;
 }
 
 .imgCarouselMTopic img {
   height: 20em;
-  width: auto;
-}
-
-.big_image{
-  display: block;
-  width: 40%;
-  height: auto;
-  margin-left: auto;
-  margin-right: auto;
-  float: right;
-  padding: 1em;
-}
-
-#big_image_list{
-  max-height: 18em;
   width: auto;
 }
 
@@ -262,17 +234,6 @@ p{
 }
 
 @media (max-width: 74em){
-  .big_image{
-    width: 60%;
-    float: none;
-  }
-
-  @media (orientation: landscape) {
-    .big_image{
-      height: 20em;
-      width: auto;
-    }
-  }
 
   .toolbar .menu_large_screen{
     display: none;
@@ -300,12 +261,5 @@ p{
   .menu_mobile a h3{
       padding-top: 10px;
     }
-
-}
-
-@media (min-width: 73em){
-  #add_to_cart_button{
-    margin-top: 3em;
-  }
 
 }

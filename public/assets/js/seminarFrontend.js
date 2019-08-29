@@ -1,5 +1,8 @@
 $(document).ready(function(){
   var id =  getIdFromUrlBeforeQuestionMark(DOMAIN_ADDRESS + "/pages/seminar.html");
+
+  manageReservationInfo(id, false);
+
   $.get(DOMAIN_ADDRESS + "/seminar/" + id, function(result){
     var seminar = result[0];
 
