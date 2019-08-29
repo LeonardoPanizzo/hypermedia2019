@@ -39,21 +39,12 @@ function getDate(timestamp, showYear){
   if(showYear){
     date += "/" + dateAndTime.getUTCFullYear();
   }
-  console.log("timestamp received: " + timestamp);
-  console.log("date displayed: " + date);
+
   return date;
 }
 
 
 function getTime(timestamp){
-  console.log("timestamp received: " + timestamp);
-  var tmpProvv = timestamp;
-  console.log("tmpProvv.getFullYear(): " + tmpProvv.getFullYear());
-  //console.log("current date with new Date().toLocaleString(): " + new Date().toLocaleString());
-  //QUESTE 3 MI DANNO ERRORE
-  //console.log("timestamp.getDate(): " + timestamp.getDate());
-  //console.log("timestamp.getFullYear(): " + timestamp.getFullYear());
-  //console.log("timestamp.getMonth() + 1: " + timestamp.getMonth() + 1);
   var dateAndTime = new Date(timestamp);
 
   var hour = dateAndTime.getUTCHours();
@@ -63,8 +54,7 @@ function getTime(timestamp){
     minutes = "0" + minutes;
 
   var time = hour + ":" + minutes;
-  console.log("time displayed: " + time);
-  //console.log("time with data object but with .toLocaleString(): " + dateAndTime.toLocaleString());
+
   return time;
 }
 
