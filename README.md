@@ -36,19 +36,17 @@ per i seminari
       esempio   /seminar/artisticEvent/3
       restituisce i seminari che riguardano l'evento artisco con idevent=3
 
-________________________________________________________________________________
+
 per gli utenti
   login               /user/login        (post)
       nel body viene inserito mail e password chiamati "mail" "pass"
 
   logout              /user/logout       (delete)
 
-  controllo email     /user/check        (post)   
-      nel body viene inserito la mail, chiamata "mail"
-
   signup              /user/signup       (post)
         nel body viene inserito mail, password e nome chiamati "mail" "password" "name"
-________________________________________________________________________________
+
+
 per gli artisti
   tutti               /performer/    (get)
 
