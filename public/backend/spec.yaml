@@ -54,10 +54,13 @@ paths:
             application/json:
               schema:
                 type: array
-                properties:
+                /*properties:
                   type:
                     type: string
-                    format: character varying
+                    format: character varying*/
+                items:
+                  type: string
+                  format: character varying
   /artisticEvent/today:
     get:
       tags:
@@ -119,7 +122,9 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/artisticEvent'
+                type: array
+                items:
+                  $ref: '#/components/schemas/artisticEvent'
         '404':
           description: "invalid input"
   /artisticEvent/performer/{id}:
@@ -143,7 +148,9 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/artisticEvent'
+                type: array
+                items:
+                  $ref: '#/components/schemas/artisticEvent'
         '404':
           description: "invalid input"
   /artisticEvent/sameDay/{id}:
@@ -167,7 +174,9 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/artisticEvent'
+                type: array
+                items:
+                  $ref: '#/components/schemas/artisticEvent'
         '404':
           description: "invalid input"
   /artisticEvent/seminar/{id}:
@@ -247,7 +256,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/artisticEvent'
+                $ref: '#/components/schemas/seminar'
         '404':
           description: "invalid input"
   /seminar/artisticEvent/{id}:
@@ -271,7 +280,75 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/artisticEvent'
+                type: array
+                items:
+                  $ref: '#/components/schemas/seminar'
+        '404':
+          description: "invalid input"
+  /performer:
+    get:
+      tags:
+      - performer
+      summary: "performers available in the database"
+      description: "List of all the performers available in the inventory"
+      operationId: "getPerformer"
+      responses:
+        '200':
+          description: "successful operation"
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/performer'
+  /performer/{id}:
+    get:
+      tags:
+      - performer
+      summary: "get performer by ID"
+      description: "return the information of a specific performer through his ID"
+      operationId: "getPerformerByID"
+      parameters:
+      - name: "id"
+        in: "path"
+        description: "the performer's id of the performer that needs to be fetched"
+        required: true
+        schema:
+          type: integer
+          format: integer
+      responses:
+        '200':
+          description: "successful operation"
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/performer'
+        '404':
+          description: "invalid input"
+  /performer/artisticEvent/{id}:
+    get:
+      tags:
+      - performer
+      summary: "get the performers tha perform in the artistic event"
+      description: "get the information of the performers that plays in the artistic event with the passed ID"
+      operationId: "getPerformerByArtisticEvent"
+      parameters:
+      - name: "id"
+        in: "path"
+        description: "artistic event's id"
+        required: true
+        schema:
+          type: integer
+          format: integer
+      responses:
+        '200':
+          description: "successful operation"
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/performer'
         '404':
           description: "invalid input"
 ________________________________________________________________________________
