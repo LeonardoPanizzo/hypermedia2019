@@ -46,8 +46,9 @@ function getDate(timestamp, showYear){
 
 
 function getTime(timestamp){
-  console.log(timestamp.substring(0, 10));
   console.log("timestamp received: " + timestamp);
+  var tmpProvv = timestamp;
+  console.log("tmpProvv.getFullYear(): " + tmpProvv.getFullYear());
   //console.log("current date with new Date().toLocaleString(): " + new Date().toLocaleString());
   //QUESTE 3 MI DANNO ERRORE
   //console.log("timestamp.getDate(): " + timestamp.getDate());
