@@ -424,6 +424,53 @@ paths:
                     type: boolean
         '400':
           description: "email already in use"
+  /reservationArtisticEvent:
+    get:
+      tags:
+      - reservationArtisticEvent
+      summary: "get reservation of artstic events"
+      description: "get the list with the artistic event booked by the user"
+      operationId: "getReservationArtisticEvent"
+      parameters:
+        - $ref: '#/components/parameters/cookie'
+      responses:
+        '200':
+          description: "successful operation"
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/artisticEvent'
+    post:
+      tags:
+      - reservationArtisticEvent
+      summary: "Add an artistic event to the reservation"
+      description: "Add an artistic event to the reservation"
+      operationId: "addReservationArtisticEvent"
+      parameters:
+        - $ref: '#/components/parameters/cookie'
+      requestBody:
+        description: "A JSON object containing the id of the artistic event to add"
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                id:
+                  type: integer
+                  format: integer
+      responses:
+        '200':
+          description: 'successful operation'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
 ________________________________________________________________________________
   /book:
     get:
