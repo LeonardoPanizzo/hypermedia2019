@@ -41,7 +41,6 @@ function manageReservationInfo(id, isArtisticEvent){
     });
   }
   else{ //if not logged
-    //$('#infoReservationForEventPage').append( buttonGetReservation() );
     $("#buttonGetReservation").click(function(){
         alert("You should log in first!");
         window.location.assign( DOMAIN_ADDRESS + "/pages/login.html");

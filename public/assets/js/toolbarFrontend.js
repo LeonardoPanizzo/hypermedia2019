@@ -1,8 +1,4 @@
 $(document).ready(function(){
-  /*DEPRECATED
-  var logged=document.getElementById("logged");
-  var notlog=document.getElementById("notlog");
-  */
   if(document.cookie){ /* LOGGED IN */
     $('.logged').show();
   }else{ /* NOT LOGGED */

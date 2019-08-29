@@ -13,13 +13,3 @@ $(document).ready(function(){
     }
   });
 })
-
-/*
-$('#allAuthors').append("<div>"+
-"<p class='names_list_authors'>"+
-"<a href=https://hypermedia123456.herokuapp.com/pages/author.html?"+data[i].idauthor+">"+ data[i].name +
-"</a></p>"+
-"<img id='big_image_list' src='../assets/img/author/"+data[i].idauthor+".jpg' alt='"+data[i].name+"'>"+
-"<p class='container center-block col-sm-7'>"+data[i].biography.substring(0,100)+
-"...</p></div>");
-*/

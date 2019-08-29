@@ -121,7 +121,6 @@ function eventInReservations(event, isArtisticEvent){
     idRemoveEvent = PREFIX_ID_REMOVE_SEM;
   }
   var stringToReturn =
-    //"<div class='row border_elem_in_list'>" +
     "<div class='container row border_elem_in_list justify-content-center'>" +
         "<div class='col-sm-5'>" +
           "<p><a href='" + urlEvent + "'>" + event.title +
