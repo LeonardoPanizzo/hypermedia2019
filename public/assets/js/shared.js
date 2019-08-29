@@ -39,7 +39,7 @@ function getDate(timestamp, showYear){
   if(showYear){
     date += "/" + dateAndTime.getFullYear();
   }
-
+  console.log("date displayed: " + date);
   return date;
 }
 
