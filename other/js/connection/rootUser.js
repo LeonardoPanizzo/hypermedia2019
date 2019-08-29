@@ -28,8 +28,17 @@ router.post('/check', (req,res)=>{
 })
 
 router.post('/signup',(req,res)=>{
-  Loginquery.register(req.body);
-  res.json(req.body);
+  Loginquery.check(req,body.mail).then(data=>{
+    if(data.length>0){
+      res.json({message:false})
+    }else{
+      res.json({message:false})
+      Loginquery.register(req.body);
+      res.json({message:true})
+    }
+  })
+  //Loginquery.register(req.body);
+  //res.json(req.body);
 })
 
 module.exports=router;
