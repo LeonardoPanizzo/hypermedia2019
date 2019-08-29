@@ -25,7 +25,7 @@ const add=(req,res)=>{
 }
 
 const check=(req,res)=>{
-  db.select('idseminar','iduser').where('iduser', req.cookies.iduser).andWhere('idseminar', req.params.id).then(function(data){
+  db.select('idseminar','iduser').from('reservationSeminar').where('iduser', req.cookies.iduser).andWhere('idseminar', req.params.id).then(function(data){
     if(data.length>0){
       res.json({message:"true"});
     }else{
