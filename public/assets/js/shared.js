@@ -45,6 +45,7 @@ function getDate(timestamp, showYear){
 
 
 function getTime(timestamp){
+  console.log(timestamp.substring(0, 10));
   console.log("timestamp received: " + timestamp);
   //console.log("timestamp.getDate(): " + timestamp.getDate());
   console.log("timestamp.getFullYear(): " + timestamp.getFullYear());
