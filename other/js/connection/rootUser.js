@@ -32,7 +32,6 @@ router.post('/signup',(req,res)=>{
     if(data.length>0){
       res.json({message:false})
     }else{
-      res.json({message:false})
       Loginquery.register(req.body);
       res.json({message:true})
     }
