@@ -33,9 +33,9 @@ per gli utenti
       nel body viene inserito la mail, chiamata "mail"
   signup              /user/signup       (post)
         nel body viene inserito mail, password e nome chiamati "mail" "password" "name"
-
+________________________________________________________________________________
 per gli artisti
-  tutti               /performer/all    (get)
+  tutti               /performer/    (get)
   per id              /performer/:id    (get)
       esempio   /performer/5
   per evento          /performer/artisticEvent/:id  (get)
