@@ -4,7 +4,7 @@ var cartQuery=require('../query/reservationSeminar.js')
 
 router.get('/', cartQuery.all);
 router.delete('/', cartQuery.clean);
-router.delete('/seminar',cartQuery.clearElement);
+router.delete('/:id',cartQuery.clearElement);
 router.post('/',cartQuery.add);
 router.get('/:id',cartQuery.check);
 
