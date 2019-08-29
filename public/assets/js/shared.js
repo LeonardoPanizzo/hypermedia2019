@@ -48,9 +48,10 @@ function getTime(timestamp){
   console.log(timestamp.substring(0, 10));
   console.log("timestamp received: " + timestamp);
   console.log("current date with new Date().toLocaleString(): " + new Date().toLocaleString());
+  //QUESTE 3 MI DANNO ERRORE
   //console.log("timestamp.getDate(): " + timestamp.getDate());
   //console.log("timestamp.getFullYear(): " + timestamp.getFullYear());
-  console.log("timestamp.getMonth() + 1: " + timestamp.getMonth() + 1);
+  //console.log("timestamp.getMonth() + 1: " + timestamp.getMonth() + 1);
   var dateAndTime = new Date(timestamp);
 
   var hour = dateAndTime.getHours();
@@ -61,6 +62,7 @@ function getTime(timestamp){
 
   var time = hour + ":" + minutes;
   console.log("time displayed: " + time);
+  console.log("time with data object but with .toLocaleString(): " + dateAndTime.toLocaleString());
   return time;
 }
 
