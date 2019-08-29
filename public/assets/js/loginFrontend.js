@@ -21,7 +21,7 @@ $("#buttonLogin").click(function(){
       },
       dataType: 'json',
       success:(data)=>{
-        if(data.loggedin == "true"){
+        if(data.loggedin){
           alert('logged in');
           window.location.replace(DOMAIN_ADDRESS);
         }else{

@@ -6,10 +6,10 @@ router.post('/login', (req,res)=>{
   Loginquery.logIn(req.body.mail, req.body.pass).then(data=>{
     if(data.length>0){
       res.cookie('iduser',data[0].iduser);
-      res.json({loggedin:"true"});
+      res.json({loggedin: true});
     }
     else{
-      res.json({loggedin:"false"});
+      res.json({loggedin: false});
     }
   })
 })

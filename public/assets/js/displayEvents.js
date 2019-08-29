@@ -2,7 +2,7 @@
   If it isArtisticEvent = false => the event is a seminar.
   showType is a boolean.
 */
-function eventInList(event, isArtisticEvent, showType){
+function eventInList(event, isArtisticEvent, showType, showDate){
   var urlEvent;
   if(isArtisticEvent){
     urlEvent = getUrlArtisticEvent(event.idevent);
@@ -23,6 +23,9 @@ function eventInList(event, isArtisticEvent, showType){
     }
     stringToReturn += " - ";
   }
+  if(showDate){
+    stringToReturn += getFullDate(event.dateAndTime) + " at ";
+  }
   stringToReturn +=
     getTime(event.dateAndTime) + ")" +
     "</p>";
@@ -33,15 +36,15 @@ function eventInList(event, isArtisticEvent, showType){
 /*
   showType is a boolean.
 */
-function artisticEventInList(event, showType){
-  return eventInList(event, true, showType);
+function artisticEventInList(event, showType, showDate){
+  return eventInList(event, true, showType, showDate);
 }
 
 /*
   showType is a boolean.
 */
-function seminarInList(event, showType){
-  return eventInList(event, false, showType);
+function seminarInList(event, showType, showDate){
+  return eventInList(event, false, showType, showDate);
 }
 
 /*
@@ -60,20 +63,20 @@ function listEventsOrEmptySign(events, areArtisticEvents, showType, emptySignIsW
     }
     return "<br><p class='empty-sign-style'>" + emptySign + "</p>"; //empty list sign
   }
-  else{
-    return listEvents(events, areArtisticEvents, showType);
+  else{//show date is false because this will always be below a date heading
+    return listEvents(events, areArtisticEvents, showType, false);
   }
 }
 
 //Require events.length != 0
-function listEvents(events, areArtisticEvents, showType){
+function listEvents(events, areArtisticEvents, showType, showDate){
   var stringToReturn = "<div class=marg_top_M>";
   for(var i in events){
     if(areArtisticEvents){
-      stringToReturn += artisticEventInList(events[i], showType);
+      stringToReturn += artisticEventInList(events[i], showType, showDate);
     }
     else {
-      stringToReturn += seminarInList(events[i], showType);
+      stringToReturn += seminarInList(events[i], showType, showDate);
     }
   }
   stringToReturn += "</div>"
@@ -99,7 +102,7 @@ function listEventsDivByDay(artisticEvents, seminars, showType, showArtAndSeminS
       stringToReturn += artisticEventsAndSeminarsSeparately(artEventsInDay, seminarsInDay, true);
     }
     else{
-      stringToReturn += listMixedEvents(artEventsInDay, seminarsInDay);
+      stringToReturn += listMixedEvents(artEventsInDay, seminarsInDay, false);
     }
   }
 
@@ -167,7 +170,7 @@ function sameTypeListEventsDivByDay(events, areArtisticEvents){
     events = events.slice(eventsInDay.length);
     //what to display
     stringToReturn += titleDay(day);
-    stringToReturn += listEvents(eventsInDay, areArtisticEvents, false);
+    stringToReturn += listEvents(eventsInDay, areArtisticEvents, false, false);
   }
   return stringToReturn;
 }
@@ -202,17 +205,17 @@ function artisticEventsAndSeminarsSeparately(artisticEvents, seminars, showTypeA
 }
 
 
-function listMixedEvents(artisticEvents, seminars){
+function listMixedEvents(artisticEvents, seminars, showDate){
   var stringToReturn = "";
   var indexArt = 0;
   var indexSem = 0;
   while(indexArt < artisticEvents.length && indexSem < seminars.length){
     if(artisticEvents[indexArt].dateAndTime <= seminars[indexSem].dateAndTime){
-      stringToReturn += artisticEventInList(artisticEvents[indexArt], true);
+      stringToReturn += artisticEventInList(artisticEvents[indexArt], true, showDate);
       indexArt++;
     }
     else{
-      stringToReturn += seminarInList(seminars[indexSem], true);
+      stringToReturn += seminarInList(seminars[indexSem], true, true, showDate);
       indexSem++;
     }
   }
@@ -221,11 +224,11 @@ function listMixedEvents(artisticEvents, seminars){
     the iteration of the other
   */
   while(indexArt < artisticEvents.length){
-    stringToReturn += artisticEventInList(artisticEvents[indexArt], true);
+    stringToReturn += artisticEventInList(artisticEvents[indexArt], true, showDate);
     indexArt++;
   }
   while(indexSem < seminars.length){
-    stringToReturn += seminarInList(seminars[indexSem], true);
+    stringToReturn += seminarInList(seminars[indexSem], true, showDate);
     indexSem++;
   }
   return stringToReturn;

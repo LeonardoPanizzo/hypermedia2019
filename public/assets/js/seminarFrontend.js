@@ -2,7 +2,7 @@ $(document).ready(function(){
   var id =  getIdFromUrlBeforeQuestionMark(DOMAIN_ADDRESS + "/pages/seminar.html");
   $.get(DOMAIN_ADDRESS + "/seminar/" + id, function(result){
     var seminar = result[0];
-  
+
     $('#orientationInfoAndTitle').append(
       orientationInfoAndTitle("Seminar", seminar.title)
     );
@@ -20,7 +20,7 @@ $(document).ready(function(){
         "<div class='small_header'>" +
         "Artistic events discussed:" +
         "</div>" +
-        listEvents(eventsDiscussed, true, true)
+        listEvents(eventsDiscussed, true, true, true)
       );
     });
 

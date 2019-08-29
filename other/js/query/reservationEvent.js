@@ -27,9 +27,9 @@ const add=(req,res)=>{
 const check=(req,res)=>{
   db.select('iduser','idevent').from('reservationArtisticEvent').where('iduser',req.cookies.iduser).andWhere('idevent', req.params.id).then(function(data){
     if(data.length>0){
-      res.json({message:"true"});
+      res.json({message: true});
     }else{
-      res.json({message:"false"});
+      res.json({message: false});
     }
   })
 }

@@ -2,8 +2,10 @@ $(document).ready(function(){
   var id =  getIdFromUrlBeforeQuestionMark(DOMAIN_ADDRESS + "/pages/artisticEvent.html");
 
   $.get(DOMAIN_ADDRESS + "/reservationArtisticEvent/" + id, function(answer){
-    var alreadyGotReservation = answer.message;
+    alert("answer.message: " + answer.message);
+    var alreadyGotReservation = Boolean(answer.message);
     alert("alreadyGotReservation: " + alreadyGotReservation);
+
     $("#buttonGetReservation").click(function(){
       if(document.cookie){
         if(alreadyGotReservation){
@@ -81,7 +83,7 @@ $(document).ready(function(){
             "<div class='small_header'>" +
             "Seminar about this event:" +
             "</div>" +
-            listEvents(seminars, false, true)
+            listEvents(seminars, false, false, true)
           );
       }
     });
