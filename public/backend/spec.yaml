@@ -54,10 +54,6 @@ paths:
             application/json:
               schema:
                 type: array
-                /*properties:
-                  type:
-                    type: string
-                    format: character varying*/
                 items:
                   type: string
                   format: character varying
@@ -401,8 +397,8 @@ paths:
                 properties:
                   message:
                     type: string
-                  example:
-                    message: "Logged out"
+                    example:
+                      message: "Logged out"
   /user/signup:
     post:
       tags:
@@ -442,6 +438,8 @@ paths:
                 type: array
                 items:
                   $ref: '#/components/schemas/artisticEvent'
+        '400':
+          description: "user not logged"
     post:
       tags:
       - reservationArtisticEvent
@@ -471,6 +469,209 @@ paths:
                 properties:
                   message:
                     type: string
+        '400':
+          description: "user not logged"
+    delete:
+      tags:
+      - reservationArtisticEvent
+      summary: "empty the reservation of the artistic events"
+      description: "empty the reservation of the artistic events"
+      operationId: "emptyReservationArtisticEvent"
+      parameters:
+        - $ref: '#/components/parameters/cookie'
+      responses:
+        '200':
+          description: 'successful operation'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+        '400':
+          description: "user not logged"
+  /reservationtArtisticEvent/{id}:
+    get:
+      tags:
+      - reservationArtisticEvent
+      summary: "check if a specific artistic event is already booked"
+      description: "check if the artistic event whose ID is passed in the path is already booked"
+      operationId: "checkReservationArtisticEvent"
+      parameters:
+        - name: "id"
+          in: "path"
+          description: "artistic event's ID"
+          required: true
+          schema:
+            type: integer
+            format: integer
+        - $ref: '#/components/parameters/cookie'
+      responses:
+        '200':
+          description: "successful operation"
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+        '400':
+          description: "user not logged"
+    delete:
+      tags:
+      - reservationtArtisticEvent
+      summary: "delete the reservation of an artistic event"
+      description: "delete the reservation of the artistic event whose ID is passed in the path"
+      operationId: "deleteRervationArtisticEvent"
+      parameters:
+        - name: "id"
+          in: "path"
+          description: "artistic event's ID"
+          required: true
+          schema:
+            type: integer
+            format: integer
+        - $ref: '#/components/parameters/cookie'
+      responses:
+        '200':
+          description: "successful operation"
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+        '400':
+          description: "user not logged"
+  /reservationSeminar:
+    get:
+      tags:
+      - reservationSeminar
+      summary: "get reservation of seminars"
+      description: "get the list with the seminarst booked by the user"
+      operationId: "getReservationSeminar"
+      parameters:
+        - $ref: '#/components/parameters/cookie'
+      responses:
+        '200':
+          description: "successful operation"
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/seminar'
+        '400':
+          description: "user not logged"
+    post:
+      tags:
+      - reservationSeminar
+      summary: "Add a seminar to the reservation"
+      description: "Add a seminar to the reservation"
+      operationId: "addReservationSeminar"
+      parameters:
+        - $ref: '#/components/parameters/cookie'
+      requestBody:
+        description: "A JSON object containing the id of the artistic event to add"
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                id:
+                  type: integer
+                  format: integer
+      responses:
+        '200':
+          description: 'successful operation'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+        '400':
+          description: "user not logged"
+    delete:
+      tags:
+      - reservationSeminar
+      summary: "empty the reservation of the seminars"
+      description: "empty the reservation of the seminars"
+      operationId: "emptyReservationSeminar"
+      parameters:
+        - $ref: '#/components/parameters/cookie'
+      responses:
+        '200':
+          description: 'successful operation'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+        '400':
+          description: "user not logged"
+  /reservationSeminar/{id}:
+    get:
+      tags:
+      - reservationSemiar
+      summary: "check if a specific seminar is already booked"
+      description: "check if the seminar whose ID is passed in the path is already booked"
+      operationId: "checkReservationSeminar"
+      parameters:
+        - name: "id"
+          in: "path"
+          description: "seminar's ID"
+          required: true
+          schema:
+            type: integer
+            format: integer
+        - $ref: '#/components/parameters/cookie'
+      responses:
+        '200':
+          description: "successful operation"
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+        '400':
+          description: "user not logged"
+    delete:
+      tags:
+      - reservationSeminar
+      summary: "delete the reservation of a seminar"
+      description: "delete the reservation of the seminar whose ID is passed in the path"
+      operationId: "deleteRervationSeminar"
+      parameters:
+        - name: "id"
+          in: "path"
+          description: "seminar's ID"
+          required: true
+          schema:
+            type: integer
+            format: integer
+        - $ref: '#/components/parameters/cookie'
+      responses:
+        '200':
+          description: "successful operation"
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+        '400':
+          description: "user not logged"
 ________________________________________________________________________________
   /book:
     get:
