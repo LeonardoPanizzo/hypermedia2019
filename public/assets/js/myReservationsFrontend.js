@@ -149,12 +149,11 @@ function eventInReservations(event, isArtisticEvent){
 }
 
 $(document).on('click', "[id^=" + PREFIX_ID_REMOVE_ART_EV + "]", function(){
-  deleteReserv("/reservationArtisticEvent/artisticEvent", this.id.substring(PREFIX_ID_REMOVE_ART_EV.length))
+  deleteReserv("/reservationArtisticEvent/", this.id.substring(PREFIX_ID_REMOVE_ART_EV.length))
 })
 
 $(document).on('click', "[id^=" + PREFIX_ID_REMOVE_SEM + "]", function(){
-  var idObjToRemove = this.id.substring(PREFIX_ID_REMOVE_SEM.length);
-  deleteReserv("/reservationSeminar/seminar", this.id.substring(PREFIX_ID_REMOVE_SEM.length))
+  deleteReserv("/reservationSeminar/", this.id.substring(PREFIX_ID_REMOVE_SEM.length))
 })
 
 function deleteAllReservations(){
@@ -171,12 +170,11 @@ function deleteAllReservations(){
   });
 }
 
-function deleteReserv(query, idObjToRemove){
+function deleteReserv(queryMissingId, idObjToRemove){
   $.ajax({
-    url : DOMAIN_ADDRESS + query,
+    url : DOMAIN_ADDRESS + queryMissingId + idObjToRemove,
     type : 'DELETE',
     data : {
-      'id': idObjToRemove,
     },
     dataType : 'json',
   }).then(function(){
