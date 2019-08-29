@@ -65,25 +65,24 @@ per il carrello eventi artistici
     per inserire un seminario nel carrello  /reservationtArtisticEvent/   (post)
         nel body bisogna inserire l'id dell'evento artistico e va chiamato "id"
 
-________________________________________________________________________________
     per svuotare il carrello  /reservationArtisticEvent/     (delete)
 
-    per cancellare un specifico seminario   /reservationArtisticEvent/artisticEvent (delete)
-        nel body bisogna inserire l'id dell'evento e va chiamato "id"
+    per cancellare un specifico seminario   /reservationArtisticEvent/:id (delete) !!!!!!!!!!!!!!!!!
 
-    per controllare se è già presente   /reservationArtisticEvent/:id
+    per controllare se è già presente   /reservationArtisticEvent/:id     (get)
         dove id è l'id dell'evento artistico
+
+________________________________________________________________________________
 
 per il carrello seminari
     i seminari di un utente   /reservationSeminar/           (get)
 
     per svuotare il carrello  /reservationSeminar/           (delete)
 
-    per cancellare un specifico seminario   /reservationSeminar/seminar (delete)
-        nel body bisogna inserire l'id del seminario e va chiamato "id"
-
     per inserire un seminario nel carrello  /reservationtSeminar/   (post)
         nel body bisogna inserire l'id del seminario e va chiamato "id"
 
-    per controllare se è già presente   /reservationSeminar/:id
+    per cancellare un specifico seminario   /reservationSeminar/:id (delete)  !!!!!!!!!!!!!!!!!!!!!!!!!!
+
+    per controllare se è già presente   /reservationSeminar/:id     (get)
             dove id è l'id del seminario
