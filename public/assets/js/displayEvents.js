@@ -59,7 +59,7 @@ function listEventsOrEmptySign(events, areArtisticEvents, showType, emptySignIsW
       emptySign = "none";
     }
     else{
-      emptySign = "<p class='dash_for_empty_sign'>-</p>";
+      emptySign = "_";
     }
     return "<br><p class='empty_sign_style'>" + emptySign + "</p>"; //empty list sign
   }
