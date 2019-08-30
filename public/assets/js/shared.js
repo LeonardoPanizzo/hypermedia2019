@@ -24,20 +24,28 @@ function getFullDate(timestamp){
   return getDate(timestamp, true);
 }
 
-//works properly with both timestamp and date
+function removeZeroAsFirstDigitIfPresent(string){
+  var tmp = string;
+  if(string.charAt(0) == '0'){
+    tmp = tmp.substring(1);
+  }
+  return tmp;
+}
+
 //show year is a boolean
 function getDate(timestamp, showYear){
+  //timestamp format is like: 2019-09-05T18:00...
+  var day = timestamp.substring(8, 10);
 
-  var dateAndTime = new Date(timestamp);
+  var month = timestamp.substring(5, 7);
 
-  var day = dateAndTime.getUTCDate();
-  //+1 because it would start from 0 otherwise (jenaury 0, february 1, ...)
-  var month = dateAndTime.getUTCMonth() + 1;
-  //short date (without year)
+  day = removeZeroAsFirstDigitIfPresent(day);
+  month = removeZeroAsFirstDigitIfPresent(month);
+
   var date = day + "/" + month;
 
   if(showYear){
-    date += "/" + dateAndTime.getUTCFullYear();
+    date += "/" + timestamp.substring(0, 4);
   }
 
   return date;
@@ -45,18 +53,10 @@ function getDate(timestamp, showYear){
 
 
 function getTime(timestamp){
-  console.log("timestamp from database: " + timestamp);
-  var dateAndTime = new Date(timestamp);
-  console.log("date object .toLocaleString(): " + dateAndTime.toLocaleString());
-  console.log("date object .toString(): " + dateAndTime.toString());
+  //timestamp fromat is like: 2019-09-05T18:00...
+  var time = timestamp.substring(11, 16);
 
-  var hour = dateAndTime.getUTCHours();
-  var minutes = dateAndTime.getUTCMinutes();
-  //make two digits for minutes in case it is only one
-  if(minutes < 10)
-    minutes = "0" + minutes;
-
-  var time = hour + ":" + minutes;
+  time = removeZeroAsFirstDigitIfPresent(time);
 
   return time;
 }
