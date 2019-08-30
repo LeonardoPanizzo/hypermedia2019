@@ -45,7 +45,7 @@ function getDate(timestamp, showYear){
 
 
 function getTime(timestamp){
-  console.log("timestamp from database: " + timestamp):
+  console.log("timestamp from database: " + timestamp);
   var dateAndTime = new Date(timestamp);
   console.log("date object .toLocaleString(): " + dateAndTime.toLocaleString());
   console.log("date object .toString(): " + dateAndTime.toString());
