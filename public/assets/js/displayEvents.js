@@ -59,9 +59,9 @@ function listEventsOrEmptySign(events, areArtisticEvents, showType, emptySignIsW
       emptySign = "none";
     }
     else{
-      emptySign = "-";
+      emptySign = "<p class='dash_for_empty_sign'>-</p>";
     }
-    return "<br><p class='empty-sign-style'>" + emptySign + "</p>"; //empty list sign
+    return "<br><p class='empty_sign_style'>" + emptySign + "</p>"; //empty list sign
   }
   else{//show date is false because this will always be below a date heading
     return listEvents(events, areArtisticEvents, showType, false);

@@ -115,9 +115,13 @@ p{
   margin-top: 3em;
 }
 
-.empty-sign-style{
+.empty_sign_style{
   font-style: oblique;
   color: dimgrey;
+}
+
+.dash_for_empty_sign{
+  font-weight: bold;
 }
 
 #buttonGetReservation{
