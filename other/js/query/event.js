@@ -44,7 +44,7 @@ const getByPerformer=(req,res)=>{
 const sameDay=(req,res)=>{
   var t;
   db.select('dateAndTime').from('artisticEvent').where('idevent',req.params.id).then(function(data){
-    t=data[0].dateAndTime;
+    t= new Date(data[0].dateAndTime);
   }).then(function(){
     var m = t.getMonth() + 1;
     var da=t.getFullYear()+'-'+m+'-'+t.getDate()+' 00:00:00';
