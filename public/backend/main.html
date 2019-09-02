@@ -46,7 +46,7 @@
     <p>- Deliverable D0: the web application is accessible at [<a href="https://hypermdia-magatti-panizzo.herokuapp.com">this address</a>](https://hypermdia-magatti-panizzo.herokuapp.com)</p>
     <p>- Deliverable D2: the YAML or JSON file containing the specification of the app API can be found at [<a href="https://hypermdia-magatti-panizzo.herokuapp.com/backend/spec.yaml">this address</a>](https://hypermdia-magatti-panizzo.herokuapp.com/backend/spec.yaml)</p>
     <p>- Deliverable D3: the SwaggerUI page of the same API is available at [<a href="https://hypermedia123456.herokuapp.com/backend/swaggerui">this address</a>](https://hypermedia123456.herokuapp.com/backend/swaggerui) NON ANCORA FATTO</p>
-    <p>- Deliverable D4: the source code of D0 is available as a zip file at [<a href="https://hypermedia123456.herokuapp.com/backend/app.zip">this address</a>](https://hypermedia123456.herokuapp.com/backend/app.zip)</p>
+    <p>- Deliverable D4: the source code of D0 is available as a zip file at [<a href="https://hypermedia123456.herokuapp.com/backend/app.zip">this address</a>](https://hypermedia123456.herokuapp.com/backend/app.zip) NON ANCORA FATTO</p>
     <p>- Deliverable D5: the address of the online source control repository is available at [<a href="https://github.com/LeonardoPanizzo/hypermedia2019">this address</a>](https://github.com/LeonardoPanizzo/hypermedia2019). <br>We hereby declare that this is a private repository and, upon request, we will give access to the instructors.</p>
     <br><br><br>
     <p><h3>>## Specification</h3></p>
@@ -58,20 +58,41 @@
     <br><br><br>
     <p><h3>### API</h3></p>
     <p><h3>#### REST compliance</h3></p>
-    <!-- -->
+    <div>
+      <p>We used REST to show the information about our website and its resources. With REST we enable the client to interact with those resources, for example is possible to create new resources(i.e. the creation of a new user) or to change existing resources(i.e. add/delete of events).<br>
+        With a maturity level 2 of REST API it's possible to invoke the information using the HTTP verbs, it's possible to obtain the information with GET or edit them with POST or DELETE.</p>
+    </div>
     <br><br><br>
     <p><h3>#### OpenAPI Resource models </h3></p>
-    <!-- -->
+    <div>
+      <p>To manage the resources we introduced the follwing model:
+        <ul>
+          <li>artisticEvent</li>
+          <li>performer</li>
+          <li>performs</li>
+          <li>reservationArtisticEvent</li>
+          <li>reservationSeminar</li>
+          <li>seminar</li>
+          <li>users</li>
+        </ul>
+      </p>
+    </div>
     <br><br><br>
     <p><h3>### Data model</h3></p>
-    <img src="./images/ER-model.png">
+    <img src="./images/ER-diagram.png">
     <div>
-      <p>The ER diagram is directly mapped on the OpenAPI, the relationship are kept using external reference to the primary key of the referenced object.</p>
-      <p>For example the cart entity has the IDuser and the ID book in the ER diagram and in the OpenAPI model.</p>
+      <p>The image represents the ER digram used in the data layer of our web application. There is a complete corrispondence between the data model and the API resource.</p>
     </div>
     <br><br><br>
     <p><h3>## Implementation</h3></p>
     <p><h3>### Tools used</h3></p>
+    <div>
+      <p>For the backend part of the application we worked with nodeJS, so we used javascript as language with its framework Express, we also used many package (as seen in the package.json file) to implement various function (i.e cookie-parser for the passing of the cookie between client and server or knex to manage the query to the database)</p>
+    </div>
+    <!-- -->
+    For the backend of the application we used nodeJS, so as language Javascript, with its framework Express,
+    we also used many packages (how it can be seen in the package.json file) to implement various function
+    (i.e. 'bcrypt' package to encrypt sensible data or 'cookie' to use cookies in our website).
     <!-- -->
     <p><h3>### Discussion</h3></p>
     <!-- -->
