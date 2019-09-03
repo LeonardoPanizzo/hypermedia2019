@@ -1,5 +1,5 @@
-const DOMAIN_ADDRESS = 'http://localhost:3000';
-//const DOMAIN_ADDRESS = 'https://hypermdia-magatti-panizzo.herokuapp.com';
+//const DOMAIN_ADDRESS = 'http://localhost:3000';
+const DOMAIN_ADDRESS = 'https://hypermdia-magatti-panizzo.herokuapp.com';
 
 //load the toolbar
 $(function(){
@@ -7,9 +7,9 @@ $(function(){
 });
 
 //if https is not set, set https
-/*if(location.protocol != 'https:'){
+if(location.protocol != 'https:'){
   window.location.replace(window.location.href.replace("http://", "https://"));
-}*/
+}
 
 //Return string with capitalized first letters
 function capitalizeFirstLetter(string) {
