@@ -369,8 +369,8 @@ paths:
               schema:
                 type: object
                 properties:
-                  message:
-                    type: string
+                  loggedin:
+                    type: boolean
         '400':
           description: "password or email incorrect"
   /user/logout:
@@ -395,8 +395,8 @@ paths:
               schema:
                 type: object
                 properties:
-                  loggedin:
-                    type: boolean
+                  message:
+                    type: string
                     example:
                       message: "Logged out"
   /user/signup:
@@ -831,7 +831,14 @@ components:
       content:
         application/json:
           schema:
-            $ref: '#/components/schemas/users'
+            type: object
+            properties:
+              mail:
+                type: string
+              password:
+                type: string
+              name:
+                type: string
     logIn:
       description: "A JSON object containing information to login"
       required: true
