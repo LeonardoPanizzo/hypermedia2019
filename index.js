@@ -17,7 +17,7 @@ app.use(bodyParser.urlencoded({
     extended: false
 }))
 app.use(express.static(__dirname+"/public"));
-
+userR.use(bodyParser.json());
 app.use('/user', userR);
 app.use('/seminar', seminarR);
 app.use('/artisticEvent',eventR)
