@@ -9,7 +9,6 @@ var eventR=require('./other/js/connection/rootEvent.js');
 var performerR=require('./other/js/connection/rootPerformer.js');
 var reservationSeminarR=require('./other/js/connection/rootReservationSeminar.js');
 var reservationEventR=require('./other/js/connection/rootReservationEvent.js');
-var backend=require('./other/js/connection/backend.js');
 
 var app = express();
 app.use(cookieParser());
@@ -24,7 +23,6 @@ app.use('/artisticEvent',eventR)
 app.use('/performer',performerR);
 app.use('/reservationSeminar',reservationSeminarR);
 app.use('/reservationArtisticEvent',reservationEventR);
-app.use('/backend', backend);
 
 var PORT=process.env.PORT || 3000;
 app.listen(PORT, function () {
