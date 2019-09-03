@@ -369,8 +369,8 @@ paths:
               schema:
                 type: object
                 properties:
-                  message:
-                    type: string
+                  loggedin:
+                    type: boolean
         '400':
           description: "password or email incorrect"
   /user/logout:
@@ -491,7 +491,7 @@ paths:
                     type: string
         '400':
           description: "user not logged"
-  /reservationtArtisticEvent/{id}:
+  /reservationArtisticEvent/{id}:
     get:
       tags:
       - reservationArtisticEvent
@@ -521,7 +521,7 @@ paths:
           description: "user not logged"
     delete:
       tags:
-      - reservationtArtisticEvent
+      - reservationArtisticEvent
       summary: "delete the reservation of an artistic event"
       description: "delete the reservation of the artistic event whose ID is passed in the path"
       operationId: "deleteRervationArtisticEvent"
@@ -620,7 +620,7 @@ paths:
   /reservationSeminar/{id}:
     get:
       tags:
-      - reservationSemiar
+      - reservationSeminar
       summary: "check if a specific seminar is already booked"
       description: "check if the seminar whose ID is passed in the path is already booked"
       operationId: "checkReservationSeminar"
@@ -825,12 +825,20 @@ components:
           type: string
           format: character varying
   requestBodies:
-    registrationForm: "A JSON object containing user information"
-    required: true
-    content:
-      application/json:
-        schema:
-          $ref: '#/components/schemas/users'
+    registrationForm:
+      description: "A JSON object containing user information"
+      required: true
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              mail:
+                type: string
+              password:
+                type: string
+              name:
+                type: string
     logIn:
       description: "A JSON object containing information to login"
       required: true
@@ -841,7 +849,8 @@ components:
             properties:
               mail:
                 type: string
-                format: character varying
               pass:
                 type: string
-                format: character varying
+            example:
+              mail: "ale1@hotmail.it"
+              pass: "111111"
