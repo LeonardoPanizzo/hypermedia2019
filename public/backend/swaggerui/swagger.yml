@@ -7,7 +7,7 @@ info:
     email: "leonardo.panizzo@mail.polimi.it"
 servers:
   - description: Url where you can find our website
-    url: https://bova-colombo-hyp2019.herokuapp.com/
+    url: https://hypermdia-magatti-panizzo.herokuapp.com/
 tags:
   - name: "artisticEvent"
     description: "operation regarding the artistic events"
@@ -30,10 +30,10 @@ paths:
       - artisticEvent
       summary: "artisticEvent available in the inventory"
       description: "List of all the artistic events in the inventory"
-      operationId: getArtisticEvent
+      operationId: "getArtisticEvent"
       responses:
         '200':
-          description: Successful response
+          description: "Successful response"
           content:
             application/json:
               schema:
@@ -46,34 +46,632 @@ paths:
       - artisticEvent
       summary: "available types of artistic events"
       description: "List of all the types of artistic event"
-      operationId: getTypes
+      operationId: "getTypes"
       responses:
         '200':
-          description: Successful response
+          description: "Successful response"
           content:
             application/json:
               schema:
                 type: array
-                properties:
-                  type:
-                    type: string
-                    format: character varying
+                items:
+                  type: string
+                  format: character varying
   /artisticEvent/today:
     get:
       tags:
       - artisticEvent
       summary: "artistic events programmed for today"
       description: "list of all artistic events programmed for today"
-      operationId: getArtisticEventToday
+      operationId: "getArtisticEventToday"
       responses:
         '200':
-          description: Successful response
+          description: "Successful response"
           content:
             application/json:
               schema:
                 type: array
                 items:
                   $ref: '#/components/schemas/artisticEvent'
+  /artisticEvent/{id}:
+    get:
+      tags:
+      - artisticEvent
+      summary: "get artistic event by ID"
+      description: "return the information of a specific artistic event through his ID"
+      operationId: "getArtisticEventByID"
+      parameters:
+      - name: "id"
+        in: "path"
+        description: "the artistic event's id of the artistic event that needs to be fetched"
+        required: true
+        schema:
+          type: integer
+          format: integer
+      responses:
+        '200':
+          description: "successful operation"
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/artisticEvent'
+        '404':
+          description: "invalid input"
+  /artisticEvent/type/{type}:
+    get:
+      tags:
+      - artisticEvent
+      summary: "get artistic events by type"
+      description: "return the information about artistic events of a specific type"
+      operationId: "getArtisticEventByType"
+      parameters:
+      - name: "type"
+        in: "path"
+        description: "the type used to filter the artistic events"
+        required: true
+        schema:
+          type: string
+          format: character varying
+      responses:
+        '200':
+          description: "successful operation"
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/artisticEvent'
+        '404':
+          description: "invalid input"
+  /artisticEvent/performer/{id}:
+    get:
+      tags:
+      - artisticEvent
+      summary: "get artistic with a specific performer"
+      description: "return the information of a specific artistic where the performer with a specific ID performs"
+      operationId: "getArtisticEventByPerformer"
+      parameters:
+      - name: "id"
+        in: "path"
+        description: "the performer ID"
+        required: true
+        schema:
+          type: integer
+          format: integer
+      responses:
+        '200':
+          description: "successful operation"
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/artisticEvent'
+        '404':
+          description: "invalid input"
+  /artisticEvent/sameDay/{id}:
+    get:
+      tags:
+      - artisticEvent
+      summary: "get artistic event in the same day"
+      description: "return the information of a specific artistic event that is in the same day as the one with the ID passed in the path"
+      operationId: "getArtisticEventBySameDay"
+      parameters:
+      - name: "id"
+        in: "path"
+        description: "the artistic event's id to find the date of the exibition"
+        required: true
+        schema:
+          type: integer
+          format: integer
+      responses:
+        '200':
+          description: "successful operation"
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/artisticEvent'
+        '404':
+          description: "invalid input"
+  /artisticEvent/seminar/{id}:
+    get:
+      tags:
+      - artisticEvent
+      summary: "get artistic event explaine in the seminar"
+      description: "return the information of a specific artistic event that explained in the seminar with the passed ID"
+      operationId: "getArtisticEventBySeminar"
+      parameters:
+      - name: "id"
+        in: "path"
+        description: "the seminar's ID"
+        required: true
+        schema:
+          type: integer
+          format: integer
+      responses:
+        '200':
+          description: "successful operation"
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/artisticEvent'
+        '404':
+          description: "invalid input"
+  /seminar:
+    get:
+      tags:
+      - seminar
+      summary: "get all the seminars in the inventory"
+      description: "List of all the seminars in the inventory"
+      operationId: "getSeminar"
+      responses:
+        '200':
+          description: "Successful response"
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/seminar'
+  /seminar/today:
+    get:
+      tags:
+      - seminar
+      summary: "seminars programmed for today"
+      description: "list of all the seminars programmed for today"
+      operationId: "getSeminarToday"
+      responses:
+        '200':
+          description: "Successful response"
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/seminar'
+  /seminar/{id}:
+    get:
+      tags:
+      - seminar
+      summary: "get seminar by ID"
+      description: "return the information of a specific seminar through his ID"
+      operationId: "getSeminarByID"
+      parameters:
+      - name: "id"
+        in: "path"
+        description: "the seminar's id of the seminar that needs to be fetched"
+        required: true
+        schema:
+          type: integer
+          format: integer
+      responses:
+        '200':
+          description: "successful operation"
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/seminar'
+        '404':
+          description: "invalid input"
+  /seminar/artisticEvent/{id}:
+    get:
+      tags:
+      - seminar
+      summary: "get the seminar that explain the artistic event with the passed ID"
+      description: "get the information of the seminar that explain the artistic event with the passed ID"
+      operationId: "getSeminarByArtisticEvent"
+      parameters:
+      - name: "id"
+        in: "path"
+        description: "artistic event's id"
+        required: true
+        schema:
+          type: integer
+          format: integer
+      responses:
+        '200':
+          description: "successful operation"
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/seminar'
+        '404':
+          description: "invalid input"
+  /performer:
+    get:
+      tags:
+      - performer
+      summary: "performers available in the database"
+      description: "List of all the performers available in the inventory"
+      operationId: "getPerformer"
+      responses:
+        '200':
+          description: "successful operation"
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/performer'
+  /performer/{id}:
+    get:
+      tags:
+      - performer
+      summary: "get performer by ID"
+      description: "return the information of a specific performer through his ID"
+      operationId: "getPerformerByID"
+      parameters:
+      - name: "id"
+        in: "path"
+        description: "the performer's id of the performer that needs to be fetched"
+        required: true
+        schema:
+          type: integer
+          format: integer
+      responses:
+        '200':
+          description: "successful operation"
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/performer'
+        '404':
+          description: "invalid input"
+  /performer/artisticEvent/{id}:
+    get:
+      tags:
+      - performer
+      summary: "get the performers tha perform in the artistic event"
+      description: "get the information of the performers that plays in the artistic event with the passed ID"
+      operationId: "getPerformerByArtisticEvent"
+      parameters:
+      - name: "id"
+        in: "path"
+        description: "artistic event's id"
+        required: true
+        schema:
+          type: integer
+          format: integer
+      responses:
+        '200':
+          description: "successful operation"
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/performer'
+        '404':
+          description: "invalid input"
+  /user/login:
+    post:
+      tags:
+      - users
+      summary: "login"
+      description: "user login"
+      operationId: "login"
+      requestBody:
+        $ref: '#/components/requestBodies/logIn'
+      responses:
+        '200':
+          description: "successful operation"
+          headers:
+            Set-Cookie:
+              schema:
+                type: string
+                example: iduser=1; Path=/;
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+        '400':
+          description: "password or email incorrect"
+  /user/logout:
+    delete:
+      tags:
+      - users
+      summary: "logout"
+      description: "the user logs out of the session"
+      operationId: "logout"
+      parameters:
+        - $ref: '#/components/parameters/cookie'
+      responses:
+        '200':
+          description: "successful operation"
+          headers:
+            Set-Cookie:
+              schema:
+                type: string
+                example: iduser=1; Path=/;
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                    example:
+                      message: "Logged out"
+  /user/signup:
+    post:
+      tags:
+      - users
+      summary: "signup"
+      description: "register a user in the site"
+      operationId: "signup"
+      requestBody:
+        $ref: '#/components/requestBodies/registrationForm'
+      responses:
+        '201':
+          description: "successful operation"
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: boolean
+        '400':
+          description: "email already in use"
+  /reservationArtisticEvent:
+    get:
+      tags:
+      - reservationArtisticEvent
+      summary: "get reservation of artstic events"
+      description: "get the list with the artistic event booked by the user"
+      operationId: "getReservationArtisticEvent"
+      parameters:
+        - $ref: '#/components/parameters/cookie'
+      responses:
+        '200':
+          description: "successful operation"
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/artisticEvent'
+        '400':
+          description: "user not logged"
+    post:
+      tags:
+      - reservationArtisticEvent
+      summary: "Add an artistic event to the reservation"
+      description: "Add an artistic event to the reservation"
+      operationId: "addReservationArtisticEvent"
+      parameters:
+        - $ref: '#/components/parameters/cookie'
+      requestBody:
+        description: "A JSON object containing the id of the artistic event to add"
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                id:
+                  type: integer
+                  format: integer
+      responses:
+        '200':
+          description: 'successful operation'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+        '400':
+          description: "user not logged"
+    delete:
+      tags:
+      - reservationArtisticEvent
+      summary: "empty the reservation of the artistic events"
+      description: "empty the reservation of the artistic events"
+      operationId: "emptyReservationArtisticEvent"
+      parameters:
+        - $ref: '#/components/parameters/cookie'
+      responses:
+        '200':
+          description: 'successful operation'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+        '400':
+          description: "user not logged"
+  /reservationArtisticEvent/{id}:
+    get:
+      tags:
+      - reservationArtisticEvent
+      summary: "check if a specific artistic event is already booked"
+      description: "check if the artistic event whose ID is passed in the path is already booked"
+      operationId: "checkReservationArtisticEvent"
+      parameters:
+        - name: "id"
+          in: "path"
+          description: "artistic event's ID"
+          required: true
+          schema:
+            type: integer
+            format: integer
+        - $ref: '#/components/parameters/cookie'
+      responses:
+        '200':
+          description: "successful operation"
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+        '400':
+          description: "user not logged"
+    delete:
+      tags:
+      - reservationArtisticEvent
+      summary: "delete the reservation of an artistic event"
+      description: "delete the reservation of the artistic event whose ID is passed in the path"
+      operationId: "deleteRervationArtisticEvent"
+      parameters:
+        - name: "id"
+          in: "path"
+          description: "artistic event's ID"
+          required: true
+          schema:
+            type: integer
+            format: integer
+        - $ref: '#/components/parameters/cookie'
+      responses:
+        '200':
+          description: "successful operation"
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+        '400':
+          description: "user not logged"
+  /reservationSeminar:
+    get:
+      tags:
+      - reservationSeminar
+      summary: "get reservation of seminars"
+      description: "get the list with the seminarst booked by the user"
+      operationId: "getReservationSeminar"
+      parameters:
+        - $ref: '#/components/parameters/cookie'
+      responses:
+        '200':
+          description: "successful operation"
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/seminar'
+        '400':
+          description: "user not logged"
+    post:
+      tags:
+      - reservationSeminar
+      summary: "Add a seminar to the reservation"
+      description: "Add a seminar to the reservation"
+      operationId: "addReservationSeminar"
+      parameters:
+        - $ref: '#/components/parameters/cookie'
+      requestBody:
+        description: "A JSON object containing the id of the artistic event to add"
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                id:
+                  type: integer
+                  format: integer
+      responses:
+        '200':
+          description: 'successful operation'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+        '400':
+          description: "user not logged"
+    delete:
+      tags:
+      - reservationSeminar
+      summary: "empty the reservation of the seminars"
+      description: "empty the reservation of the seminars"
+      operationId: "emptyReservationSeminar"
+      parameters:
+        - $ref: '#/components/parameters/cookie'
+      responses:
+        '200':
+          description: 'successful operation'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+        '400':
+          description: "user not logged"
+  /reservationSeminar/{id}:
+    get:
+      tags:
+      - reservationSeminar
+      summary: "check if a specific seminar is already booked"
+      description: "check if the seminar whose ID is passed in the path is already booked"
+      operationId: "checkReservationSeminar"
+      parameters:
+        - name: "id"
+          in: "path"
+          description: "seminar's ID"
+          required: true
+          schema:
+            type: integer
+            format: integer
+        - $ref: '#/components/parameters/cookie'
+      responses:
+        '200':
+          description: "successful operation"
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+        '400':
+          description: "user not logged"
+    delete:
+      tags:
+      - reservationSeminar
+      summary: "delete the reservation of a seminar"
+      description: "delete the reservation of the seminar whose ID is passed in the path"
+      operationId: "deleteRervationSeminar"
+      parameters:
+        - name: "id"
+          in: "path"
+          description: "seminar's ID"
+          required: true
+          schema:
+            type: integer
+            format: integer
+        - $ref: '#/components/parameters/cookie'
+      responses:
+        '200':
+          description: "successful operation"
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+        '400':
+          description: "user not logged"
 components:
   parameters:
     cookie:
@@ -227,12 +825,13 @@ components:
           type: string
           format: character varying
   requestBodies:
-    registrationForm: "A JSON object containing user information"
-    required: true
-    content:
-      application/json:
-        schema:
-          $ref: '#/components/schemas/users'
+    registrationForm:
+      description: "A JSON object containing user information"
+      required: true
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/users'
     logIn:
       description: "A JSON object containing information to login"
       required: true
@@ -247,3 +846,6 @@ components:
               pass:
                 type: string
                 format: character varying
+            example:
+              mail: "ale1@hotmail.it"
+              pass: "111111"
