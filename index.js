@@ -12,7 +12,7 @@ var reservationEventR=require('./other/js/connection/rootReservationEvent.js');
 
 var app = express();
 app.use(cookieParser());
-aap.use(bodyParser.json());
+app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({
     extended: false
 }))
