@@ -843,7 +843,7 @@ components:
       description: "A JSON object containing information to login"
       required: true
       content:
-        text/plain:
+        application/json:
           schema:
             type: object
             properties:
