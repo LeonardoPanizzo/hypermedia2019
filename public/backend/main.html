@@ -90,13 +90,13 @@
       <div><p><h3>### Discussion</h3></p>
         <ul>
           <li>How did you make sure your web application adheres to the provided OpenAPI specification? Which method did you use to test all APIs endpoints against the expected response?</li>
-          <p>Answer 1</p>
+          <p>We made sure that our web application respects the OpenAPI specification defing precise endpoints for every possible request using the module Express.</p>
           <li>Why do you think your web application adheres to common practices to partition a REST-based web application (static assets vs. application data)</li>
-          <p>answer 2</p>
+          <p>We made accessible only resources present in the public folder using the express.static methos, so it respects the common practice of partition of the web application.</p>
           <li>Describe synthetically why and how did you manage session state, what are the state change triggering actions (e.g., POST to login etc..).</li>
-          <p>answer 3</p>
+          <p>The magament of the session is made with a cookie containing the information about the user that is created in the server when the user with a POST request login in the web application, the cookie is then passed using the module cookie-parser. In the same way the session is closed when a user makes a DELETE request where the cookie is deleted.</p>
           <li>Which technology did you use (relational or a no-SQL database) for managing the data model?</li>
-          <p>answer 4</p>
+          <p>For the data layer we used a relational database with the support of PostgreSQL, to connect with the database with our project we used KNEX.</p>
         </ul>
       </div>
       <br>

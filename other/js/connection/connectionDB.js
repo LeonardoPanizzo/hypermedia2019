@@ -1,15 +1,14 @@
 var knex = require('knex')({
-/*
+  /*
   client: 'pg',
   connection: {
     host : '127.0.0.1',
     user : 'postgres',
-    //password : '123456789',
-    password : '290396',
+    password : '123456789',
+    //password : '290396',
     database : 'aaaa',
     port:5432
-  }
-  */
+  }*/
   client: 'pg',
   connection: {
     host : 'ec2-54-247-170-5.eu-west-1.compute.amazonaws.com',
