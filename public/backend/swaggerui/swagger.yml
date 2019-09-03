@@ -842,10 +842,8 @@ components:
             properties:
               mail:
                 type: string
-                format: character varying
               pass:
                 type: string
-                format: character varying
             example:
               mail: "ale1@hotmail.it"
               pass: "111111"
