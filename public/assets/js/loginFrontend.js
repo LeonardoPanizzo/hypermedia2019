@@ -15,7 +15,11 @@ $("#buttonLogin").click(function(){
     $.ajax({
       url: DOMAIN_ADDRESS+'/user/login',
       type: 'POST',
-      data:$("#loginform").serialize(),
+      data:{
+        'mail': email,
+        'pass': pass,
+      },
+      dataType: 'json',
       success:(data)=>{
         if(data.loggedin){
           alert('logged in');
