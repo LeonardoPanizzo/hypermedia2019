@@ -95,8 +95,6 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/artisticEvent'
-        '404':
-          description: "invalid input"
   /artisticEvent/type/{type}:
     get:
       tags:
