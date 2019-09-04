@@ -4,9 +4,9 @@
     <title>backend documentation</title>
   </head>
   <body>
-    <p><h2># Documentation of the Backend part</h2></p>
-    <p><h3>> Deliverable D1</h3></p>
-    <p><h3>## General group information</h3></p>
+    <h2># Documentation of the Backend part</h2>
+    <h3>Deliverable D1</h3>
+    <h3>## General group information</h3>
     <table>
       <tr>
         <th>Member n.</th>
@@ -43,7 +43,7 @@
     </table>
     <br>
     <div>
-      <p><h3>## Links to other deliverables</h3></p>
+      <h3>## Links to other deliverables</h3>
       <ul>
       <li>Deliverable D0: the web application is accessible at [<a href="https://hypermdia-magatti-panizzo.herokuapp.com">this address</a>](https://hypermdia-magatti-panizzo.herokuapp.com)</li>
       <li>Deliverable D2: the YAML or JSON file containing the specification of the app API can be found at [<a href="https://hypermdia-magatti-panizzo.herokuapp.com/backend/spec.yaml">this address</a>](https://hypermdia-magatti-panizzo.herokuapp.com/backend/spec.yaml)</li>
@@ -53,19 +53,19 @@
       </ul>
     </div>
     <br>
-    <div><p><h3>>## Specification</h3></p>
-      <div><p><h3>### Web Architecture</h3></p>
+    <div><h3>## Specification</h3>
+      <div><h3>### Web Architecture</h3>
         <img src="./images/components.png">
         <p>To ensure that HTML is not rendered on the server side we built the backend side that can only send data in json format, the data will be rendered and used by the js file in the frontend that made the request.</p>
       </div>
     </div>
     <br>
-    <div><p><h3>### API</h3></p>
-      <div><p><h3>#### REST compliance</h3></p>
-        <p>We used REST to show the information about our website and its resources. With REST we enable the client to interact with those resources, for example is possible to create new resources(i.e. the creation of a new user) or to change existing resources(i.e. add/delete of reservation).<br>With a maturity level 2 of REST API it's possible to invoke the information using the HTTP verbs, it's possible to obtain the information with GET or edit them with POST or DELETE.</p>
+    <div><h3>### API</h3>
+      <div><h3>#### REST compliance</h3>
+        <p>We used REST to show the information about our website and its resources. With REST we enable the client to interact with those resources, for example is possible to create new resources(i.e. the creation of a new user) or to change existing resources(i.e. add/delete reservation).<br>With a maturity level 2 of REST API it's possible to invoke the information using the HTTP verbs, it's possible to obtain the information with GET or edit them with POST or DELETE.</p>
       </div>
       <br>
-      <div><p><h3>#### OpenAPI Resource models </h3></p>
+      <div><h3>#### OpenAPI Resource models </h3>
         <p>To manage the resources we introduced the follwing model:
           <ul>
             <li>artisticEvent</li>
@@ -79,17 +79,17 @@
         </p>
       </div>
       <br>
-      <div><p><h3>### Data model</h3></p>
+      <div><h3>### Data model</h3>
         <img src="./images/ER-diagram.png">
         <p>The image represents the ER digram used in the data layer of our web application. There is a great corrispondence between the data model and the API resource, the only difference is the entity "performs" that is used to manage a N to N relationship.</p>
       </div>
     </div>
     <br>
-    <div><p><h3>## Implementation</h3></p>
-      <div><p><h3>### Tools used</h3></p>
-        <p>For the backend part of the application we worked with nodeJS, so we used javascript as language with its framework Express, we also used many package (as seen in the package.json file) to implement various function (i.e cookie-parser for the passing of the cookie between client and server or knex to manage the query to the database)</p>
+    <div><h3>## Implementation</h3>
+      <div><h3>### Tools used</h3>
+        <p>For the backend part of the application we worked with nodeJS, so we used javascript as language with its framework Express, we also used many package (as seen in the package.json file) to implement various function (i.e cookie-parser for the passing of the cookie between client and server or knex to manage the query to the database).</p>
       </div>
-      <div><p><h3>### Discussion</h3></p>
+      <div><h3>### Discussion</h3>
         <ul>
           <li>How did you make sure your web application adheres to the provided OpenAPI specification? Which method did you use to test all APIs endpoints against the expected response?</li>
           <p>We made sure that our web application respects the OpenAPI specification defing precise endpoints for every possible request using the module Express.</p>
@@ -101,20 +101,21 @@
           <p>For the data layer we used a relational database with the support of PostgreSQL, to connect with the database with our project we used KNEX.</p>
         </ul>
       </div>
-      <br>
-      <p><h3>## Other information</h3></p>
-      <div><p><h3>### Task assignment</h3></p>
+    </div>
+    <br>
+    <div><h3>## Other information</h3>
+      <div><h3>### Task assignment</h3>
         <ul>
-          <li>Magatti Nicholas worked mainly on the frontend part: on HTML (80%), CSS (100%), PostgreSQL(50%), heroku (50%), frontend part of javascript (80%), backend part of javascript (20%) and documentation (50%)</li>
-          <li>Panizzo Leonardo worked mainly on the backend part: on HTML (20%), postgreSQL(50%), OpenAPI(100%), heroku (50%), frontend part of javascript (20%), backend part of javascript (80%) and documentation (50%)</li>
+          <li>Magatti Nicholas worked mainly on the frontend part: on HTML (80%), CSS (100%), PostgreSQL(50%), heroku (50%), frontend part of javascript (80%), backend part of javascript (20%) and documentation (50%).</li>
+          <li>Panizzo Leonardo worked mainly on the backend part: on HTML (20%), postgreSQL(50%), OpenAPI(100%), heroku (50%), frontend part of javascript (20%), backend part of javascript (80%) and documentation (50%).</li>
         </ul>
       </div>
       <br>
-      <div><p><h3>### Analysis of existing API</h3></p>
-        <p>As an example on how to create the model to use we used <a href="https://api.itbook.store/">this API</a> and <a href="https://jsonapi.org/examples/">this API</a>, for the magament of the session and for the managment of the reservation we used <a href="https://petstore.swagger.io/">this API</a></p>
+      <div><h3>### Analysis of existing API</h3>
+        <p>As an example on how to create the model to use we used <a href="https://api.itbook.store/">this API</a> and <a href="https://jsonapi.org/examples/">this API</a>, for the magament of the session and for the managment of the reservation we used <a href="https://petstore.swagger.io/">this API</a>.</p>
       </div>
       <br>
-      <div><p><h3>### Learning outcome What was the most important thing all the members have learned while developing this part of the project, what questions remained unanswered, how you will use what you've learned in your everyday life?</h3></p>
+      <div><h3>### Learning outcome What was the most important thing all the members have learned while developing this part of the project, what questions remained unanswered, how you will use what you've learned in your everyday life?</h3>
         <ul>
           <li>Magatti Nicholas improved his skills with javascript concerning the frontend part of websites, also learning to write code that, compared to the previous Hypermedia Applications project, is more scalable and maintainable. He also learnt how to properly manage date and time with both SQL and javascript.</li>
           <li>Panizzo Leonardo learned to write SQL query, javascript to interact with the HTML, to interact with the database and with the mana of a session and now has a practical experience in the creation and the management of a database but wanted to know more about caching and the security protocol.</li>
