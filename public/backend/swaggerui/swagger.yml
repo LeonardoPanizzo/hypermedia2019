@@ -119,8 +119,6 @@ paths:
                 type: array
                 items:
                   $ref: '#/components/schemas/artisticEvent'
-        '404':
-          description: "invalid input"
   /artisticEvent/performer/{id}:
     get:
       tags:
@@ -145,8 +143,6 @@ paths:
                 type: array
                 items:
                   $ref: '#/components/schemas/artisticEvent'
-        '404':
-          description: "invalid input"
   /artisticEvent/sameDay/{id}:
     get:
       tags:
@@ -171,8 +167,6 @@ paths:
                 type: array
                 items:
                   $ref: '#/components/schemas/artisticEvent'
-        '404':
-          description: "invalid input"
   /artisticEvent/seminar/{id}:
     get:
       tags:
@@ -195,8 +189,6 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/artisticEvent'
-        '404':
-          description: "invalid input"
   /seminar:
     get:
       tags:
@@ -251,8 +243,6 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/seminar'
-        '404':
-          description: "invalid input"
   /seminar/artisticEvent/{id}:
     get:
       tags:
@@ -277,8 +267,6 @@ paths:
                 type: array
                 items:
                   $ref: '#/components/schemas/seminar'
-        '404':
-          description: "invalid input"
   /performer:
     get:
       tags:
@@ -317,8 +305,6 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/performer'
-        '404':
-          description: "invalid input"
   /performer/artisticEvent/{id}:
     get:
       tags:
@@ -343,8 +329,6 @@ paths:
                 type: array
                 items:
                   $ref: '#/components/schemas/performer'
-        '404':
-          description: "invalid input"
   /user/login:
     post:
       tags:
