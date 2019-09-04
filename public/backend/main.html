@@ -44,11 +44,13 @@
     <br>
     <div>
       <p><h3>## Links to other deliverables</h3></p>
-      <p>- Deliverable D0: the web application is accessible at [<a href="https://hypermdia-magatti-panizzo.herokuapp.com">this address</a>](https://hypermdia-magatti-panizzo.herokuapp.com)</p>
-      <p>- Deliverable D2: the YAML or JSON file containing the specification of the app API can be found at [<a href="https://hypermdia-magatti-panizzo.herokuapp.com/backend/spec.yaml">this address</a>](https://hypermdia-magatti-panizzo.herokuapp.com/backend/spec.yaml)</p>
-      <p>- Deliverable D3: the SwaggerUI page of the same API is available at [<a href="https://hypermdia-magatti-panizzo.herokuapp.com/backend/swaggerui">this address</a>](https://hypermdia-magatti-panizzo.herokuapp.com/backend/swaggerui)</p>
-      <p>- Deliverable D4: the source code of D0 is available as a zip file at [<a href="https://hypermdia-magatti-panizzo.herokuapp.com/backend/app.zip">this address</a>](https://hypermdia-magatti-panizzo.herokuapp.com/backend/app.zip)</p>
-      <p>- Deliverable D5: the address of the online source control repository is available at [<a href="https://github.com/LeonardoPanizzo/hypermedia2019">this address</a>](https://github.com/LeonardoPanizzo/hypermedia2019).<br>We hereby declare that this is a private repository and, upon request, we will give access to the instructors.</p>
+      <ul>
+      <li>Deliverable D0: the web application is accessible at [<a href="https://hypermdia-magatti-panizzo.herokuapp.com">this address</a>](https://hypermdia-magatti-panizzo.herokuapp.com)</li>
+      <li>Deliverable D2: the YAML or JSON file containing the specification of the app API can be found at [<a href="https://hypermdia-magatti-panizzo.herokuapp.com/backend/spec.yaml">this address</a>](https://hypermdia-magatti-panizzo.herokuapp.com/backend/spec.yaml)</li>
+      <li>Deliverable D3: the SwaggerUI page of the same API is available at [<a href="https://hypermdia-magatti-panizzo.herokuapp.com/backend/swaggerui">this address</a>](https://hypermdia-magatti-panizzo.herokuapp.com/backend/swaggerui)</li>
+      <li>Deliverable D4: the source code of D0 is available as a zip file at [<a href="https://hypermdia-magatti-panizzo.herokuapp.com/backend/app.zip">this address</a>](https://hypermdia-magatti-panizzo.herokuapp.com/backend/app.zip)</li>
+      <li>Deliverable D5: the address of the online source control repository is available at [<a href="https://github.com/LeonardoPanizzo/hypermedia2019">this address</a>](https://github.com/LeonardoPanizzo/hypermedia2019).<br>We hereby declare that this is a private repository and, upon request, we will give access to the instructors.</li>
+      </ul>
     </div>
     <br>
     <div><p><h3>>## Specification</h3></p>
@@ -60,7 +62,7 @@
     <br>
     <div><p><h3>### API</h3></p>
       <div><p><h3>#### REST compliance</h3></p>
-        <p>We used REST to show the information about our website and its resources. With REST we enable the client to interact with those resources, for example is possible to create new resources(i.e. the creation of a new user) or to change existing resources(i.e. add/delete of events).<br>With a maturity level 2 of REST API it's possible to invoke the information using the HTTP verbs, it's possible to obtain the information with GET or edit them with POST or DELETE.</p>
+        <p>We used REST to show the information about our website and its resources. With REST we enable the client to interact with those resources, for example is possible to create new resources(i.e. the creation of a new user) or to change existing resources(i.e. add/delete of reservation).<br>With a maturity level 2 of REST API it's possible to invoke the information using the HTTP verbs, it's possible to obtain the information with GET or edit them with POST or DELETE.</p>
       </div>
       <br>
       <div><p><h3>#### OpenAPI Resource models </h3></p>
@@ -79,7 +81,7 @@
       <br>
       <div><p><h3>### Data model</h3></p>
         <img src="./images/ER-diagram.png">
-        <p>The image represents the ER digram used in the data layer of our web application. There is a complete corrispondence between the data model and the API resource.</p>
+        <p>The image represents the ER digram used in the data layer of our web application. There is a great corrispondence between the data model and the API resource, the only difference is the entity "performs" that is used to manage a N to N relationship.</p>
       </div>
     </div>
     <br>
@@ -94,7 +96,7 @@
           <li>Why do you think your web application adheres to common practices to partition a REST-based web application (static assets vs. application data)</li>
           <p>We made accessible only resources present in the public folder using the express.static methos, so it respects the common practice of partition of the web application.</p>
           <li>Describe synthetically why and how did you manage session state, what are the state change triggering actions (e.g., POST to login etc..).</li>
-          <p>The magament of the session is made with a cookie containing the information about the user that is created in the server when the user with a POST request login in the web application, the cookie is then passed using the module cookie-parser. In the same way the session is closed when a user makes a DELETE request where the cookie is deleted.</p>
+          <p>The magament of the session is made with a cookie, containing the information about the user, that is created in the server when the user with a POST request login in the web application, the cookie is then passed to the client using the module cookie-parser. In the same way the session is closed when a user makes a DELETE request logout where the cookie is deleted.</p>
           <li>Which technology did you use (relational or a no-SQL database) for managing the data model?</li>
           <p>For the data layer we used a relational database with the support of PostgreSQL, to connect with the database with our project we used KNEX.</p>
         </ul>
