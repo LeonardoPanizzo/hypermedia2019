@@ -13,8 +13,6 @@ tags:
     description: "operation regarding the artistic events"
   - name: "performer"
     description: "operation regarding the performers"
-  - name: "performs"
-    description: "operation regarding who performs where"
   - name: "reservationArtisticEvent"
     description: "operation regarding the artistic events reserved by the users"
   - name: "reservationSeminar"
@@ -731,18 +729,6 @@ components:
         details: "Against The Current (often abbreviated as ATC) is an American pop rock band based in Poughkeepsie, New York, and formed in 2011. More specifically, they play various variations of pop and rock, going from pure pop to pop punk and alternative rock. Against the Current was formed in early 2011 by Dan Gow, Will Ferri, and Jeremy Rompala and was later joined by Chrissy Costanza in the summer of 2011 after being introduced to Gow, Ferri, and Rompala through a mutual friend."
         achievements: ""
         shortdescription: "American rock pop band"
-    performs:
-      type: object
-      properties:
-        idperformer:
-          type: integer
-          format: integer
-        idevent:
-          type: integer
-          format: integer
-      example:
-        idperformer: 3
-        idevent: 2
     reservationArtisticEvent:
       type: object
       properties:
