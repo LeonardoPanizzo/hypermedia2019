@@ -7,6 +7,8 @@ $(function(){
 });
 
 //if https is not set, set https
+//warning: this function is only for the real website;
+//          so it must be commented during localhost testing.
 if(location.protocol != 'https:'){
   window.location.replace(window.location.href.replace("http://", "https://"));
 }
@@ -89,6 +91,7 @@ function orientationInfoAndTitle(multipleTopic, nameOfSpecificTopic){
   return stringToReturn;
 }
 
+//assuming photos are named as 1.jpg, 2.jpg, ..., n.jpg
 function carouselForMTopics(srcImages, infoForBlindPeople){
 
   //for first picture to be shown
@@ -98,7 +101,7 @@ function carouselForMTopics(srcImages, infoForBlindPeople){
   var stringToReturn =
     "<div id='carouselMTopic' class='container col-sm-8 marg_top_M carousel slide' data-ride='carousel'>" +
        "<div class='carousel-inner imgCarouselMTopic'>";
-  for(var i = 1; i <= 3; i++){
+  for(var i = 1; urlExists(srcImages + "/" + i + ".jpg"); i++){
     if(i > 1){
       stringToReturn += DIV_NON_ACTIVE;
     }
@@ -110,7 +113,6 @@ function carouselForMTopics(srcImages, infoForBlindPeople){
             "alt='Slide number " + i + " representing the " + infoForBlindPeople + "'>" +
         "</div>";
   }
-
   stringToReturn +=
       "</div>" +
        "<a class='carousel-control-prev' href='#carouselMTopic' role='button' data-slide='prev'>" +
@@ -124,6 +126,13 @@ function carouselForMTopics(srcImages, infoForBlindPeople){
      "</div>";
 
    return stringToReturn;
+}
+
+function urlExists(url){
+    var http = new XMLHttpRequest();
+    http.open('HEAD', url, false);
+    http.send();
+    return http.status!=404;
 }
 
 function dateTimePlaceInfo(event){
