@@ -1,3 +1,7 @@
+/*
+Script that appends the list of all the events planned for today to the
+repsective web page.
+*/
 $(document).ready(function(){
   var artisticEvent;
   var seminars;

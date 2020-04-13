@@ -1,3 +1,7 @@
+/*
+Script that shows the list of all the different types of events as
+clickable items to get the list of the events of that type.
+*/
 $(document).ready(function(){
 
   const PREFIX_PATH = DOMAIN_ADDRESS + "/pages/eventsOfSpecifiedType.html";

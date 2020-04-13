@@ -1,5 +1,5 @@
 $(document).ready(function(){
-  var id =  getIdFromUrlBeforeQuestionMark(DOMAIN_ADDRESS + "/pages/artisticEvent.html");
+  var id =  getIdFromUrl();
 
   manageReservationInfo(id, true);
 
@@ -22,7 +22,7 @@ $(document).ready(function(){
     );
 
     $.get(DOMAIN_ADDRESS + "/artisticEvent/sameDay/" + id, function(eventsSameDay){
-  
+
         $('#otherEventsSameDay').append(
           "<div class='small_header'>" +
           "Artistic Events in the Same Day:" +

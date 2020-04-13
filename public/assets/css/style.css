@@ -187,7 +187,6 @@ p{
 }
 
 .add_remove_btn_reserv button{
-  /*margin: 1em;*/
   margin-top: 3em;
 }
 
@@ -211,7 +210,6 @@ p{
 .checkbox_larger{
   width: 1.7em;
   height: 1.7em;
-  /*margin-left: 0.4em;*/
 }
 
 @media (max-width: 36em) {

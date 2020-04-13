@@ -1,5 +1,9 @@
+/*
+Script that fills the page of a specific performer with all the
+required information
+*/
 $(document).ready(function(){
-  var id =  getIdFromUrlBeforeQuestionMark(DOMAIN_ADDRESS + "/pages/performer.html");
+  var id =  getIdFromUrl();
   var infoForBlindPeople;
   var thisGroupOrArtist;
 
@@ -40,7 +44,7 @@ $(document).ready(function(){
     $('#detailsPerformer').append(
       "<div class='small_header'>Details</div>" +
       "<p>" + performer.details + "</p>"
-    );//
+    );
     $.get(DOMAIN_ADDRESS + "/artisticEvent/performer/" + id, function(eventsInWhichPerforms){
       $('#performsIn').append(
         "<div class='small_header'>" +

@@ -1,3 +1,7 @@
+/*
+Script that fills the calendar page with the list of all the
+events listed by date.
+*/
 $(document).ready(function(){
 
   var artisticEvents;
@@ -28,6 +32,10 @@ $(document).ready(function(){
 
 })
 
+/*
+Sends on the page of the list of events programmed for the current day
+when clicking on the resepctive button.
+*/
 $("#buttonEventsToday").click(function(){
   window.location.assign(DOMAIN_ADDRESS + "/pages/eventsToday.html");
 })

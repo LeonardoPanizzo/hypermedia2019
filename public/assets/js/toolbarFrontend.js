@@ -1,4 +1,7 @@
+//Scripts and functions for the toolbar.
+
 $(document).ready(function(){
+  //show what must be shown based on the fact the user is logged in or not
   if(document.cookie){ /* LOGGED IN */
     $('.logged').show();
   }else{ /* NOT LOGGED */
@@ -19,7 +22,7 @@ function menuForMobileOnClick() {
  }
 }
 
-/*make the menu for mobile disappear when the user whidens the screen enough
+/*make the menu for mobile disappear when the user widens the screen enough
   to go to the normal view with colored buttons etc */
 window.addEventListener("resize", function() {
     if (window.matchMedia("(min-width: 74em)").matches) {
@@ -30,6 +33,7 @@ window.addEventListener("resize", function() {
     }
 });
 
+//Logout button listener
 $(".logout_button").click(function(){
   $.ajax({
     url:DOMAIN_ADDRESS+'/user/logout',

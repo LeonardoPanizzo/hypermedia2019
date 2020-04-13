@@ -1,5 +1,9 @@
+/*
+Script that fills the page of a specific seminar with all the
+required information
+*/
 $(document).ready(function(){
-  var id =  getIdFromUrlBeforeQuestionMark(DOMAIN_ADDRESS + "/pages/seminar.html");
+  var id =  getIdFromUrl();
 
   manageReservationInfo(id, false);
 

@@ -1,3 +1,6 @@
+/*
+Script that appends the list of all the performers to the repsective web page.
+*/
 $(document).ready(function(){
   //get all the perfromers
   $.get( DOMAIN_ADDRESS + "/performer" , function(allPerformers){

@@ -1,10 +1,12 @@
+//Script for the signup page.
 $(document).ready(function(){
-  if(document.cookie){
+  if(document.cookie){ // if already logged in
     alert('you are already logged in');
     window.location.replace(DOMAIN_ADDRESS);
   }
 })
 
+//listener on button to confirm login
 $("#buttonLogin").click(function(){
   let email=$("#email").val();
   email=email.toLowerCase();

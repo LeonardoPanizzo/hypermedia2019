@@ -1,10 +1,16 @@
+//Script for the signup page.
 $(document).ready(function(){
+  /*
+  Check the user is not already logged:
+  in that case, send them on the home page.
+  */
   if(document.cookie){
     alert('you are already logged in');
     window.location.replace(DOMAIN_ADDRESS);
   }
 })
 
+// When the user clicks to confirm the operation
 $("#buttonSignUp").click(function(){
   let email=$("#email").val();
   email=email.toLowerCase();

@@ -1,7 +1,7 @@
 $(document).ready(function(){
   var areArtisticEvents;
   var query;
-  var type = getIdFromUrlBeforeQuestionMark(DOMAIN_ADDRESS + "/pages/eventsOfSpecifiedType.html");
+  var type = getIdFromUrl();
   var appendToTitle;
   //set the boolean 'areArtisticEvents'
   if(type === "seminar") {

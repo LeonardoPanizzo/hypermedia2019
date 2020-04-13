@@ -1,6 +1,16 @@
 /*
-  If it isArtisticEvent = false => the event is a seminar.
-  showType is a boolean.
+File containing functions for displaying of events in different ways.
+*/
+
+/*
+Rerturns html code as a string representing an event in a list of events.
+
+Parameters:
+  event: event object retrieved from the database
+  isArtisticEvent: boolean that indicates if the event is an artistic event. if
+              it is false, this means the event is a seminar
+  showType: boolean that indicates if the type of the event should be shown
+  showDate: boolean that indicates if the date of the event should be shown
 */
 function eventInList(event, isArtisticEvent, showType, showDate){
   var urlEvent;
@@ -34,23 +44,43 @@ function eventInList(event, isArtisticEvent, showType, showDate){
 }
 
 /*
-  showType is a boolean.
+Rerturns html code as a string representing an artistic event in a list of
+events.
+
+Parameters:
+  event: artistic event object retrieved from the database
+  showType: boolean that indicates if the type of the event should be shown
+  showDate: boolean that indicates if the date of the event should be shown
 */
 function artisticEventInList(event, showType, showDate){
   return eventInList(event, true, showType, showDate);
 }
 
 /*
-  showType is a boolean.
+Rerturns html code as a string representing a seminar in a list of
+events.
+
+Parameters:
+  event: seminar object retrieved from the database
+  showType: boolean that indicates if the type of the seminar should be shown
+  showDate: boolean that indicates if the date of the seminar should be shown
 */
 function seminarInList(event, showType, showDate){
   return eventInList(event, false, showType, showDate);
 }
 
 /*
-  Return string to append with list of events if not empty,
-  otherwise return a string that represents an empty list.
-  "areArtisticEvents" is a boolean (if false => list of seminars).
+Returns html code a string with list of events if not empty, otherwise return a
+string readable for users that represents an empty list.
+The events must be all artistic events or all seminars.
+
+Parameters:
+    events: array of events as objects retrieved from the database
+    areArtisticEvents: boolean that is true if all the events are artistic
+          events, false if they are all seminars
+    showType: boolean that indicates if the type of the events should be shown
+    emptySignIsWordNone: boolean that is true if the empty list should be
+          represented with the word "none", false if the sign to use is "_"
 */
 function listEventsOrEmptySign(events, areArtisticEvents, showType, emptySignIsWordNone){
   if(events.length === 0){
@@ -68,7 +98,16 @@ function listEventsOrEmptySign(events, areArtisticEvents, showType, emptySignIsW
   }
 }
 
-//Require events.length != 0
+/*
+Returns html code as string representing a list of events.
+
+Parameters:
+  events: non-empty array of events as objects retrieved from the database
+  areArtisticEvents:  boolean that is true if all the events are artistic
+        events, false if they are all seminars
+  showType: boolean that indicates if the type of the events should be shown
+  showDate: boolean that indicates if the date of the event should be shown
+*/
 function listEvents(events, areArtisticEvents, showType, showDate){
   var stringToReturn = "<div class=marg_top_M>";
   for(var i in events){
@@ -83,7 +122,18 @@ function listEvents(events, areArtisticEvents, showType, showDate){
   return stringToReturn;
 }
 
+/*
+Returns html code as string representing a list of events divided by day,
+with the indication of the day of each subgroup of events.
 
+Parameters:
+  artisticEvents: array of artistic events in the form of objects retrieved from
+        the database
+  seminars: array of seminars in the form of objects retrieved from the database
+  showType: boolean that indicates if the type of the events should be shown
+  showArtAndSeminSeparate: boolean that indicates if artistic events and
+        seminars should be shown separately or not
+*/
 function listEventsDivByDay(artisticEvents, seminars, showType, showArtAndSeminSeparate){
   var stringToReturn = "";
   var day;
@@ -108,9 +158,16 @@ function listEventsDivByDay(artisticEvents, seminars, showType, showArtAndSeminS
 
   return stringToReturn;
 }
+/*
+Given an array of artistic events and one of seminars, both ordered by date,
+returns the first date in chronological order, if there is one.
+Returns null if both arrays are empty.
 
-//Require both arrays ordered by date.
-//Return null if both arrays are empty.
+Parameters: array of artistic events in the form of objects retrieved by
+    the database, ordered by date
+  artisticEvents: array of seminars in the form of objects retrieved by
+      the database, ordered by date
+*/
 function firstDayInLists(artisticEvents, seminars){
   if(artisticEvents.length === 0){
     if(seminars.length === 0){
@@ -137,9 +194,15 @@ function firstDayInLists(artisticEvents, seminars){
 
 
 /*
-Require events to be ordered by date with
-first day not previous to the parameter 'day'.
-It can return empty array.
+Given a day written as 'number_day/number_month' and an array of events, with
+the events ordered by date and the date of the first event equal or successive
+to the date of the day specified as parameter, returns an array containing
+the events in that day; if there are none, returns an empty array.
+
+Parameters:
+  events: array of events of the same type in the form of objects retrieved
+        from the database
+  day: date in the form of 'number_day/number_month'
 */
 function eventsInSpecifiedDay(events, day){
   var i;
@@ -148,7 +211,13 @@ function eventsInSpecifiedDay(events, day){
   return events.slice(0,i);
 }
 
-//day is not a timestamp but is a getShortDate(timestamp)
+/*
+Reutrns html code as a string representing the header of a date, meant to
+be used before a list of events in that date.
+
+Parameters:
+  day: date written as a string (not a timestamp)
+*/
 function titleDay(day){
   stringToReturn =
     "<div class='medium_header'>" +
@@ -158,7 +227,16 @@ function titleDay(day){
   return stringToReturn;
 }
 
+/*
+Returns html code as string representing a list of events of the same type,
+ordered by date.
 
+Parameters:
+  events: array of events of the same type in the form of objects retrieved
+        from the database
+  areArtisticEvents: boolean that is true if the events are artistic events,
+        false if they are seminars
+*/
 function sameTypeListEventsDivByDay(events, areArtisticEvents){
   var stringToReturn = "";
   var day;
@@ -176,7 +254,15 @@ function sameTypeListEventsDivByDay(events, areArtisticEvents){
 }
 
 /*
-  Artistic events and seminars will be displayed separate.
+Returns html code as string representing a list of events, ordered by date,
+with artistic events and seminars divided in two separate columns.
+
+Parameters:
+  artisticEvents: array of artistic events in the form of objects retrieved from
+        the database
+  seminars: array of seminars in the form of objects retrieved from the database
+  showTypeArtEv: boolean that indicates if the type of each artistic has
+        to be specified
 */
 function artisticEventsAndSeminarsSeparately(artisticEvents, seminars, showTypeArtEv) {
   const COLUMN = "<div class='col-sm-6'>";
@@ -204,7 +290,15 @@ function artisticEventsAndSeminarsSeparately(artisticEvents, seminars, showTypeA
   return stringToReturn;
 }
 
+/*
+Returns html code as string representing a list of events, ordered by date.
 
+Parameters:
+  artisticEvents: array of artistic events in the form of objects retrieved from
+        the database
+  seminars: array of seminars in the form of objects retrieved from the database
+  showDate: boolean that indicates if the date of the event should be shown
+*/
 function listMixedEvents(artisticEvents, seminars, showDate){
   var stringToReturn = "";
   var indexArt = 0;

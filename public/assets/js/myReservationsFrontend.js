@@ -1,3 +1,6 @@
+/*
+Script for maanging and displaying the list of a user's reservations.
+*/
 const BUTTON_REMOVE_EVENT_PREFIX = "buttonRemove";
 const PREFIX_ID_REMOVE_ART_EV = BUTTON_REMOVE_EVENT_PREFIX + "ArtEv";
 const PREFIX_ID_REMOVE_SEM = BUTTON_REMOVE_EVENT_PREFIX + "Sem";
@@ -14,6 +17,11 @@ $(document).ready(function(){
     var seminars;
     var stringResults;
 
+    /*
+    The button to confirm the request to delete all the reservations is
+    hidden at first. It is shown only after clicking on the button that
+    requests that action.
+    */
     $('#confirmationDeleteAll').hide();
     $('#confirmationDeleteAll').append(
       "<p class='marg_top_M'>Do you really want to cancel all of your reservations?</p>" +
@@ -27,6 +35,7 @@ $(document).ready(function(){
       $.get( DOMAIN_ADDRESS + "/reservationSeminar/", function(results){
         seminars = results;
       }).then(function(){
+        //if the user has zero reservations
         if(artisticEvents.length === 0 && seminars.length === 0){
           stringResults =
           "<h2>You don't have reserations for any event.</h2><br>"+
@@ -34,7 +43,7 @@ $(document).ready(function(){
             "<a href='calendar.html'>Click here</a>" +
             " to find something interesting!</h4>";
         }
-        else{
+        else{ //if the user has one or more reservations
           $('#spaceForButtonDeleteAll').append(
             "<button class='btn btn-danger btn-lg' id='buttonDeleteAllReservations' role='button'>" +
               "<i class='material-icons'>delete_forever</i>" +
@@ -70,7 +79,14 @@ $(document).ready(function(){
   }
 })
 
+/*
+Returns html code as a string, representing the list of the
+events reserved by the user.
 
+Parameters:
+  artisticEvents: artistic events received from the database
+  seminars: seminars received from the database
+*/
 function reservationResults(artisticEvents, seminars){
   var stringToReturn = "";
   var indexArt = 0;
@@ -98,14 +114,37 @@ function reservationResults(artisticEvents, seminars){
   return stringToReturn;
 }
 
+/*
+Returns html code as a string, representing the reservation of
+a specific artistic event.
+
+Parameters:
+  artisticEvent: specific artistic event as it is defined in the database
+*/
 function artisticEventInReservations(artisticEvent){
   return eventInReservations(artisticEvent, true);
 }
 
+/*
+Returns html code as a string, representing the reservation of
+a specific seminar.
+
+Parameters:
+  seminar: specific seminar as it is defined in the database
+*/
 function seminarInReservations(seminar){
   return eventInReservations(seminar, false);
 }
 
+/*
+Returns html code as a string, representing the reservation of
+a specific event.
+
+Parameters:
+  event: specific event as it is defined in the database
+  isArtisticEvent: boolean that specifies if the event is
+              an artistic or a seminar
+*/
 function eventInReservations(event, isArtisticEvent){
   var idRemoveEvent;
   var id;
@@ -148,14 +187,17 @@ function eventInReservations(event, isArtisticEvent){
   return stringToReturn;
 }
 
+//on click listener for removing a specific artistic event
 $(document).on('click', "[id^=" + PREFIX_ID_REMOVE_ART_EV + "]", function(){
   deleteReserv("/reservationArtisticEvent/", this.id.substring(PREFIX_ID_REMOVE_ART_EV.length))
 })
 
+//on click listener for removing a specific seminar
 $(document).on('click', "[id^=" + PREFIX_ID_REMOVE_SEM + "]", function(){
   deleteReserv("/reservationSeminar/", this.id.substring(PREFIX_ID_REMOVE_SEM.length))
 })
 
+//Delete all the reservations associated with the user
 function deleteAllReservations(){
   $.ajax({
     url : DOMAIN_ADDRESS + '/reservationArtisticEvent',
@@ -169,10 +211,17 @@ function deleteAllReservations(){
     });
   });
 }
+/*
+Delete a specific reservation.
 
-function deleteReserv(queryMissingId, idObjToRemove){
+Parameters:
+  queryKindOfReservation: string used as command to specify the
+            kind of reservation to delete (artistic event or semiar)
+  idObjToRemove: id of the object to remove
+*/
+function deleteReserv(queryKindOfReservation, idObjToRemove){
   $.ajax({
-    url : DOMAIN_ADDRESS + queryMissingId + idObjToRemove,
+    url : DOMAIN_ADDRESS + queryKindOfReservation + idObjToRemove,
     type : 'DELETE',
     data : {
     },
