@@ -6,7 +6,8 @@ var knex = require('knex')({
     user : 'olheaeorfhaakh',
     password : 'c1f137921f8051c460f249af820cbdef03b3daf22be26477e60f1917b3464f1a',
     database : 'd4bg770g99j223',
-    port:5432
+    port:5432,
+    ssl: true
   }
 
   /* //for localhost testing
