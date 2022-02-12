@@ -34,6 +34,8 @@ $("#buttonSignUp").click(function(){
         alert(email + ' is already registered!');
       }
       else{ //signed up successfully
+        alert('registered');
+        //try to login automatically
         $.ajax({
           url:DOMAIN_ADDRESS + '/user/login',
           type: 'POST',
@@ -43,13 +45,13 @@ $("#buttonSignUp").click(function(){
           },
           dataType: 'json',
           success:(data)=>{
-            if(data.loggedin){
-              alert('registered');
+            if(data.loggedin){  //signed in successfully
+              //send user to homepage
               window.location.replace(DOMAIN_ADDRESS);
             }
-            else{
-              alert('Something went wrong');
-              window.location.replace(window.location.href);
+            else{ //problem with automatic sign in
+              //send user to sign in manually to the login page
+              window.location.replace(DOMAIN_ADDRESS + '/pages/login.html');
             }
           },
         });
