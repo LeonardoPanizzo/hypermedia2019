@@ -11,7 +11,7 @@ var knex = require('knex')({
     enables SSL but does not reject self-signed certificate for Heroku
     source: https://github.com/strapi/strapi/pull/6050
     */
-    ssl: { "rejectUnauthorized": false }
+    "ssl": { "rejectUnauthorized": false }
   }
 
   /* //for localhost testing
