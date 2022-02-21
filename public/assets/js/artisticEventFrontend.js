@@ -1,6 +1,10 @@
+/*
+Script that fills the page of a specific artistic event with all the
+required information
+*/
 $(document).ready(function(){
   var id =  getIdFromUrl();
-
+  
   manageReservationInfo(id, true);
 
   $.get(DOMAIN_ADDRESS + "/artisticEvent/" + id, function(result){
